@@ -2,9 +2,12 @@ import React from "react";
 
 function Slime(props) {
   return (
-    <button className="slime" onClick={props.onClickFunction}>
-      <img alt={`Slime ${props.id}`} src={`./logo.svg`} />
-    </button>
+    <div className="slime" >
+      <button onClick={props.onClickFunction} onMouseOver={props.onMouseOver}>
+        <img alt={`Slime ${props.name}, id ${props.id}`} src={`./logo.svg`} />
+      </button>
+      <pre>{`${props.currentHP}/${props.maxHP}`}</pre>
+    </div>
   );
 }
 
