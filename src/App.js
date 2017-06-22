@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Slime from './Slime.jsx'
+import Slime from './Slime.jsx';
+import CreateButton from './CreateSlime';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <Slime />
+        <CreateButton />
       </div>
     );
   }
