@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Slime from './Slime.jsx';
-import CreateButton from './CreateSlime';
+import SlimeGroup from './SlimesGroup.jsx';
+import CreateButton from './CreateSlime.jsx';
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to Slimes Rumble</h2>
         </div>
-        <Slime />
+        <SlimeGroup slimesAmount="3" />
         <CreateButton />
       </div>
     );
