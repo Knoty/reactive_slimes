@@ -7,7 +7,7 @@ function CreateSlimeButton(props) {
       <button onClick={props.onClickFunction} onMouseOver={props.onMouseOver}>
         <img alt={`Create new slime`} src={addSlime} />
       </button>
-      <pre>{`${props.currentPoolAmount}`}</pre>
+      <pre>{props.currentPoolAmount}</pre>
     </div>
   );
 }
