@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import SlimeGroup from './SlimesGroup.jsx';
 import CreateButton from './CreateSlime.jsx';
+import Boss from './Boss.jsx';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         </div>
         <SlimeGroup slimesAmount="3" />
         <CreateButton />
+        <Boss currentHP="100" maxHP="100"/>
       </div>
     );
   }
