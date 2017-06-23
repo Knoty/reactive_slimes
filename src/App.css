@@ -26,3 +26,14 @@
 .slime img {
   width: 64px;
 }
+
+.slime, .create_slime_button {
+  width: 74px;
+  margin-left: 20px;
+}
+
+.boss {
+  width: 138px;
+  float: right;
+  vertical-align: bottom;
+}
