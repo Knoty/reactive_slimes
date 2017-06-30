@@ -27,5 +27,9 @@ const state = {
   poolAmount: 1000
 };
 
-ReactDOM.render(<App {...state} />, document.getElementById('root'));
+ReactDOM.render(
+  <App slimes={state.slimes} boss={state.boss} poolAmount={state.poolAmount} />,
+  document.getElementById('root')
+);
+
 registerServiceWorker();
