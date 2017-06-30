@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SlimeGroup from './SlimesGroup.jsx';
-import CreateButton from './CreateSlime.jsx';
+import CreateSlimeButton from './CreateSlimeButton.jsx';
 import Boss from './Boss.jsx';
 
 class App extends Component {
