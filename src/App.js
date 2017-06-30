@@ -10,7 +10,7 @@ const App = (props) => (
       <h2>Welcome to Slimes Rumble</h2>
     </div>
     <SlimeGroup slimes={props.slimes} />
-    <CreateSlimeButton poolAmount={props.poolAmount} />
+    <CreateSlimeButton currentPoolAmount={props.poolAmount} maxPoolAmount={1000} onClickFunction={() => null} />
     <Boss currentHP={props.boss.currentHP} maxHP={props.boss.maxHP} damage={props.boss.damage} />
   </div>
 );
