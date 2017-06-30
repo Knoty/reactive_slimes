@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import SlimeGroup from './SlimesGroup.jsx';
 import CreateSlimeButton from './CreateSlimeButton.jsx';
 import Boss from './Boss.jsx';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-intro">
-          <h2>Welcome to Slimes Rumble</h2>
-        </div>
-        <SlimeGroup slimesAmount="3" />
-        <CreateButton />
-        <Boss currentHP="100" maxHP="100"/>
-      </div>
-    );
-  }
-}
+const App = (props) => (
+  <div className="App">
+    <div className="App-intro">
+      <h2>Welcome to Slimes Rumble</h2>
+    </div>
+    <SlimeGroup slimes={props.slimes} />
+    <CreateSlimeButton poolAmount={props.poolAmount} />
+    <Boss currentHP={props.boss.currentHP} maxHP={props.boss.maxHP} damage={props.boss.damage} />
+  </div>
+);
 
 export default App;
