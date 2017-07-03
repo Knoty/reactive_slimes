@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import SlimeGroup from './SlimesGroup.jsx';
 import CreateSlimeButton from './CreateSlimeButton.jsx';
-import Boss from './Boss.jsx';
+import BossContainer from './BossContainer';
+
 
 const App = (props) => (
   <div className="App">
@@ -11,7 +12,7 @@ const App = (props) => (
     </div>
     <SlimeGroup slimes={props.slimes} />
     <CreateSlimeButton currentPoolAmount={props.poolAmount} maxPoolAmount={1000} onClickFunction={() => null} />
-    <Boss currentHP={props.boss.currentHP} maxHP={props.boss.maxHP} damage={props.boss.damage} />
+    <BossContainer />
   </div>
 );
 
