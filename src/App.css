@@ -1,11 +1,17 @@
 body {
-  background: url(/versus-template-background.jpg) no-repeat;
-  background-size: 100% 100%;
+  background: #768588;
   color: white;
 }
 
 .App {
+  background: #768588 url(/versus-template-background.jpg) no-repeat;
   text-align: center;
+  min-height: 720px;
+  max-height: 720px;
+  min-width: 1280px;
+  max-width: 1280px;
+  overflow: auto;
+  margin: 0 auto;
 }
 
 .App-intro {
