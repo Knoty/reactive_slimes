@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SlimePureFunction from './SlimePureFunction.jsx'
+import SlimeView from './SlimeView.jsx'
 
 class SlimeClassBased extends Component {
   constructor(props) {
@@ -7,29 +7,26 @@ class SlimeClassBased extends Component {
 
     this.state = {
       hp: Number(Math.random() * 100).toFixed(0),
-      max: 100
+      maxHp: 100,
+      healAmount: 15
     }
   }
 
-  onClick(event) {
-    const healAmount = 15;
-    const newHp = Number(this.state.hp) + healAmount;
+  onClick() {
+    const newHp = Number(this.state.hp) + Number(this.state.healAmount);
     this.setState(
       {
         hp: newHp
       }
     );
-
-    console.log(event.target);
-    console.log(this.props)
   }
 
   render() {
     return (
-      <SlimePureFunction
+      <SlimeView
         {...this.props}
         {...this.state}
-        onClick={(chtulhu) => this.onClick(chtulhu)}
+        onClick={() => this.onClick()}
         onMouseOver={this.onMouseOver}
       />
     )
