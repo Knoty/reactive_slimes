@@ -4,7 +4,7 @@ body {
 }
 
 .App {
-  background: #768588 url(/versus-template-background.jpg) no-repeat;
+  background: #768588 url(versus-template-background.jpg) no-repeat;
   text-align: center;
   min-height: 720px;
   max-height: 720px;
@@ -12,14 +12,6 @@ body {
   max-width: 1280px;
   overflow: auto;
   margin: 0 auto;
-}
-
-.App-intro {
-  color: black;
-}
-
-.slime img {
-  width: 64px;
 }
 
 .slime, .create_slime_button {
@@ -30,11 +22,9 @@ body {
 .create_slime_button {
   height: 64px;
   width: 64px;
-  background: url(../src/add.png) no-repeat;
+  background: url(add.png) no-repeat;
 }
 
 .boss {
-  width: 138px;
   float: right;
-  vertical-align: bottom;
 }
