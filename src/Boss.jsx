@@ -1,10 +1,10 @@
 import React from "react";
-import poring from './pink_poring.png';
+import boss from './Boss1.png';
 
 function Boss(props) {
   return (
     <div className="boss" onClick={props.onClickFunction} >
-      <img alt='Boss' src={poring} />
+      <img alt='Boss' src={boss} />
       {props.currentHP}/{props.maxHP}
     </div>
   );
