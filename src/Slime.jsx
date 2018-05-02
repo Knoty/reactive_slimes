@@ -13,11 +13,8 @@ class SlimeClassBased extends Component {
   }
 
   onClick() {
-    const newHp = Number(this.state.hp) + Number(this.state.healAmount);
     this.setState(
-      {
-        hp: newHp
-      }
+        oldState => ({hp: Number(oldState.hp) + Number(this.state.healAmount)})
     );
   }
 
