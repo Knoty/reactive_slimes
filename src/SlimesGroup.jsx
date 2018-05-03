@@ -1,11 +1,11 @@
 import React from "react";
-import Slime from './Slime.jsx';
+import DefaultSlime from './DefaultSlime.jsx';
 
 const SlimesGroup = ({ slimes }) => (
   <div>
     {
       slimes.map(
-        slime => <Slime key={slime.id} {...slime} />
+        slime => <DefaultSlime key={slime.id} {...slime} />
       )
     }
   </div>
