@@ -6,7 +6,7 @@ const SlimeView = props => (
         <button onClick={props.onClick}>
             <img alt={`Slime ${props.name}, id ${props.id}`} src={poring} />
         </button>
-        <pre>{`${props.currentHP}/${props.maxHP}`}</pre>
+        <pre>{`${props.currentHP} / ${props.maxHP}`}</pre>
     </div>
 );
 
