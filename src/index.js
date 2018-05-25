@@ -9,12 +9,11 @@ const state = {
     maxHP: 100,
     currentHP: 70,
     damage: 40
-  },
-  poolAmount: 1000
+  }
 };
 
 ReactDOM.render(
-  <App slimes={state.slimes} boss={state.boss} poolAmount={state.poolAmount} />,
+  <App boss={state.boss}/>,
   document.getElementById('root')
 );
 
