@@ -6,7 +6,7 @@ import Boss from './Boss.jsx';
 
 class App extends React.Component {
     maxId;
-    poolAmount = 1000;
+    maxPoolAmount = 1000;
     newSlimeValue = 100;
 
     constructor(props) {
@@ -27,21 +27,28 @@ class App extends React.Component {
                     currentHP: 80
                 }
             ],
+            poolAmount: this.maxPoolAmount,
         };
-
         this.maxId = this.state.slimes.length;
     }
 
     onClick() {
-        ++this.maxId;
-        this.setState(
-            oldState => ({
-                 slimes: oldState.slimes.concat(
-                     [{ id: this.maxId, name: `name${this.maxId}`, maxHP: 100, currentHP: 75 }]
-                 )
-            })
-        );
-        this.poolAmount -= this.newSlimeValue;
+        if (this.state.poolAmount >= this.newSlimeValue){
+            ++this.maxId;
+            this.setState(
+                oldState => ({
+                     slimes: oldState.slimes.concat(
+                         [{ id: this.maxId, name: `name${this.maxId}`, maxHP: 100, currentHP: 75 }]
+                     )
+                })
+            );
+            this.setState(
+                oldState => ({
+                    poolAmount: oldState.poolAmount - this.newSlimeValue
+                })
+            )
+        }
+
     }
 
     render() {
@@ -52,8 +59,8 @@ class App extends React.Component {
                 </div>
                 <SlimeGroup slimes={this.state.slimes} />
                 <CreateSlimeButton
-                    currentPoolAmount={this.poolAmount}
-                    maxPoolAmount={1000}
+                    currentPoolAmount={this.state.poolAmount}
+                    maxPoolAmount={this.maxPoolAmount}
 
                     onClick={
                         () => {
