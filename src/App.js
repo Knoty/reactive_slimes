@@ -8,6 +8,7 @@ class App extends React.Component {
     maxId;
     maxPoolAmount = 1000;
     newSlimeValue = 100;
+    maxSlimesQuantity = 7;
 
     constructor(props) {
         super(props);
@@ -33,7 +34,7 @@ class App extends React.Component {
     }
 
     onClick() {
-        if (this.state.poolAmount >= this.newSlimeValue){
+        if (this.state.poolAmount >= this.newSlimeValue && this.maxId <= this.maxSlimesQuantity){
             ++this.maxId;
             this.setState(
                 oldState => ({
