@@ -18,14 +18,10 @@ class App extends React.Component {
                 {
                     id: 1,
                     name: 'name',
-                    maxHP: 100,
-                    currentHP: 90
                 },
                 {
                     id: 2,
                     name: 'name2',
-                    maxHP: 100,
-                    currentHP: 80
                 }
             ],
             poolAmount: this.maxPoolAmount,
@@ -39,21 +35,20 @@ class App extends React.Component {
             ++this.maxId;
             this.setState(
                 oldState => ({
-                     slimes: oldState.slimes.concat(
-                         [{ id: this.maxId, name: `name${this.maxId}`, maxHP: 100, currentHP: 75 }]
-                     )
+                    poolAmount: oldState.poolAmount - this.newSlimeValue
                 })
             );
             this.setState(
                 oldState => ({
-                    poolAmount: oldState.poolAmount - this.newSlimeValue
+                     slimes: oldState.slimes.concat(
+                         [{ id: this.maxId, name: `name${this.maxId}` }]
+                     )
                 })
-            )
+            );
         }
         if (this.maxId >= this.maxSlimesQuantity) {
             this.state.createSlimeButtonAvailable = false;
         }
-
     }
 
     render() {
