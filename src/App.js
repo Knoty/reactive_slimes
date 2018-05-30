@@ -8,7 +8,7 @@ class App extends React.Component {
     maxId;
     maxPoolAmount = 1000;
     newSlimeValue = 100;
-    maxSlimesQuantity = 7;
+    maxSlimesQuantity = 8;
 
     constructor(props) {
         super(props);
@@ -29,12 +29,13 @@ class App extends React.Component {
                 }
             ],
             poolAmount: this.maxPoolAmount,
+            createSlimeButtonAvailable: true,
         };
         this.maxId = this.state.slimes.length;
     }
 
     onClick() {
-        if (this.state.poolAmount >= this.newSlimeValue && this.maxId <= this.maxSlimesQuantity){
+        if (this.state.poolAmount >= this.newSlimeValue && this.maxId < this.maxSlimesQuantity){
             ++this.maxId;
             this.setState(
                 oldState => ({
@@ -49,6 +50,9 @@ class App extends React.Component {
                 })
             )
         }
+        if (this.maxId >= this.maxSlimesQuantity) {
+            this.state.createSlimeButtonAvailable = false;
+        }
 
     }
 
@@ -59,17 +63,21 @@ class App extends React.Component {
                     <h2>Welcome to Slimes Rumble</h2>
                 </div>
                 <SlimeGroup slimes={this.state.slimes} />
-                <CreateSlimeButton
-                    currentPoolAmount={this.state.poolAmount}
-                    maxPoolAmount={this.maxPoolAmount}
+                {
+                    this.state.createSlimeButtonAvailable
+                    &&
+                    <CreateSlimeButton
+                        currentPoolAmount={this.state.poolAmount}
+                        maxPoolAmount={this.maxPoolAmount}
 
-                    onClick={
-                        () => {
-                            this.onClick()
+                        onClick={
+                            () => {
+                                this.onClick()
+                            }
                         }
-                    }
 
-                />
+                    />
+                }
                 <Boss currentHP={this.props.boss.currentHP} maxHP={this.props.boss.maxHP} damage={this.props.boss.damage} />
             </div>
         )
