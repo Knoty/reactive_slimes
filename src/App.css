@@ -19,12 +19,6 @@ body {
   margin-left: 20px;
 }
 
-.create_slime_button {
-  height: 64px;
-  width: 64px;
-  background: url(add.png) no-repeat;
-}
-
 .boss {
   float: right;
 }
