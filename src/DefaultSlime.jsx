@@ -2,40 +2,42 @@ import React, { Component } from "react";
 import SlimeView from './SlimeView.jsx'
 
 class DefaultSlime extends Component {
-    maxHP = 100;
     healAmount = 15;
+    smallestMaxHP = 80;
+    highestMaxHP = 120;
+    maxHP = Number(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP).toFixed(0);
 
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      hp: Number(Math.random() * 100).toFixed(0),
-    }
-  }
-
-  onClick() {
-    this.setState(
-        oldState => {
-            const newHp = Number(oldState.hp) + Number(this.healAmount);
-            if (newHp < this.maxHP) {
-                return { hp: newHp };
-            } else {
-                return { hp: this.maxHP };
-            }
+        this.state = {
+            hp: this.maxHP
         }
-    );
-  }
+    }
 
-  render() {
-    return (
-      <SlimeView
-        {...this.props}
-        onClick = {() => this.onClick()}
-        currentHP = {this.state.hp}
-        maxHP = {this.maxHP}
-      />
-    )
-  }
+    onClick() {
+        this.setState(
+            oldState => {
+                const newHP = Number(oldState.hp) + Number(this.healAmount);
+                if (newHP < this.maxHP) {
+                    return { hp: newHP };
+                } else {
+                    return { hp: this.maxHP };
+                }
+            }
+        );
+    }
+
+    render() {
+        return (
+            <SlimeView
+                {...this.props}
+                onClick = {() => this.onClick()}
+                currentHP = {this.state.hp}
+                maxHP = {this.maxHP}
+            />
+        )
+    }
 }
 
 export default DefaultSlime;
