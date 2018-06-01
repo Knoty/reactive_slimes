@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import SlimeGroup from './SlimesGroup.jsx';
 import CreateSlimeButton from './CreateSlimeButton.jsx';
-import Boss from './Boss.jsx';
+import DefaultBoss from './DefaultBoss.jsx';
 
 class App extends React.Component {
     maxId;
@@ -73,7 +73,7 @@ class App extends React.Component {
 
                     />
                 }
-                <Boss currentHP={this.props.boss.currentHP} maxHP={this.props.boss.maxHP} damage={this.props.boss.damage} />
+                <DefaultBoss/>
             </div>
         )
     }
