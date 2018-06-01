@@ -5,7 +5,7 @@ class DefaultSlime extends Component {
     healAmount = 15;
     smallestMaxHP = 80;
     highestMaxHP = 120;
-    maxHP = Number(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP).toFixed(0);
+    maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
 
     constructor(props) {
         super(props);
