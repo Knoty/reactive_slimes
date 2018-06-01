@@ -47,7 +47,7 @@ class App extends React.Component {
             );
         }
         if (this.maxId >= this.maxSlimesQuantity) {
-            this.state.createSlimeButtonAvailable = false;
+            this.setState({createSlimeButtonAvailable : false})
         }
     }
 
