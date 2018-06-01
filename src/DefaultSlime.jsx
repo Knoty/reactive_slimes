@@ -4,8 +4,8 @@ import SlimeView from './SlimeView.jsx'
 class DefaultSlime extends Component {
     healAmount = 15;
     smallestMaxHP = 80;
-    highestMaxHP = 120;
-    maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
+    highestMaxHP = 121;
+    maxHP = Number(Math.floor(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
 
     constructor(props) {
         super(props);
