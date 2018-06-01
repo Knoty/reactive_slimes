@@ -20,6 +20,7 @@ class DefaultBoss extends Component {
                 if (newHP > 0) {
                     return { hp: newHP };
                 } else {
+                    alert('Босс уже повержен!');
                     return { hp: 0 };
                 }
             }

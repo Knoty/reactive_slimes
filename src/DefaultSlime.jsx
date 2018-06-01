@@ -22,6 +22,7 @@ class DefaultSlime extends Component {
                 if (newHP < this.maxHP) {
                     return { hp: newHP };
                 } else {
+                    alert('Слайм полность здоров!');
                     return { hp: this.maxHP };
                 }
             }
