@@ -1,31 +1,76 @@
 body {
-  background: #768588;
-  color: white;
+    background: #768588;
+    color: white;
 }
 
 .App {
-  background: #768588 url(versus-template-background.jpg) no-repeat;
-  text-align: center;
-  min-height: 720px;
-  max-height: 720px;
-  min-width: 1280px;
-  max-width: 1280px;
-  overflow: auto;
-  margin: 0 auto;
+    position: relative;
+    background: #768588 url(versus-template-background.jpg) no-repeat;
+    text-align: center;
+    min-height: 720px;
+    max-height: 720px;
+    min-width: 1280px;
+    max-width: 1280px;
+    overflow: auto;
+    margin: 0 auto;
 }
 
 .slime, .create_slime_button {
-  width: 74px;
-  margin-left: 20px;
+    position: absolute;
+    margin-left: 20px;
+}
+
+.create_slime_button {
+    top: 70px;
+    left: 25px;
+}
+
+.slime_1 {
+    top: 200px;
+}
+
+.slime_2 {
+    top: 365px;
+}
+
+.slime_3 {
+    top: 530px;
+}
+
+.slime_4 {
+    top: 260px;
+    left: 140px;
+}
+
+.slime_5 {
+    top: 430px;
+    left: 140px;
+}
+
+.slime_6 {
+    top: 260px;
+    left: 290px;
+}
+
+.slime_7 {
+    top: 430px;
+    left: 290px;
+}
+
+.slime_8 {
+    top: 340px;
+    left: 425px;
 }
 
 .boss {
-  float: right;
+    float: right;
+    margin-top: 125px;
+    margin-right: 110px;
 }
 
 button {
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
