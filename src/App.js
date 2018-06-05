@@ -12,7 +12,6 @@ class App extends React.Component {
     healAmount = 15;
     smallestMaxHP = 80;
     highestMaxHP = 121;
-    maxHP = Number(Math.floor(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
     bossPower = 50;
 
     makeSlime(id) {
