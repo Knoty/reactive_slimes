@@ -9,6 +9,10 @@ class App extends React.Component {
     maxPoolAmount = 1000;
     newSlimeValue = 100;
     maxSlimesQuantity = 8;
+    healAmount = 15;
+    smallestMaxHP = 80;
+    highestMaxHP = 121;
+    maxHP = Number(Math.floor(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
 
     constructor(props) {
         super(props);
@@ -18,10 +22,14 @@ class App extends React.Component {
                 {
                     id: 1,
                     name: 'name',
+                    hp: 10,
+                    maxHP: this.maxHP
                 },
                 {
                     id: 2,
                     name: 'name2',
+                    hp: 45,
+                    maxHP: this.maxHP
                 }
             ],
             poolAmount: this.maxPoolAmount,
@@ -37,7 +45,7 @@ class App extends React.Component {
                 oldState => ({
                     poolAmount: oldState.poolAmount - this.newSlimeValue,
                     slimes: oldState.slimes.concat(
-                        [{ id: this.maxId, name: `name${this.maxId}` }]
+                        [{id: this.maxId, name: `name${this.maxId}`}]
                     )
                 })
             );
@@ -45,6 +53,33 @@ class App extends React.Component {
         if (this.maxId >= this.maxSlimesQuantity) {
             this.setState({createSlimeButtonAvailable : false})
         }
+    }
+
+    healSlime(id) {
+        this.setState(
+            oldState => {
+
+                const healSlimeByID = (oldSlime) => {
+                    if (id !== oldSlime.id)
+                        return oldSlime;
+                    if (oldSlime.hp === oldSlime.maxHP) {
+                        alert('Слайм полность здоров!');
+                        return oldSlime;
+                    }
+                    let newHP = Number(oldSlime.hp) + Number(this.healAmount);
+                    if (newHP > oldSlime.maxHP) {
+                        newHP = oldSlime.maxHP
+                    }
+                    return Object.assign({}, oldSlime, { hp: newHP });
+                };
+
+                return {
+                    slimes: oldState.slimes.map(
+                        healSlimeByID
+                    )
+                };
+            }
+        );
     }
 
     render() {
@@ -64,7 +99,10 @@ class App extends React.Component {
                     />
                 }
 
-                <SlimeGroup slimes={this.state.slimes} />
+                <SlimeGroup
+                    slimes = {this.state.slimes}
+                    healSlime = {(id) => this.healSlime(id)}
+                />
 
                 <DefaultBoss/>
             </div>
