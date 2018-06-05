@@ -5,6 +5,7 @@ import CreateSlimeButton from './CreateSlimeButton.jsx';
 import DefaultBoss from './DefaultBoss.jsx';
 
 class App extends React.Component {
+    maxID = 0;
     maxPoolAmount = 1000;
     newSlimeValue = 100;
     maxSlimesQuantity = 8;
@@ -29,8 +30,8 @@ class App extends React.Component {
 
         this.state = {
             slimes: [
-                this.makeSlime(1),
-                this.makeSlime(2)
+                this.makeSlime(this.makeID()),
+                this.makeSlime(this.makeID())
             ],
             poolAmount: this.maxPoolAmount,
             createSlimeButtonAvailable: true,
@@ -38,7 +39,12 @@ class App extends React.Component {
     }
 
     getRandomSlimeID() {
-        return Math.floor(Math.random() * this.state.slimes.length+1)
+        const slimeNumber = Math.floor(Math.random() * this.state.slimes.length);
+        return this.state.slimes[slimeNumber].id
+    }
+
+    makeID() {
+        return ++this.maxID;
     }
 
     createSlime() {
@@ -47,7 +53,7 @@ class App extends React.Component {
                 oldState => ({
                     poolAmount: oldState.poolAmount - this.newSlimeValue,
                     slimes: oldState.slimes.concat(
-                        [this.makeSlime(oldState.slimes.length + 1)]
+                        [this.makeSlime(this.makeID())]
                     ),
                     createSlimeButtonAvailable: oldState.slimes.length + 1 < this.maxSlimesQuantity
                 })
@@ -103,7 +109,9 @@ class App extends React.Component {
                 return {
                     slimes: oldState.slimes.map(
                         hitSlimeByID
-                    )
+                    ).filter((slime) => {
+                        return slime !== undefined
+                    })
                 };
             }
         );
