@@ -5,7 +5,6 @@ import CreateSlimeButton from './CreateSlimeButton.jsx';
 import DefaultBoss from './DefaultBoss.jsx';
 
 class App extends React.Component {
-    maxId;
     maxPoolAmount = 1000;
     newSlimeValue = 100;
     maxSlimesQuantity = 8;
@@ -14,44 +13,40 @@ class App extends React.Component {
     highestMaxHP = 121;
     maxHP = Number(Math.floor(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
 
+    makeSlime(id) {
+        let maxHP = Number(Math.floor(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
+        return {
+            id: id,
+            name: `name${id}`,
+            hp: maxHP,
+            maxHP: maxHP
+        }
+    }
+
     constructor(props) {
         super(props);
 
         this.state = {
             slimes: [
-                {
-                    id: 1,
-                    name: 'name',
-                    hp: 10,
-                    maxHP: this.maxHP
-                },
-                {
-                    id: 2,
-                    name: 'name2',
-                    hp: 45,
-                    maxHP: this.maxHP
-                }
+                this.makeSlime(1),
+                this.makeSlime(2)
             ],
             poolAmount: this.maxPoolAmount,
             createSlimeButtonAvailable: true,
         };
-        this.maxId = this.state.slimes.length;
     }
 
     createSlime() {
-        if (this.state.poolAmount >= this.newSlimeValue && this.maxId < this.maxSlimesQuantity){
-            ++this.maxId;
+        if (this.state.poolAmount >= this.newSlimeValue && this.state.slimes.length < this.maxSlimesQuantity){
             this.setState(
                 oldState => ({
                     poolAmount: oldState.poolAmount - this.newSlimeValue,
                     slimes: oldState.slimes.concat(
-                        [{id: this.maxId, name: `name${this.maxId}`}]
-                    )
+                        [this.makeSlime(oldState.slimes.length + 1)]
+                    ),
+                    createSlimeButtonAvailable: oldState.slimes.length + 1 < this.maxSlimesQuantity
                 })
             );
-        }
-        if (this.maxId >= this.maxSlimesQuantity) {
-            this.setState({createSlimeButtonAvailable : false})
         }
     }
 
