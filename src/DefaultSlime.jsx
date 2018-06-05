@@ -18,13 +18,15 @@ class DefaultSlime extends Component {
     onClick() {
         this.setState(
             oldState => {
-                let newHP = Number(oldState.hp) + Number(this.healAmount);
-                if (newHP < this.maxHP) {
-                    return { hp: newHP };
-                } else {
+                if (oldState.hp === this.maxHP) {
                     alert('Слайм полность здоров!');
-                    return { hp: this.maxHP };
+                    return oldState;
                 }
+                let newHP = Number(oldState.hp) + Number(this.healAmount);
+                if (newHP > this.maxHP) {
+                    newHP = this.maxHP
+                }
+                return { hp: newHP };
             }
         );
     }
