@@ -35,14 +35,10 @@ class App extends React.Component {
             ++this.maxId;
             this.setState(
                 oldState => ({
-                    poolAmount: oldState.poolAmount - this.newSlimeValue
-                })
-            );
-            this.setState(
-                oldState => ({
-                     slimes: oldState.slimes.concat(
-                         [{ id: this.maxId, name: `name${this.maxId}` }]
-                     )
+                    poolAmount: oldState.poolAmount - this.newSlimeValue,
+                    slimes: oldState.slimes.concat(
+                        [{ id: this.maxId, name: `name${this.maxId}` }]
+                    )
                 })
             );
         }
