@@ -53,7 +53,7 @@ class App extends React.Component {
                 <div className="App-intro">
                     <h2>Welcome to Slimes Rumble!</h2>
                 </div>
-                <SlimeGroup slimes={this.state.slimes} />
+
                 {
                     this.state.createSlimeButtonAvailable
                     &&
@@ -64,8 +64,8 @@ class App extends React.Component {
                     />
                 }
 
-                    />
-                }
+                <SlimeGroup slimes={this.state.slimes} />
+
                 <DefaultBoss/>
             </div>
         )
