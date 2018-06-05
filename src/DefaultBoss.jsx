@@ -25,6 +25,7 @@ class DefaultBoss extends Component {
                 }
             }
         );
+        this.props.reaction()
     }
 
     render() {

@@ -12,6 +12,7 @@ class App extends React.Component {
     smallestMaxHP = 80;
     highestMaxHP = 121;
     maxHP = Number(Math.floor(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
+    bossPower = 50;
 
     makeSlime(id) {
         let maxHP = Number(Math.floor(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
@@ -36,6 +37,10 @@ class App extends React.Component {
         };
     }
 
+    getRandomSlimeID() {
+        return Math.floor(Math.random() * this.state.slimes.length+1)
+    }
+
     createSlime() {
         if (this.state.poolAmount >= this.newSlimeValue && this.state.slimes.length < this.maxSlimesQuantity){
             this.setState(
@@ -48,6 +53,7 @@ class App extends React.Component {
                 })
             );
         }
+        this.hitSlime(this.getRandomSlimeID())
     }
 
     healSlime(id) {
@@ -71,6 +77,32 @@ class App extends React.Component {
                 return {
                     slimes: oldState.slimes.map(
                         healSlimeByID
+                    )
+                };
+            }
+        );
+        this.hitSlime(this.getRandomSlimeID())
+    }
+
+    hitSlime(id) {
+        console.log('Босс нанес ' + this.bossPower + ' повреждений слайму №' + id);
+        this.setState(
+            oldState => {
+
+                const hitSlimeByID = (oldSlime) => {
+                    if (id !== oldSlime.id)
+                        return oldSlime;
+                    let newHP = Number(oldSlime.hp) - Number(this.bossPower);
+                    if (newHP <= 0) {
+                        console.log('Слайм с id' + oldSlime.id + ' погиб.');
+                        return undefined;
+                    }
+                    return Object.assign({}, oldSlime, { hp: newHP });
+                };
+
+                return {
+                    slimes: oldState.slimes.map(
+                        hitSlimeByID
                     )
                 };
             }
@@ -99,7 +131,9 @@ class App extends React.Component {
                     healSlime = {(id) => this.healSlime(id)}
                 />
 
-                <DefaultBoss/>
+                <DefaultBoss
+                    reaction = {() => this.hitSlime(this.getRandomSlimeID())}
+                />
             </div>
         )
     }
