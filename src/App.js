@@ -30,7 +30,7 @@ class App extends React.Component {
         this.maxId = this.state.slimes.length;
     }
 
-    onClick() {
+    createSlime() {
         if (this.state.poolAmount >= this.newSlimeValue && this.maxId < this.maxSlimesQuantity){
             ++this.maxId;
             this.setState(
@@ -60,7 +60,7 @@ class App extends React.Component {
                     <CreateSlimeButton
                         currentPoolAmount = {this.state.poolAmount}
                         maxPoolAmount = {this.maxPoolAmount}
-                        onClick = {() => this.onClick()}
+                        onClick = {() => this.createSlime()}
                     />
                 }
 
