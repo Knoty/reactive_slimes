@@ -32,8 +32,7 @@ class App extends React.Component {
                 this.makeSlime(this.makeID()),
                 this.makeSlime(this.makeID())
             ],
-            poolAmount: this.maxPoolAmount,
-            createSlimeButtonAvailable: true,
+            poolAmount: this.maxPoolAmount
         };
     }
 
@@ -124,7 +123,7 @@ class App extends React.Component {
                 </div>
 
                 {
-                    this.state.createSlimeButtonAvailable
+                    this.state.slimes.length < this.maxSlimesQuantity
                     &&
                     <CreateSlimeButton
                         currentPoolAmount = {this.state.poolAmount}
