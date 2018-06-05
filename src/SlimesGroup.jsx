@@ -5,7 +5,14 @@ const SlimesGroup = ({ slimes, healSlime }) => (
   <div>
     {
       slimes.map(
-        slime => <DefaultSlime key={slime.id} {...slime} onClick = {(id) => healSlime(id)} />
+        (slime, index) => (
+            <DefaultSlime
+                className={'slime place_' + index}
+                key={slime.id}
+                {...slime}
+                onClick = {(id) => healSlime(id)}
+            />
+        )
       )
     }
   </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import poring from './pink_poring.png';
 
 const SlimeView = props => (
-    <div className={'slime slime_' + props.id}>
+    <div className={props.className}>
         <button
             onClick={
                 () => props.onClick(props.id)
