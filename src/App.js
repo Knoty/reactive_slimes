@@ -133,7 +133,7 @@ class App extends React.Component {
                 </div>
 
                 {
-                    this.state.slimes.length < this.maxSlimesQuantity
+                    this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > 0
                     &&
                     <CreateSlimeButton
                         currentPoolAmount = {this.state.poolAmount}
