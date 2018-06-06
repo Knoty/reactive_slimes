@@ -117,8 +117,19 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="App">
-                <div className="App-intro">
+            <div className='App'>
+
+                {
+                    this.state.slimes.length <= 0
+                    &&
+                    <div className='lose_screen'>
+                        <div className='lose_message'>
+                            <h1>Вы проиграли! Т_Т</h1>
+                        </div>
+                    </div>
+                }
+
+                <div className='App-intro'>
                     <h2>Welcome to Slimes Rumble!</h2>
                 </div>
 

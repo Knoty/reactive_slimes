@@ -25,6 +25,36 @@ body {
     left: 25px;
 }
 
+.boss {
+    float: right;
+    margin-top: 125px;
+    margin-right: 110px;
+}
+
+button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.lose_screen {
+    background: black no-repeat;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    min-height: 720px;
+    max-height: 720px;
+    min-width: 1280px;
+    max-width: 1280px;
+}
+
+.lose_message {
+    position: absolute;
+    left: 40%;
+    top: 40%
+}
+
 .place_0 {
     top: 190px;
 }
@@ -60,17 +90,4 @@ body {
 .place_7 {
     top: 330px;
     left: 430px;
-}
-
-.boss {
-    float: right;
-    margin-top: 125px;
-    margin-right: 110px;
-}
-
-button {
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
 }
