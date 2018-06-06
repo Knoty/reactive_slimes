@@ -20,7 +20,6 @@ class DefaultBoss extends Component {
                 if (newHP > 0) {
                     return { hp: newHP };
                 } else {
-                    alert('Босс уже повержен!');
                     return { hp: 0 };
                 }
             }
@@ -29,13 +28,23 @@ class DefaultBoss extends Component {
     }
 
     render() {
-        return (
-            <BossView
-                onClick = {() => this.onClick()}
-                currentHP = {this.state.hp}
-                maxHP = {this.maxHP}
-            />
-        )
+        if (this.state.hp > 0) {
+            return (
+                <BossView
+                    onClick = {() => this.onClick()}
+                    currentHP = {this.state.hp}
+                    maxHP = {this.maxHP}
+                />
+            )
+        } else {
+            return (
+                <div className='win_screen'>
+                    <div className='win_message'>
+                        <h1>Поздравляем! Вы одержали победу!</h1>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 
