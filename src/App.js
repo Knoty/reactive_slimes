@@ -68,7 +68,7 @@ class App extends React.Component {
                     if (id !== oldSlime.id)
                         return oldSlime;
                     if (oldSlime.hp === oldSlime.maxHP) {
-                        console.log('Слайм полность здоров!');
+                        console.log('Слайм полностью здоров!');
                         return oldSlime;
                     }
                     let newHP = Number(oldSlime.hp) + Number(this.healAmount);
