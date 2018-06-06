@@ -63,6 +63,7 @@ class App extends React.Component {
     healSlime(id) {
         this.setState(
             oldState => {
+
                 const healSlimeByID = (oldSlime) => {
                     if (id !== oldSlime.id)
                         return oldSlime;
