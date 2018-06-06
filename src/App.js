@@ -55,8 +55,8 @@ class App extends React.Component {
                     )
                 })
             );
+            this.hitSlime(this.getRandomSlimeID())
         }
-        this.hitSlime(this.getRandomSlimeID())
     }
 
     healSlime(id) {
