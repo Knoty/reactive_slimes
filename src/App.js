@@ -94,7 +94,7 @@ class App extends React.Component {
     }
 
     hitSlime(id) {
-        console.log('Босс нанес ' + this.bossPower + ' повреждений слайму №' + id);
+        console.log('В ответ босс нанес ' + this.bossPower + ' повреждений слайму №' + id);
         this.setState(
             oldState => {
 
