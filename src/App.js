@@ -52,8 +52,7 @@ class App extends React.Component {
                     poolAmount: oldState.poolAmount - this.newSlimeValue,
                     slimes: oldState.slimes.concat(
                         [this.makeSlime(this.makeID())]
-                    ),
-                    createSlimeButtonAvailable: oldState.slimes.length + 1 < this.maxSlimesQuantity
+                    )
                 })
             );
         }
