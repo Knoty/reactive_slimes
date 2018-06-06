@@ -76,7 +76,8 @@ class App extends React.Component {
                         newHP = oldSlime.maxHP
                     }
                     if (newHP > oldSlime.hp) {
-                        oldState.poolAmount -= this.healPrice
+                        oldState.poolAmount -= this.healPrice;
+                        console.log('Слайм №' + id + ' с ' + oldSlime.hp + ' хп был вылечен на ' + this.healAmount + ' хп и теперь имеет ' + newHP + ' хп.');
                     }
                     return Object.assign({}, oldSlime, { hp: newHP });
                 };
