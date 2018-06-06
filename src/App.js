@@ -9,7 +9,8 @@ class App extends React.Component {
     maxPoolAmount = 1000;
     newSlimeValue = 100;
     maxSlimesQuantity = 8;
-    healAmount = 15;
+    healAmount = 30;
+    healPrice = 5;
     smallestMaxHP = 80;
     highestMaxHP = 121;
     bossPower = 50;
@@ -74,6 +75,9 @@ class App extends React.Component {
                     if (newHP > oldSlime.maxHP) {
                         newHP = oldSlime.maxHP
                     }
+                    if (newHP > oldSlime.hp) {
+                        oldState.poolAmount -= this.healPrice
+                    }
                     return Object.assign({}, oldSlime, { hp: newHP });
                 };
 
@@ -133,7 +137,7 @@ class App extends React.Component {
                 </div>
 
                 {
-                    this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > 0
+                    this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice
                     &&
                     <CreateSlimeButton
                         currentPoolAmount = {this.state.poolAmount}
