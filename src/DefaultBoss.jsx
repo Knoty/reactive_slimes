@@ -18,6 +18,7 @@ class DefaultBoss extends Component {
             oldState => {
                 const newHP = Number(oldState.hp) - Number(this.playerPower);
                 if (newHP > 0) {
+                    console.log('Босс с ' + oldState.hp + ' хп был поражён на ' + this.playerPower + ' хп, и теперь имеет ' + newHP + ' хп.');
                     return { hp: newHP };
                 } else {
                     return { hp: 0 };
