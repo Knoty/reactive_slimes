@@ -98,7 +98,7 @@ class App extends React.Component {
                         return oldSlime;
                     let newHP = Number(oldSlime.hp) - Number(this.bossPower);
                     if (newHP <= 0) {
-                        console.log('Слайм с id' + oldSlime.id + ' погиб.');
+                        console.log('Слайм №' + oldSlime.id + ' погиб. T_T');
                         return undefined;
                     }
                     return Object.assign({}, oldSlime, { hp: newHP });
