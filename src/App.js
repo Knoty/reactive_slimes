@@ -55,6 +55,7 @@ class App extends React.Component {
                     )
                 })
             );
+            console.log('Вы создали слайма! Маны потрачено: '+this.newSlimeValue+'.');
             this.hitSlime(this.getRandomSlimeID())
         }
     }
