@@ -66,7 +66,7 @@ class App extends React.Component {
                     if (id !== oldSlime.id)
                         return oldSlime;
                     if (oldSlime.hp === oldSlime.maxHP) {
-                        console.log('Слайм полностью здоров!');
+                        console.log('Слайм №'+id+' полностью здоров!');
                         return oldSlime;
                     }
                     let newHP = Number(oldSlime.hp) + Number(this.healAmount);
@@ -75,7 +75,7 @@ class App extends React.Component {
                     }
                     if (newHP > oldSlime.hp) {
                         oldState.poolAmount -= this.healPrice;
-                        console.log('Слайм №' + id + ' с ' + oldSlime.hp + ' хп был вылечен на ' + this.healAmount + ' хп, и теперь имеет ' + newHP + ' хп.');
+                        console.log('Слайм №'+id+' с '+oldSlime.hp+' хп был вылечен на '+this.healAmount+', и теперь имеет '+newHP+' из '+oldSlime.maxHP+'.');
                         this.hitSlime(this.getRandomSlimeID())
                     }
                     return Object.assign({}, oldSlime, { hp: newHP });
@@ -91,7 +91,7 @@ class App extends React.Component {
     }
 
     hitSlime(id) {
-        console.log('В ответ босс нанес ' + this.bossPower + ' повреждений слайму №' + id);
+        console.log('В ответ босс нанес '+this.bossPower+' повреждений слайму №'+id);
         this.setState(
             oldState => {
 
@@ -100,7 +100,7 @@ class App extends React.Component {
                         return oldSlime;
                     let newHP = Number(oldSlime.hp) - Number(this.bossPower);
                     if (newHP <= 0) {
-                        console.log('Слайм №' + oldSlime.id + ' погиб. T_T');
+                        console.log('Слайм №'+oldSlime.id+' погиб. T_T');
                         return undefined;
                     }
                     return Object.assign({}, oldSlime, { hp: newHP });
