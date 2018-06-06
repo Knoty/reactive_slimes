@@ -15,20 +15,8 @@ body {
     margin: 0 auto;
 }
 
-.slime, .create_slime_button {
-    position: absolute;
-    margin-left: 20px;
-}
-
-.create_slime_button {
-    top: 70px;
-    left: 25px;
-}
-
-.boss {
-    float: right;
-    margin-top: 125px;
-    margin-right: 110px;
+h2 {
+    font-size: 35px;
 }
 
 button {
@@ -36,6 +24,32 @@ button {
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+pre {
+    margin: 0;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.slime, .create_slime_button {
+    position: absolute;
+    margin-left: 20px;
+}
+
+.create_slime_button {
+    top: 70px;
+    left: 5px;
+}
+
+.create_slime_button button {
+    margin-bottom: 7px;
+}
+
+.boss {
+    float: right;
+    margin-top: 90px;
+    margin-right: 110px;
 }
 
 .lose_screen {
