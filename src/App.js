@@ -15,7 +15,7 @@ class App extends React.Component {
     highestMaxHP = 121;
     bossPower = 50;
 
-    makeSlime(id) {
+    slimeConstructor(id) {
         let maxHP = Number(Math.floor(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
         return {
             id: id,
@@ -30,8 +30,8 @@ class App extends React.Component {
 
         this.state = {
             slimes: [
-                this.makeSlime(this.makeID()),
-                this.makeSlime(this.makeID())
+                this.slimeConstructor(this.makeID()),
+                this.slimeConstructor(this.makeID())
             ],
             poolAmount: this.maxPoolAmount
         };
@@ -52,7 +52,7 @@ class App extends React.Component {
                 oldState => ({
                     poolAmount: oldState.poolAmount - this.newSlimeValue,
                     slimes: oldState.slimes.concat(
-                        [this.makeSlime(this.makeID())]
+                        [this.slimeConstructor(this.makeID())]
                     )
                 })
             );
