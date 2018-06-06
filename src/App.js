@@ -9,17 +9,16 @@ class App extends React.Component {
     maxPoolAmount = 1000;
     newSlimeValue = 100;
     maxSlimesQuantity = 8;
+    smallestMaxHP = 80;
+    highestMaxHP = 121; //actually highestMaxHP = highestMaxHP - 1
     healAmount = 30;
     healPrice = 5;
-    smallestMaxHP = 80;
-    highestMaxHP = 121;
     bossPower = 50;
 
     slimeConstructor(id) {
         let maxHP = Number(Math.floor(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
         return {
             id: id,
-            name: `name${id}`,
             hp: maxHP,
             maxHP: maxHP
         }
@@ -37,13 +36,13 @@ class App extends React.Component {
         };
     }
 
+    makeID() {
+        return ++this.maxID;
+    }
+
     getRandomSlimeID() {
         const slimeNumber = Math.floor(Math.random() * this.state.slimes.length);
         return this.state.slimes[slimeNumber].id
-    }
-
-    makeID() {
-        return ++this.maxID;
     }
 
     createSlime() {
@@ -63,7 +62,6 @@ class App extends React.Component {
     healSlime(id) {
         this.setState(
             oldState => {
-
                 const healSlimeByID = (oldSlime) => {
                     if (id !== oldSlime.id)
                         return oldSlime;
@@ -90,7 +88,6 @@ class App extends React.Component {
                 };
             }
         );
-        this.hitSlime(this.getRandomSlimeID())
     }
 
     hitSlime(id) {
