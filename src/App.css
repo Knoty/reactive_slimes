@@ -52,6 +52,24 @@ pre {
     margin-right: 110px;
 }
 
+.win_screen {
+    background: white no-repeat;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    min-height: 720px;
+    max-height: 720px;
+    min-width: 1280px;
+    max-width: 1280px;
+}
+
+.win_message {
+    color: black;
+    position: absolute;
+    left: 27%;
+    top: 44%;
+}
+
 .lose_screen {
     background: black no-repeat;
     position: absolute;
@@ -66,25 +84,6 @@ pre {
 .lose_message {
     position: absolute;
     left: 38%;
-    top: 44%;
-}
-
-.win_screen {
-    background: white no-repeat;
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    text-align: center;
-    min-height: 720px;
-    max-height: 720px;
-    min-width: 1280px;
-    max-width: 1280px;
-}
-
-.win_message {
-    color: black;
-    position: absolute;
-    left: 27%;
     top: 44%;
 }
 

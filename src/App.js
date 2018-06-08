@@ -13,6 +13,8 @@ class App extends React.Component {
     highestMaxHP = 121; //actually highestMaxHP = highestMaxHP - 1
     healAmount = 30;
     healPrice = 5;
+    playerPower = 80;
+    maxBossHP = 1000;
     bossPower = 50;
 
     slimeConstructor(id) {
@@ -32,7 +34,8 @@ class App extends React.Component {
                 this.slimeConstructor(this.makeID()),
                 this.slimeConstructor(this.makeID())
             ],
-            poolAmount: this.maxPoolAmount
+            poolAmount: this.maxPoolAmount,
+            bossHP: this.maxBossHP
         };
     }
 
@@ -119,9 +122,34 @@ class App extends React.Component {
         );
     }
 
+    hitBoss() {
+        this.setState(
+            oldState => {
+                const newHP = Number(oldState.bossHP) - Number(this.playerPower);
+                if (newHP > 0) {
+                    console.log('Босс с '+oldState.bossHP+' хп был поражён на '+this.playerPower+', и теперь имеет '+newHP+'.');
+                    this.hitSlime(this.getRandomSlimeID());
+                    return { bossHP: newHP };
+                } else {
+                    return { bossHP: 0 };
+                }
+            }
+        );
+    }
+
     render() {
         return (
             <div className='App'>
+
+                {
+                    this.state.bossHP <= 0
+                    &&
+                    <div className='win_screen'>
+                        <div className='win_message'>
+                            <h1>Поздравляем! Вы одержали победу!</h1>
+                        </div>
+                    </div>
+                }
 
                 {
                     this.state.slimes.length <= 0
@@ -153,7 +181,9 @@ class App extends React.Component {
                 />
 
                 <DefaultBoss
-                    reaction = {() => this.hitSlime(this.getRandomSlimeID())}
+                    currentHP = {this.state.bossHP}
+                    maxHP = {this.maxBossHP}
+                    onClick = {() => this.hitBoss()}
                 />
             </div>
         )
