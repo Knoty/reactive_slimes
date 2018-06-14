@@ -88,38 +88,39 @@ pre {
 }
 
 .place_0 {
-    top: 190px;
+    top: 260px;
 }
 
 .place_1 {
-    top: 355px;
+    top: 425px;
 }
 
 .place_2 {
-    top: 525px;
+    top: 195px;
+    left: 145px;
 }
 
 .place_3 {
-    top: 250px;
+    top: 360px;
     left: 145px;
 }
 
 .place_4 {
-    top: 420px;
-    left: 145px;
+    top: 260px;
+    left: 295px;
 }
 
 .place_5 {
-    top: 250px;
+    top: 425px;
     left: 295px;
 }
 
 .place_6 {
-    top: 420px;
-    left: 295px;
+    left: 430px;
+    top: 195px;
 }
 
 .place_7 {
-    top: 330px;
+    top: 360px;
     left: 430px;
 }
