@@ -98,21 +98,6 @@ class App extends React.Component {
         );
     }
 
-    hitBoss() {
-        this.setState(
-            oldState => {
-                const newHP = Number(oldState.bossHP) - Number(this.playerPower);
-                if (newHP > 0) {
-                    console.log('Босс с '+oldState.bossHP+' хп был поражён на '+this.playerPower+', и теперь имеет '+newHP+'.');
-                    this.hitSlime(this.getRandomSlimeID());
-                    return { bossHP: newHP };
-                } else {
-                    return { bossHP: 0 };
-                }
-            }
-        );
-    }
-
     hitSlime(id) {
 
         let bossHit = Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
@@ -139,6 +124,21 @@ class App extends React.Component {
                         return slime !== undefined
                     })
                 };
+            }
+        );
+    }
+
+    hitBoss() {
+        this.setState(
+            oldState => {
+                const newHP = Number(oldState.bossHP) - Number(this.playerPower);
+                if (newHP > 0) {
+                    console.log('Босс с '+oldState.bossHP+' хп был поражён на '+this.playerPower+', и теперь имеет '+newHP+'.');
+                    this.hitSlime(this.getRandomSlimeID());
+                    return { bossHP: newHP };
+                } else {
+                    return { bossHP: 0 };
+                }
             }
         );
     }
