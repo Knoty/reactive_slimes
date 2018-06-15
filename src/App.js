@@ -10,15 +10,16 @@ class App extends React.Component {
     newSlimeValue = 100;
     maxSlimesQuantity = 8;
     smallestMaxHP = 80;
-    highestMaxHP = 121; //actually highestMaxHP = highestMaxHP - 1
+    highestMaxHP = 121; //N.B. highestMaxHP = highestMaxHP - 1
     healAmount = 30;
     healPrice = 5;
     playerPower = 80;
+    smallestBossPower = 35;
+    highestBossPower = 71; //N.B. highestBossPower = highestBossPower - 1
     maxBossHP = 1000;
-    bossPower = 50;
 
     slimeConstructor(id) {
-        let maxHP = Number(Math.floor(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
+        let maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
         return {
             id: id,
             hp: maxHP,
@@ -80,7 +81,9 @@ class App extends React.Component {
                     }
                     if (newHP > oldSlime.hp) {
                         oldState.poolAmount -= this.healPrice;
-                        console.log('Слайм №'+id+' с '+oldSlime.hp+' хп был вылечен на '+this.healAmount+', и теперь имеет '+newHP+' из '+oldSlime.maxHP+'.');
+                        console.log(
+                            'Слайм №'+id+' с '+oldSlime.hp+' хп был вылечен на '+this.healAmount+', и теперь имеет '+newHP+' из '+oldSlime.maxHP+'.'
+                        );
                         this.hitSlime(this.getRandomSlimeID())
                     }
                     return Object.assign({}, oldSlime, { hp: newHP });
@@ -90,33 +93,6 @@ class App extends React.Component {
                     slimes: oldState.slimes.map(
                         healSlimeByID
                     )
-                };
-            }
-        );
-    }
-
-    hitSlime(id) {
-        console.log('В ответ босс нанес '+this.bossPower+' повреждений слайму №'+id);
-        this.setState(
-            oldState => {
-
-                const hitSlimeByID = (oldSlime) => {
-                    if (id !== oldSlime.id)
-                        return oldSlime;
-                    let newHP = Number(oldSlime.hp) - Number(this.bossPower);
-                    if (newHP <= 0) {
-                        console.log('Слайм №'+oldSlime.id+' погиб. T_T');
-                        return undefined;
-                    }
-                    return Object.assign({}, oldSlime, { hp: newHP });
-                };
-
-                return {
-                    slimes: oldState.slimes.map(
-                        hitSlimeByID
-                    ).filter((slime) => {
-                        return slime !== undefined
-                    })
                 };
             }
         );
@@ -133,6 +109,36 @@ class App extends React.Component {
                 } else {
                     return { bossHP: 0 };
                 }
+            }
+        );
+    }
+
+    hitSlime(id) {
+
+        let bossHit = Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
+        console.log('В ответ босс нанес '+bossHit+' повреждений слайму №'+id);
+
+        this.setState(
+            oldState => {
+
+                const hitSlimeByID = (oldSlime) => {
+                    if (id !== oldSlime.id)
+                        return oldSlime;
+                    let newHP = Number(oldSlime.hp) - bossHit;
+                    if (newHP <= 0) {
+                        console.log('Слайм №'+oldSlime.id+' погиб. T_T');
+                        return undefined;
+                    }
+                    return Object.assign({}, oldSlime, { hp: newHP });
+                };
+
+                return {
+                    slimes: oldState.slimes.map(
+                        hitSlimeByID
+                    ).filter((slime) => {
+                        return slime !== undefined
+                    })
+                };
             }
         );
     }
