@@ -13,7 +13,6 @@ class App extends React.Component {
     highestMaxHP = 121; //N.B. highestMaxHP = highestMaxHP - 1
     healAmount = 30;
     healPrice = 5;
-    playerPower = 80;
     smallestBossPower = 35;
     highestBossPower = 71; //N.B. highestBossPower = highestBossPower - 1
     maxBossHP = 1000;
@@ -38,6 +37,10 @@ class App extends React.Component {
             poolAmount: this.maxPoolAmount,
             bossHP: this.maxBossHP
         };
+    }
+
+    getPlayerPower() {
+        return 10 * this.state.slimes.length;
     }
 
     makeID() {
@@ -131,7 +134,8 @@ class App extends React.Component {
     hitBoss() {
         this.setState(
             oldState => {
-                const newHP = Number(oldState.bossHP) - Number(this.playerPower);
+                const playerPower = this.getPlayerPower();
+                const newHP = Number(oldState.bossHP) - Number(playerPower);
                 if (newHP > 0) {
                     console.log('Босс с '+oldState.bossHP+' хп был поражён на '+this.playerPower+', и теперь имеет '+newHP+'.');
                     this.hitSlime(this.getRandomSlimeID());
