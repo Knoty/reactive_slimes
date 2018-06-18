@@ -63,7 +63,7 @@ class App extends React.Component {
                 })
             );
             console.log('Вы создали слайма! Маны потрачено: '+this.newSlimeValue+'.');
-            this.hitSlime(this.getRandomSlimeID())
+            this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
         }
     }
 
@@ -87,7 +87,7 @@ class App extends React.Component {
                         console.log(
                             'Слайм №'+id+' с '+oldSlime.hp+' хп был вылечен на '+this.healAmount+', и теперь имеет '+newHP+' из '+oldSlime.maxHP+'.'
                         );
-                        this.hitSlime(this.getRandomSlimeID())
+                        this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
                     }
                     return Object.assign({}, oldSlime, { hp: newHP });
                 };
@@ -101,18 +101,19 @@ class App extends React.Component {
         );
     }
 
-    hitSlime(id) {
+    getBossDamage() {
+        return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
+    }
 
-        let bossHit = Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
-        console.log('В ответ босс нанес '+bossHit+' повреждений слайму №'+id);
-
+    hitSlime(id, bossDamage) {
+        console.log('В ответ босс нанес '+bossDamage+' повреждений слайму №'+id);
         this.setState(
             oldState => {
 
                 const hitSlimeByID = (oldSlime) => {
                     if (id !== oldSlime.id)
                         return oldSlime;
-                    let newHP = Number(oldSlime.hp) - bossHit;
+                    let newHP = Number(oldSlime.hp) - bossDamage;
                     if (newHP <= 0) {
                         console.log('Слайм №'+oldSlime.id+' погиб. T_T');
                         return undefined;
@@ -137,8 +138,8 @@ class App extends React.Component {
                 const playerPower = this.getPlayerPower();
                 const newHP = Number(oldState.bossHP) - Number(playerPower);
                 if (newHP > 0) {
-                    console.log('Босс с '+oldState.bossHP+' хп был поражён на '+this.playerPower+', и теперь имеет '+newHP+'.');
-                    this.hitSlime(this.getRandomSlimeID());
+                    console.log('Босс с '+oldState.bossHP+' хп был поражён на '+playerPower+', и теперь имеет '+newHP+'.');
+                    this.hitSlime(this.getRandomSlimeID(), this.getBossDamage());
                     return { bossHP: newHP };
                 } else {
                     return { bossHP: 0 };
