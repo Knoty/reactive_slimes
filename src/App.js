@@ -19,7 +19,7 @@ class App extends React.Component {
     maxBossHP = 1000;
 
     slimeConstructor(id) {
-        let maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
+        const maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
         return {
             id: id,
             hp: maxHP,
