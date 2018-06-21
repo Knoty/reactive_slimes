@@ -172,10 +172,6 @@ class App extends React.Component {
                     </div>
                 }
 
-                <div className='App-intro'>
-                    <h2>Welcome to Slimes Rumble!</h2>
-                </div>
-
                 {
                     this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice
                     &&
