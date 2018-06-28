@@ -152,43 +152,46 @@ class App extends React.Component {
     render() {
         return (
             <div className='App'>
+                <div className='border'>
 
-                {
-                    this.state.bossHP <= 0
-                    &&
-                    <img className='win_screen' src={WinScreen} alt="Поздравляем! Вы одержали победу!"/>
-                }
+                    {
+                        this.state.bossHP <= 0
+                        &&
+                        <img className='win_screen' src={WinScreen} alt="Поздравляем! Вы одержали победу!"/>
+                    }
 
-                {
-                    this.state.slimes.length <= 0
-                    &&
-                    <div className='lose_screen'>
-                        <div className='lose_message'>
-                            <h1>Вы проиграли! Т_Т</h1>
+                    {
+                        this.state.slimes.length <= 0
+                        &&
+                        <div className='lose_screen'>
+                            <div className='lose_message'>
+                                <h1>Вы проиграли! Т_Т</h1>
+                            </div>
                         </div>
-                    </div>
-                }
+                    }
 
-                {
-                    this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice
-                    &&
-                    <CreateSlimeButton
-                        currentPoolAmount = {this.state.poolAmount}
-                        maxPoolAmount = {this.maxPoolAmount}
-                        onClick = {() => this.createSlime()}
+                    {
+                        this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice
+                        &&
+                        <CreateSlimeButton
+                            currentPoolAmount = {this.state.poolAmount}
+                            maxPoolAmount = {this.maxPoolAmount}
+                            onClick = {() => this.createSlime()}
+                        />
+                    }
+
+                    <SlimeGroup
+                        slimes = {this.state.slimes}
+                        healSlime = {(id) => this.healSlime(id)}
                     />
-                }
 
-                <SlimeGroup
-                    slimes = {this.state.slimes}
-                    healSlime = {(id) => this.healSlime(id)}
-                />
+                    <DefaultBoss
+                        currentHP = {this.state.bossHP}
+                        maxHP = {this.maxBossHP}
+                        onClick = {() => this.hitBoss()}
+                    />
 
-                <DefaultBoss
-                    currentHP = {this.state.bossHP}
-                    maxHP = {this.maxBossHP}
-                    onClick = {() => this.hitBoss()}
-                />
+                </div>
             </div>
         )
     }

@@ -4,15 +4,17 @@ body {
 }
 
 .App {
-    position: relative;
     background: #768588 url(versus-template-background.jpg) no-repeat;
     text-align: center;
-    min-height: 720px;
-    max-height: 720px;
-    min-width: 1280px;
-    max-width: 1280px;
-    overflow: auto;
+    height: 720px;
+    width: 1280px;
     margin: 0 auto;
+}
+
+.border {
+    background: transparent url(border.png) no-repeat;
+    height: 720px;
+    width: 1280px;
 }
 
 h2 {
@@ -34,7 +36,7 @@ pre {
 
 .slime, .create_slime_button {
     position: absolute;
-    margin-left: 20px;
+    margin-left: 30px;
 }
 
 .create_slime_button {
@@ -48,8 +50,8 @@ pre {
 
 .boss {
     float: right;
-    margin-top: 90px;
-    margin-right: 110px;
+    margin-top: 125px;
+    margin-right: 125px;
 }
 
 .win_screen {
@@ -62,10 +64,8 @@ pre {
     position: absolute;
     z-index: 1;
     text-align: center;
-    min-height: 720px;
-    max-height: 720px;
-    min-width: 1280px;
-    max-width: 1280px;
+    height: 720px;
+    width: 1280px;
 }
 
 .lose_message {
