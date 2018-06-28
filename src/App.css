@@ -53,21 +53,8 @@ pre {
 }
 
 .win_screen {
-    background: white no-repeat;
-    position: absolute;
+    position: relative;
     z-index: 1;
-    text-align: center;
-    min-height: 720px;
-    max-height: 720px;
-    min-width: 1280px;
-    max-width: 1280px;
-}
-
-.win_message {
-    color: black;
-    position: absolute;
-    left: 27%;
-    top: 44%;
 }
 
 .lose_screen {

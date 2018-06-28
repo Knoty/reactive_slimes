@@ -3,6 +3,7 @@ import './App.css';
 import SlimeGroup from './SlimesGroup.jsx';
 import CreateSlimeButton from './CreateSlimeButton.jsx';
 import DefaultBoss from './DefaultBoss.jsx';
+import WinScreen from './win.png'
 
 class App extends React.Component {
     maxID = 0;
@@ -155,11 +156,7 @@ class App extends React.Component {
                 {
                     this.state.bossHP <= 0
                     &&
-                    <div className='win_screen'>
-                        <div className='win_message'>
-                            <h1>Поздравляем! Вы одержали победу!</h1>
-                        </div>
-                    </div>
+                    <img className='win_screen' src={WinScreen} alt="Поздравляем! Вы одержали победу!"/>
                 }
 
                 {
