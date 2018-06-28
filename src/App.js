@@ -157,7 +157,7 @@ class App extends React.Component {
                     {
                         this.state.bossHP <= 0
                         &&
-                        <img className='win_screen' src={WinScreen} alt="Поздравляем! Вы одержали победу!"/>
+                        <img className='win_screen' onClick = {() => window.location.reload()} src={WinScreen} alt="Поздравляем! Вы одержали победу!"/>
                     }
 
                     {
