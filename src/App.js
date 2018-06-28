@@ -163,9 +163,9 @@ class App extends React.Component {
                     {
                         this.state.slimes.length <= 0
                         &&
-                        <div className='lose_screen'>
+                        <div className='lose_screen' onClick = {() => window.location.reload()}>
                             <div className='lose_message'>
-                                <h1>Вы проиграли! Т_Т</h1>
+                                <h1>Вы проиграли! Т_Т<br />Нажмите, чтобы попробовать еще раз.</h1>
                             </div>
                         </div>
                     }

@@ -69,9 +69,7 @@ pre {
 }
 
 .lose_message {
-    position: absolute;
-    left: 38%;
-    top: 44%;
+    margin: 25% auto;
 }
 
 .place_0 {
