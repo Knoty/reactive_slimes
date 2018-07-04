@@ -60,16 +60,8 @@ pre {
 }
 
 .lose_screen {
-    background: black no-repeat;
-    position: absolute;
+    position: relative;
     z-index: 1;
-    text-align: center;
-    height: 720px;
-    width: 1280px;
-}
-
-.lose_message {
-    margin: 25% auto;
 }
 
 .place_0 {

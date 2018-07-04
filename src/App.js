@@ -4,6 +4,7 @@ import SlimeGroup from './SlimesGroup.jsx';
 import CreateSlimeButton from './CreateSlimeButton.jsx';
 import DefaultBoss from './DefaultBoss.jsx';
 import WinScreen from './win.png'
+import LoseScreen from './lose.png'
 
 class App extends React.Component {
     maxID = 0;
@@ -107,7 +108,6 @@ class App extends React.Component {
     }
 
     hitSlime(id, bossDamage) {
-        console.log('В ответ босс нанес '+bossDamage+' повреждений слайму №'+id);
         this.setState(
             oldState => {
 
@@ -115,6 +115,9 @@ class App extends React.Component {
                     if (id !== oldSlime.id)
                         return oldSlime;
                     let newHP = Number(oldSlime.hp) - bossDamage;
+                    console.log(
+                        'В ответ босс нанес ' + bossDamage + ' повреждений слайму №' + id + ' c ' + oldSlime.hp + ' хп, и теперь у него ' + newHP + ' хп.'
+                    );
                     if (newHP <= 0) {
                         console.log('Слайм №'+oldSlime.id+' погиб. T_T');
                         return undefined;
@@ -157,17 +160,13 @@ class App extends React.Component {
                     {
                         this.state.bossHP <= 0
                         &&
-                        <img className='win_screen' onClick = {() => window.location.reload()} src={WinScreen} alt="Поздравляем! Вы одержали победу!"/>
+                        <img className='win_screen' onClick = {() => window.location.reload()} src={WinScreen} alt="Поздравляем! Вы одержали победу! Нажмите, чтобы попробовать еще раз."/>
                     }
 
                     {
                         this.state.slimes.length <= 0
                         &&
-                        <div className='lose_screen' onClick = {() => window.location.reload()}>
-                            <div className='lose_message'>
-                                <h1>Вы проиграли! Т_Т<br />Нажмите, чтобы попробовать еще раз.</h1>
-                            </div>
-                        </div>
+                        <img className='lose_screen' onClick = {() => window.location.reload()} src={LoseScreen} alt="Поражение! Вы проиграли. Т_Т Нажмите, чтобы попробовать еще раз."/>
                     }
 
                     {
