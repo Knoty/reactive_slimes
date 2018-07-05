@@ -49,9 +49,9 @@ pre {
 }
 
 .boss {
-    float: right;
-    margin-top: 125px;
-    margin-right: 125px;
+    position: absolute;
+    top: 125px;
+    right: 125px;
 }
 
 .win_screen {
