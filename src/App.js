@@ -62,10 +62,12 @@ class App extends React.Component {
                     slimes: oldState.slimes.concat(
                         [this.slimeConstructor(this.makeID())]
                     )
-                })
+                }),
+                () => {
+                    console.log('Вы создали слайма! Маны потрачено: '+this.newSlimeValue+'.');
+                    this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                }
             );
-            console.log('Вы создали слайма! Маны потрачено: '+this.newSlimeValue+'.');
-            this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
         }
     }
 
@@ -89,7 +91,6 @@ class App extends React.Component {
                         console.log(
                             'Слайм №'+id+' с '+oldSlime.hp+' хп был вылечен на '+this.healAmount+', и теперь имеет '+newHP+' из '+oldSlime.maxHP+'.'
                         );
-                        this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
                     }
                     return Object.assign({}, oldSlime, { hp: newHP });
                 };
@@ -99,6 +100,9 @@ class App extends React.Component {
                         healSlimeByID
                     )
                 };
+            },
+            () => {
+                this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
             }
         );
     }
@@ -139,15 +143,19 @@ class App extends React.Component {
     hitBoss() {
         this.setState(
             oldState => {
+
                 const playerPower = this.getPlayerPower();
                 const newHP = Number(oldState.bossHP) - Number(playerPower);
+
                 if (newHP > 0) {
                     console.log('Босс с '+oldState.bossHP+' хп был поражён на '+playerPower+', и теперь имеет '+newHP+'.');
-                    this.hitSlime(this.getRandomSlimeID(), this.getBossDamage());
                     return { bossHP: newHP };
                 } else {
                     return { bossHP: 0 };
                 }
+            },
+            () => {
+                this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
             }
         );
     }
