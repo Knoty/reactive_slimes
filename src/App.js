@@ -192,11 +192,15 @@ class App extends React.Component {
                         healSlime = {(id) => this.healSlime(id)}
                     />
 
-                    <DefaultBoss
-                        currentHP = {this.state.bossHP}
-                        maxHP = {this.maxBossHP}
-                        onClick = {() => this.hitBoss()}
-                    />
+                    {
+                        this.state.bossHP > 0
+                        &&
+                        <DefaultBoss
+                            currentHP = {this.state.bossHP}
+                            maxHP = {this.maxBossHP}
+                            onClick = {() => this.hitBoss()}
+                        />
+                    }
 
                 </div>
             </div>
