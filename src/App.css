@@ -39,6 +39,10 @@ pre {
     margin-left: 30px;
 }
 
+.slime button {
+    cursor: cell;
+}
+
 .create_slime_button {
     width: 140px;
     top: 70px;
@@ -52,6 +56,10 @@ pre {
     position: absolute;
     top: 125px;
     right: 125px;
+}
+
+.boss button {
+    cursor: url("attack.ico"), pointer;
 }
 
 .win_screen {
