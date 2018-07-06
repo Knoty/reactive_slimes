@@ -177,16 +177,6 @@ class App extends React.Component {
                         <img className='lose_screen' onClick = {() => window.location.reload()} src={LoseScreen} alt="Поражение! Вы проиграли. Т_Т Нажмите, чтобы попробовать еще раз."/>
                     }
 
-                    {
-                        this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice
-                        &&
-                        <CreateSlimeButton
-                            currentPoolAmount = {this.state.poolAmount}
-                            maxPoolAmount = {this.maxPoolAmount}
-                            onClick = {() => this.createSlime()}
-                        />
-                    }
-
                     <SlimeGroup
                         slimes = {this.state.slimes}
                         healSlime = {(id) => this.healSlime(id)}
@@ -199,6 +189,16 @@ class App extends React.Component {
                             currentHP = {this.state.bossHP}
                             maxHP = {this.maxBossHP}
                             onClick = {() => this.hitBoss()}
+                        />
+                    }
+
+                    {
+                        this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice
+                        &&
+                        <CreateSlimeButton
+                            currentPoolAmount = {this.state.poolAmount}
+                            maxPoolAmount = {this.maxPoolAmount}
+                            onClick = {() => this.createSlime()}
                         />
                     }
 

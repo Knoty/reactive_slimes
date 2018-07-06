@@ -6,7 +6,6 @@ const CreateSlimeButton = props => (
         <button onClick = {props.onClick}>
             <img alt='Create new slime' src={add} />
         </button>
-        <pre>{props.currentPoolAmount} / {props.maxPoolAmount}</pre>
     </div>
 );
 
