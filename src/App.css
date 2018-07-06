@@ -40,7 +40,7 @@ pre {
 }
 
 .slime button {
-    cursor: cell;
+    cursor: url("heal.png"), cell;
 }
 
 .create_slime_button {
