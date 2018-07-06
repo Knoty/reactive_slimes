@@ -59,7 +59,7 @@ pre {
 }
 
 .boss button {
-    cursor: url("attack.ico"), pointer;
+    cursor: url("attack.png"), pointer;
 }
 
 .win_screen {
