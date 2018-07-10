@@ -5,11 +5,12 @@ body {
 
 .App {
     background: #768588 url(versus-template-background.jpg) no-repeat;
-    text-align: center;
     height: 720px;
     width: 1280px;
-    margin: 0 auto;
     font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .border {
@@ -18,21 +19,11 @@ body {
     width: inherit;
 }
 
-h2 {
-    font-size: 35px;
-}
-
 button {
     background: transparent;
     border: none;
     outline: none;
     cursor: pointer;
-}
-
-pre {
-    margin: 0;
-    font-size: 23px;
-    font-weight: bold;
 }
 
 .slime {
@@ -79,7 +70,6 @@ pre {
 .level_bar p {
     position: relative;
     bottom: 120%;
-    font-weight: bold;
 }
 
 .level_bar_value {
@@ -123,7 +113,6 @@ pre {
             linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%),
             linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
             linear-gradient(left, #09c, #f44);
-
 
     background-size: 35px 20px, 100% 100%, 100% 100%;
 }
