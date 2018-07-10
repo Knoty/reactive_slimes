@@ -5,6 +5,7 @@ import CreateSlimeButton from './CreateSlimeButton.jsx';
 import DefaultBoss from './DefaultBoss.jsx';
 import WinScreen from './win.png'
 import LoseScreen from './lose.png'
+import LevelBar from "./LevelBar";
 
 class App extends React.Component {
     maxID = 0;
@@ -196,11 +197,16 @@ class App extends React.Component {
                         this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice
                         &&
                         <CreateSlimeButton
-                            currentPoolAmount = {this.state.poolAmount}
-                            maxPoolAmount = {this.maxPoolAmount}
                             onClick = {() => this.createSlime()}
                         />
                     }
+
+                    <div className="pool level_bar_wrapper">
+                        <LevelBar
+                            current={this.state.poolAmount}
+                            max={this.maxPoolAmount}
+                        />
+                    </div>
 
                 </div>
             </div>
