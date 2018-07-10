@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BossView from './BossView.jsx'
+import BossView from './BossView.jsx';
 
 class DefaultBoss extends Component {
 

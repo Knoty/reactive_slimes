@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import poring from './pink_poring.png';
 
 const SlimeView = props => (

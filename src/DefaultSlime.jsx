@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SlimeView from './SlimeView.jsx'
+import SlimeView from './SlimeView.jsx';
 
 class DefaultSlime extends Component {
 
