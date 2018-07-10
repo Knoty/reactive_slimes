@@ -15,6 +15,7 @@ const LevelBar = props => (
                 }
             }
         />
+        <p>{props.current} / {props.max}</p>
     </div>
 );
 
