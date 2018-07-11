@@ -7,7 +7,7 @@ const SlimeView = props => (
     <div className={props.className + ((props.hp < props.maxHP) ? ' injured' : '')}>
         <button onClick = {(props.hp < props.maxHP) ? () => props.onClick(props.id) : false} >
             <img alt={`Slime ${props.name}, id ${props.id} ${(props.hp < props.maxHP) ? `, heal cost: ${props.healPrice}` : ''}`}
-                 title={(props.hp < props.maxHP) ? `Heal cost: ${props.healPrice}` : ''}
+                 title={(props.hp < props.maxHP) ? `Heal slime ${props.id} cost: ${props.healPrice}` : `Healthy slime number ${props.id}`}
                  src={poring}
             />
         </button>
