@@ -35,6 +35,26 @@ button {
     cursor: url("heal.png"), cell;
 }
 
+.slime .level_bar_wrapper {
+    height: 20px;
+    width: 130px;
+    position: relative;
+    top: 0;
+}
+
+.slime .level_bar_value {
+    background-image:
+            linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%),
+            linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
+            linear-gradient(left, #09c, #f44);
+
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.slime .level_bar_wrapper p {
+    bottom: 195%;
+}
+
 .boss {
     position: absolute;
     top: 155px;
