@@ -17,7 +17,7 @@ const BossView = props => (
     </div>
 );
 
-LevelBar.propTypes = {
+BossView.propTypes = {
     onClick: PropTypes.func,
     currentHP: PropTypes.number.isRequired,
     maxHP: PropTypes.number.isRequired,

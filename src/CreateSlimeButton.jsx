@@ -1,7 +1,6 @@
 import React from "react";
 import add from './add.png';
 import PropTypes from 'prop-types';
-import LevelBar from "./LevelBar";
 
 const CreateSlimeButton = props => (
     <div className="create_slime_button">
@@ -15,7 +14,7 @@ const CreateSlimeButton = props => (
     </div>
 );
 
-LevelBar.propTypes = {
+CreateSlimeButton.propTypes = {
     onClick: PropTypes.func.isRequired,
     createSlimeValue: PropTypes.number.isRequired
 };

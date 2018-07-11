@@ -1,5 +1,6 @@
 import React from "react";
 import DefaultSlime from './DefaultSlime.jsx';
+import PropTypes from 'prop-types';
 
 const SlimesGroup = ({ slimes, healPrice, healSlime }) => (
   <div>
@@ -18,5 +19,17 @@ const SlimesGroup = ({ slimes, healPrice, healSlime }) => (
     }
   </div>
 );
+
+SlimesGroup.propTypes = {
+    slimes: PropTypes.arrayOf(
+        PropTypes.shape(
+            {
+                id: PropTypes.number
+            }
+        )
+    ).isRequired,
+    healPrice: PropTypes.number.isRequired,
+    healSlime: PropTypes.func.isRequired,
+};
 
 export default SlimesGroup;

@@ -20,14 +20,18 @@ const SlimeView = props => (
     </div>
 );
 
-LevelBar.propTypes = {
+SlimeView.propTypes = {
     className: PropTypes.string.isRequired,
     hp: PropTypes.number.isRequired,
     maxHP: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
-    name: PropTypes.any,
+    name: PropTypes.string,
     id: PropTypes.number.isRequired,
     healPrice: PropTypes.number.isRequired
+};
+
+SlimeView.defaultProps = {
+    name: ''
 };
 
 export default SlimeView
