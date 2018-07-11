@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 const BossView = props => (
     <div className="boss">
         <button onClick = {props.onClick}>
-            <img alt='Boss' src={Boss} />
+            <img alt='Boss' src={Boss} title={'attack Boss'}/>
         </button>
-        <div className="level_bar_wrapper">
+        <div className="level_bar_wrapper" title="Boss hp">
             <LevelBar
                 current={props.currentHP}
                 max={props.maxHP}

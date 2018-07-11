@@ -203,14 +203,14 @@ class App extends React.Component {
                         />
                     }
 
-                    <div className="slimes_power level_bar_wrapper">
+                    <div className="slimes_power level_bar_wrapper" title="slimes quantity & power">
                         <LevelBar
                             current={this.state.slimes.length}
                             max={this.maxSlimesQuantity}
                         />
                     </div>
 
-                    <div className="pool level_bar_wrapper">
+                    <div className="pool level_bar_wrapper" title="resource">
                         <LevelBar
                             current={this.state.poolAmount}
                             max={this.maxPoolAmount}
