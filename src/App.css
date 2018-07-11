@@ -70,6 +70,10 @@ button {
     left: 604px;
 }
 
+.create_slime_button button {
+    cursor: url("heal.png"), cell;
+}
+
 .level_bar_wrapper {
     height: 40px;
     width: 400px;
