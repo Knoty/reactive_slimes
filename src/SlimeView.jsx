@@ -3,8 +3,15 @@ import poring from './pink_poring.png';
 import LevelBar from "./LevelBar";
 import PropTypes from 'prop-types';
 
+const getHealStatus = (currentHP, maxHP) => {
+    if (currentHP < maxHP)
+        return ' injured';
+    else
+        return '';
+};
+
 const SlimeView = props => (
-    <div className={props.className}>
+    <div className={props.className + getHealStatus(props.hp, props.maxHP)}>
         <button onClick = {() => props.onClick(props.id)} >
             <img alt={`slime ${props.name}, id ${props.id}`} src={poring} />
         </button>

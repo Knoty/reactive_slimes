@@ -23,7 +23,6 @@ button {
     background: transparent;
     border: none;
     outline: none;
-    cursor: pointer;
 }
 
 .slime {
@@ -31,7 +30,7 @@ button {
     margin-left: 30px;
 }
 
-.slime button {
+.injured button {
     cursor: url("heal.png"), cell;
 }
 
