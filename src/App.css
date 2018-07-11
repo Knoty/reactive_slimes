@@ -74,7 +74,7 @@ button {
 }
 
 .create_slime_button button {
-    cursor: url("heal.png"), cell;
+    cursor: pointer;
 }
 
 .level_bar_wrapper {
