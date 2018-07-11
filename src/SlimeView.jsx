@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 const SlimeView = props => (
     <div className={props.className + ((props.hp < props.maxHP) ? ' injured' : '')}>
         <button onClick = {(props.hp < props.maxHP) ? () => props.onClick(props.id) : false} >
-            <img alt={`slime ${props.name}, id ${props.id} ${(props.hp < props.maxHP) ? `, heal cost: ${props.healPrice}` : ''}`}
-                 title={(props.hp < props.maxHP) ? `heal cost: ${props.healPrice}` : ''}
+            <img alt={`Slime ${props.name}, id ${props.id} ${(props.hp < props.maxHP) ? `, heal cost: ${props.healPrice}` : ''}`}
+                 title={(props.hp < props.maxHP) ? `Heal cost: ${props.healPrice}` : ''}
                  src={poring}
             />
         </button>
@@ -25,8 +25,8 @@ LevelBar.propTypes = {
     hp: PropTypes.number.isRequired,
     maxHP: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
-    id: PropTypes.number.isRequired,
     name: PropTypes.any,
+    id: PropTypes.number.isRequired,
     healPrice: PropTypes.number.isRequired
 };
 

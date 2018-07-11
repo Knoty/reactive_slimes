@@ -8,7 +8,7 @@ const CreateSlimeButton = props => (
         <button onClick = {props.onClick}>
             <img
                 alt={`Create new slime cost: ${props.createSlimeValue}`}
-                title={`create new slime cost: ${props.createSlimeValue}`}
+                title={`Create new slime cost: ${props.createSlimeValue}`}
                 src={add}
             />
         </button>
