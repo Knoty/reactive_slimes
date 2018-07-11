@@ -35,23 +35,26 @@ button {
 }
 
 .slime .level_bar_wrapper {
-    height: 20px;
-    width: 130px;
+    width: 90px;
+    height: 18px;
     position: relative;
-    top: 0;
+    left: 12%;
+    top: -8px;
 }
+
 
 .slime .level_bar_value {
     background-image:
             linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%),
             linear-gradient(to top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
-            linear-gradient(to left, #09c, #ff0);
+            linear-gradient(to left, #d8457d, #fdadc3);
 
     background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 
 .slime .level_bar_wrapper p {
-    bottom: 195%;
+    font-size: 15px;
+    bottom: 180%;
 }
 
 .boss {
@@ -75,73 +78,69 @@ button {
 }
 
 .level_bar_wrapper {
-    height: 40px;
-    width: 400px;
+    height: 50px;
+    width: 310px;
     position: absolute;
-    top: 630px;
+    top: 615px;
 }
 
 .level_bar {
     height: inherit;
     width: inherit;
-    background: transparent;
-    border: 3px solid white;
-    border-radius: 6px;
+    background: dimgrey;
     box-shadow: inset 0 7px 5px rgba(0, 0, 0, 0.25);
 }
 
 .level_bar p {
     position: relative;
-    bottom: 120%;
+    bottom: 110%;
 }
 
 .level_bar_value {
     height: inherit;
     width: inherit;
-    background-size: 75px 40px, 100% 100%, 100% 100%;
 }
 
 .slimes_power {
-    left: 140px;
+    left: 220px;
 }
 
 .slimes_power .level_bar_value {
     background-image:
-            linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%),
             linear-gradient(to top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
-            linear-gradient(to left, #09c, #ff0);
+            linear-gradient(to left, #44aa6a, #a3fc54);
 }
 
 .pool {
-    right: 140px;
+    right: 225px;
 }
 
 .pool .level_bar_value {
     background-image:
-            linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%),
             linear-gradient(to top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
-            linear-gradient(to left, #034bcc, #00997b);
+            linear-gradient(to left, #3c28b7, #54d2fc);
 }
 
 .boss .level_bar_wrapper {
-    height: 20px;
-    width: 300px;
+    height: 22px;
+    width: 250px;
     position: relative;
     top: 0;
-    left: 10%;
+    left: 17%;
 }
 
 .boss .level_bar_value {
     background-image:
             linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%),
             linear-gradient(to top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
-            linear-gradient(to left, #09c, #f44);
+            linear-gradient(to left, #b21a45, #ff2e33);
 
-    background-size: 35px 20px, 100% 100%, 100% 100%;
+    background-size: 45px 25px, 100% 100%, 100% 100%;
 }
 
 .boss .level_bar_wrapper p {
-    bottom: 195%;
+    font-size: 18px;
+    bottom: 175%;
 }
 
 .win_screen {
