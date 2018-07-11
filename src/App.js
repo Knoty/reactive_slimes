@@ -10,7 +10,7 @@ import LevelBar from "./LevelBar";
 class App extends React.Component {
     maxID = 0;
     maxPoolAmount = 1000;
-    newSlimeValue = 100;
+    createSlimeValue = 100;
     maxSlimesQuantity = 8;
     smallestMaxHP = 80;
     highestMaxHP = 121; //N.B. highestMaxHP = highestMaxHP - 1
@@ -56,16 +56,16 @@ class App extends React.Component {
     }
 
     createSlime() {
-        if (this.state.poolAmount >= this.newSlimeValue && this.state.slimes.length < this.maxSlimesQuantity){
+        if (this.state.poolAmount >= this.createSlimeValue && this.state.slimes.length < this.maxSlimesQuantity){
             this.setState(
                 oldState => ({
-                    poolAmount: oldState.poolAmount - this.newSlimeValue,
+                    poolAmount: oldState.poolAmount - this.createSlimeValue,
                     slimes: oldState.slimes.concat(
                         [this.slimeConstructor(this.makeID())]
                     )
                 }),
                 () => {
-                    console.log('Вы создали слайма! Маны потрачено: '+this.newSlimeValue+'.');
+                    console.log('Вы создали слайма! Маны потрачено: '+this.createSlimeValue+'.');
                     this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
                 }
             );
@@ -198,6 +198,7 @@ class App extends React.Component {
                         this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice
                         &&
                         <CreateSlimeButton
+                            createSlimeValue = {this.createSlimeValue}
                             onClick = {() => this.createSlime()}
                         />
                     }
