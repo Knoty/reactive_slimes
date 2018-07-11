@@ -10,9 +10,16 @@ const getHealStatus = (currentHP, maxHP) => {
         return '';
 };
 
+const getHealAbility = (currentHP, maxHP, ability, id) => {
+    if (currentHP < maxHP)
+        return () => ability(id);
+    else
+        return false;
+};
+
 const SlimeView = props => (
     <div className={props.className + getHealStatus(props.hp, props.maxHP)}>
-        <button onClick = {() => props.onClick(props.id)} >
+        <button onClick = {getHealAbility(props.hp, props.maxHP, props.onClick, props.id)} >
             <img alt={`slime ${props.name}, id ${props.id}`} src={poring} />
         </button>
         <div className="level_bar_wrapper">
