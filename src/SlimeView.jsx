@@ -20,7 +20,10 @@ const getHealAbility = (currentHP, maxHP, ability, id) => {
 const SlimeView = props => (
     <div className={props.className + getHealStatus(props.hp, props.maxHP)}>
         <button onClick = {getHealAbility(props.hp, props.maxHP, props.onClick, props.id)} >
-            <img alt={`slime ${props.name}, id ${props.id}`} src={poring} />
+            <img alt={`slime ${props.name}, id ${props.id}, heal cost: ${props.healPrice}`}
+                 title={`heal cost: ${props.healPrice}`}
+                 src={poring}
+            />
         </button>
         <div className="level_bar_wrapper">
             <LevelBar
@@ -33,11 +36,12 @@ const SlimeView = props => (
 
 LevelBar.propTypes = {
     className: PropTypes.string.isRequired,
+    hp: PropTypes.number.isRequired,
+    maxHP: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
     id: PropTypes.number.isRequired,
     name: PropTypes.any,
-    hp: PropTypes.number.isRequired,
-    maxHP: PropTypes.number.isRequired,
+    healPrice: PropTypes.number.isRequired
 };
 
 export default SlimeView

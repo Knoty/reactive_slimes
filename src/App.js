@@ -180,6 +180,7 @@ class App extends React.Component {
 
                     <SlimeGroup
                         slimes = {this.state.slimes}
+                        healPrice = {this.healPrice}
                         healSlime = {(id) => this.healSlime(id)}
                     />
 

@@ -1,7 +1,7 @@
 import React from "react";
 import DefaultSlime from './DefaultSlime.jsx';
 
-const SlimesGroup = ({ slimes, healSlime }) => (
+const SlimesGroup = ({ slimes, healPrice, healSlime }) => (
   <div>
     {
       slimes.map(
@@ -10,6 +10,7 @@ const SlimesGroup = ({ slimes, healSlime }) => (
                 className={'slime place_' + index}
                 key={slime.id}
                 {...slime}
+                healPrice={healPrice}
                 onClick = {(id) => healSlime(id)}
             />
         )
