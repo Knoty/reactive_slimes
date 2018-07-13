@@ -17,6 +17,7 @@ body {
     background: transparent url(border.png) no-repeat;
     height: inherit;
     width: inherit;
+    position: relative;
 }
 
 button {
