@@ -1,5 +1,5 @@
 import React from "react";
-import add from './add.png';
+import add from './add_machine.png';
 import PropTypes from 'prop-types';
 
 const CreateSlimeButton = props => (
