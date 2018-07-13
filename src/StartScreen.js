@@ -5,8 +5,8 @@ import StartScreenBackground from './start_screen.png';
 
 const StartScreen = props => (
     <div className="start_screen">
-        <button className='start_button' autoFocus onClick={props.onClick}><img src={StartButton}/></button>
-        <img src={StartScreenBackground}/>
+        <button className='start_button' autoFocus onClick={props.onClick}><img src={StartButton} alt="Начать игру" /></button>
+        <img src={StartScreenBackground} alt="Фон" />
     </div>
 );
 
