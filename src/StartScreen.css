@@ -3,13 +3,14 @@
     width: 1280px;
     background: #1f5c37 url(start_screen.png) no-repeat;
     margin: 0 auto;
+    position: relative;
 }
 
 .start_button {
     width: 264px;
     height: 123px;
     position: absolute;
-    top: 32%;
+    top: 36%;
     left: 39%;
     cursor: pointer;
     background: transparent url(start_button.png) no-repeat;
