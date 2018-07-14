@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const SlimeView = props => (
     <div className={props.className + ((props.hp < props.maxHP) ? ' injured' : '')}>
         <button
-            className="slime_img"
+            className={`slime_img ${(props.hp < props.maxHP) ? 'injured' : ''}`}
             onClick = {(props.hp < props.maxHP) ? () => props.onClick(props.id) : false}
             title={`Slime ${props.name} ${props.id}${(props.hp < props.maxHP) ? `, click to heal for ${props.healPrice}` : ', healthy'}`}
         />
