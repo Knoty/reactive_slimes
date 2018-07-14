@@ -5,7 +5,7 @@ import CreateSlimeButton from './CreateSlimeButton.jsx';
 import DefaultBoss from './DefaultBoss.jsx';
 import WinScreen from './win.png';
 import LoseScreen from './lose.png';
-import LevelBar from "./LevelBar";
+import LevelBar from './LevelBar';
 
 class App extends React.Component {
     maxID = 0;
@@ -169,13 +169,13 @@ class App extends React.Component {
                     {
                         this.state.bossHP <= 0
                         &&
-                        <img className='win_screen' onClick = {() => window.location.reload()} src={WinScreen} alt="Поздравляем! Вы одержали победу! Нажмите, чтобы попробовать еще раз."/>
+                        <img className='win_screen' onClick = {() => window.location.reload()} src={WinScreen} alt='Поздравляем! Вы одержали победу! Нажмите, чтобы попробовать еще раз.' />
                     }
 
                     {
                         this.state.slimes.length <= 0
                         &&
-                        <img className='lose_screen' onClick = {() => window.location.reload()} src={LoseScreen} alt="Поражение! Вы проиграли. Т_Т Нажмите, чтобы попробовать еще раз."/>
+                        <img className='lose_screen' onClick = {() => window.location.reload()} src={LoseScreen} alt='Поражение! Вы проиграли. Т_Т Нажмите, чтобы попробовать еще раз.' />
                     }
 
                     <SlimeGroup
@@ -200,14 +200,14 @@ class App extends React.Component {
                         onClick = {() => this.createSlime()}
                     />
 
-                    <div className="slimes_power level_bar_wrapper" title="slimes quantity & power">
+                    <div className='slimes_power level_bar_wrapper' title='slimes quantity & power'>
                         <LevelBar
                             current = {this.state.slimes.length}
                             max = {this.maxSlimesQuantity}
                         />
                     </div>
 
-                    <div className="pool level_bar_wrapper" title="resource">
+                    <div className='pool level_bar_wrapper' title='resource'>
                         <LevelBar
                             current = {this.state.poolAmount}
                             max = {this.maxPoolAmount}

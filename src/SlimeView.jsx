@@ -1,5 +1,5 @@
 import React from 'react';
-import LevelBar from "./LevelBar";
+import LevelBar from './LevelBar';
 import PropTypes from 'prop-types';
 
 const SlimeView = props => (
@@ -9,10 +9,10 @@ const SlimeView = props => (
             onClick = {(props.hp < props.maxHP) ? () => props.onClick(props.id) : false}
             title={`Slime ${props.name} ${props.id}${(props.hp < props.maxHP) ? `, click to heal for ${props.healPrice}` : ', healthy'}`}
         />
-        <div className="level_bar_wrapper" title={`${props.id} slime hp`}>
+        <div className='level_bar_wrapper' title={`${props.id} slime hp`}>
             <LevelBar
-                current={props.hp}
-                max={props.maxHP}
+                current = {props.hp}
+                max = {props.maxHP}
             />
         </div>
     </div>

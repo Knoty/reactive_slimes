@@ -1,14 +1,14 @@
-import React from "react";
-import LevelBar from "./LevelBar";
+import React from 'react';
+import LevelBar from './LevelBar';
 import PropTypes from 'prop-types';
 
 const BossView = props => (
-    <div className="boss">
-        <button className="boss_img" title="click to attack" onClick = {props.onClick} />
-        <div className="level_bar_wrapper" title="Boss hp">
+    <div className='boss'>
+        <button className='boss_img' title='click to attack' onClick = {props.onClick} />
+        <div className='level_bar_wrapper' title='Boss hp'>
             <LevelBar
-                current={props.currentHP}
-                max={props.maxHP}
+                current = {props.currentHP}
+                max = {props.maxHP}
             />
         </div>
     </div>

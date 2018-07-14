@@ -6,9 +6,9 @@ const getLevelBarLength = (currentLevel, maxLevel) => {
 };
 
 const LevelBar = props => (
-    <div className="level_bar">
+    <div className='level_bar'>
         <div
-            className="level_bar_value"
+            className='level_bar_value'
             style={
                 {
                     width: getLevelBarLength(props.current, props.max) + '%'
