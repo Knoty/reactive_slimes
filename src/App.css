@@ -43,8 +43,8 @@ button {
 
 .slime_img.injured {
     background: transparent url(inured_pink_poring.png) no-repeat;
-    -webkit-transition: background-image 0.1s ease-in-out;
-    transition: background-image 0.1s ease-in-out;
+    -webkit-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.2s ease-in-out;
 }
 
 .slime .level_bar_wrapper {
