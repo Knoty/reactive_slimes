@@ -194,14 +194,11 @@ class App extends React.Component {
                         />
                     }
 
-                    {
-                        this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice
-                        &&
-                        <CreateSlimeButton
-                            createSlimeValue = {this.createSlimeValue}
-                            onClick = {() => this.createSlime()}
-                        />
-                    }
+                    <CreateSlimeButton
+                        active = {this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice}
+                        createSlimeValue = {this.createSlimeValue}
+                        onClick = {() => this.createSlime()}
+                    />
 
                     <div className="slimes_power level_bar_wrapper" title="slimes quantity & power">
                         <LevelBar

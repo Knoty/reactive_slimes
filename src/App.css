@@ -84,7 +84,22 @@ button {
     top: 543px;
     left: 559px;
     cursor: pointer;
+    background: transparent url(empty_machine.png) no-repeat;
+    -webkit-transition: background-image 0.4s ease-in-out;
+    transition: background-image 0.4s ease-in-out;
+}
+
+.create_slime_button.active {
     background: transparent url(add_machine.png) no-repeat;
+    -webkit-transition: background-image 0.4s ease-in-out;
+    transition: background-image 0.4s ease-in-out;
+}
+
+.create_slime_button.active:hover {
+    background: transparent url(active_machine.png) no-repeat;
+    -webkit-transition: background-image 0.3s ease-in-out;
+    transition: background-image 0.3s ease-in-out;
+
 }
 
 .level_bar_wrapper {
