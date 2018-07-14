@@ -150,9 +150,9 @@ class App extends React.Component {
 
                 if (newHP > 0) {
                     console.log('Босс с '+oldState.bossHP+' хп был поражён на '+playerPower+', и теперь имеет '+newHP+'.');
-                    return { bossHP: newHP };
+                    return {bossHP: newHP};
                 } else {
-                    return { bossHP: 0 };
+                    return {bossHP: 0};
                 }
             },
             () => {
