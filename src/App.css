@@ -1,5 +1,5 @@
 body {
-    background: #768588;
+    background: #3f353d;
     color: white;
 }
 
@@ -35,6 +35,12 @@ button {
     cursor: url("heal.png"), cell;
 }
 
+.slime_img {
+    height: 120px;
+    width: 118px;
+    background: transparent url(pink_poring.png) no-repeat;
+}
+
 .slime .level_bar_wrapper {
     width: 90px;
     height: 18px;
@@ -64,18 +70,21 @@ button {
     right: 140px;
 }
 
-.boss button {
+.boss_img {
+    height: 332px;
+    width: 386px;
+    background: transparent url(Boss1.png) no-repeat;
     cursor: url("attack.png"), pointer;
 }
 
 .create_slime_button {
+    height: 165px;
+    width: 149px;
     position: absolute;
     top: 543px;
     left: 559px;
-}
-
-.create_slime_button button {
     cursor: pointer;
+    background: transparent url(add_machine.png) no-repeat;
 }
 
 .level_bar_wrapper {

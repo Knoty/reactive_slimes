@@ -1,17 +1,8 @@
 import React from "react";
-import add from './add_machine.png';
 import PropTypes from 'prop-types';
 
 const CreateSlimeButton = props => (
-    <div className="create_slime_button">
-        <button onClick = {props.onClick}>
-            <img
-                alt={`Create new slime cost: ${props.createSlimeValue}`}
-                title={`Create new slime cost: ${props.createSlimeValue}`}
-                src={add}
-            />
-        </button>
-    </div>
+    <button className="create_slime_button" title={`click to create new blob for ${props.createSlimeValue}`} onClick = {props.onClick} />
 );
 
 CreateSlimeButton.propTypes = {
