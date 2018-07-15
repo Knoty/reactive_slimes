@@ -8,7 +8,7 @@ const SlimesGroup = ({ slimes, healPrice, healSlime }) => (
       slimes.map(
         (slime, index) => (
             <DefaultSlime
-                className = {'slime place_' + index}
+                className={"slime place_" + index}
                 key = {slime.id}
                 {...slime}
                 healPrice = {healPrice}
