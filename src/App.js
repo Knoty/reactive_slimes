@@ -93,7 +93,7 @@ class App extends React.Component {
                             'Слайм №'+id+' с '+oldSlime.hp+' хп был вылечен на '+this.healAmount+', и теперь имеет '+newHP+' из '+oldSlime.maxHP+'.'
                         );
                     }
-                    return Object.assign({}, oldSlime, { hp: newHP });
+                    return Object.assign({}, oldSlime, {hp: newHP});
                 };
 
                 return {
@@ -127,7 +127,7 @@ class App extends React.Component {
                         console.log('Слайм №'+oldSlime.id+' погиб. T_T');
                         return undefined;
                     }
-                    return Object.assign({}, oldSlime, { hp: newHP });
+                    return Object.assign({}, oldSlime, {hp: newHP});
                 };
 
                 return {
