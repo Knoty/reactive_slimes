@@ -31,10 +31,6 @@ button {
     margin-left: 30px;
 }
 
-.injured button {
-    cursor: url("heal.png"), cell;
-}
-
 .slime_img {
     height: 120px;
     width: 118px;
@@ -45,6 +41,7 @@ button {
     background: transparent url(inured_pink_poring.png) no-repeat;
     -webkit-transition: background-image 0.2s ease-in-out;
     transition: background-image 0.2s ease-in-out;
+    cursor: url("heal.png"), cell;
 }
 
 .slime .level_bar_wrapper {
