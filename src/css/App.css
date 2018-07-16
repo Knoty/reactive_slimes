@@ -34,11 +34,11 @@ button {
 .slime_img {
     height: 120px;
     width: 118px;
-    background: transparent url(../img/pink_poring.png) no-repeat;
+    background: transparent url(../img/pink_slime.png) no-repeat;
 }
 
 .slime_img.injured {
-    background: transparent url(../img/inured_pink_poring.png) no-repeat;
+    background: transparent url(../img/inured_pink_slime.png) no-repeat;
     -webkit-transition: background-image 0.2s ease-in-out;
     transition: background-image 0.2s ease-in-out;
     cursor: url("../img/heal.png"), cell;
