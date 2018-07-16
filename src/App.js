@@ -9,7 +9,7 @@ import LevelBar from './LevelBar';
 
 class App extends React.Component {
     maxID = 0;
-    maxPoolAmount = 1000;
+    maxResourceAmount = 1000;
     createSlimeValue = 100;
     maxSlimesQuantity = 8;
     smallestMaxHP = 80;
@@ -37,7 +37,7 @@ class App extends React.Component {
                 this.slimeConstructor(this.makeID()),
                 this.slimeConstructor(this.makeID())
             ],
-            poolAmount: this.maxPoolAmount,
+            ResourceAmount: this.maxResourceAmount,
             bossHP: this.maxBossHP
         };
     }
@@ -56,10 +56,10 @@ class App extends React.Component {
     }
 
     createSlime() {
-        if (this.state.poolAmount >= this.createSlimeValue && this.state.slimes.length < this.maxSlimesQuantity){
+        if (this.state.ResourceAmount >= this.createSlimeValue && this.state.slimes.length < this.maxSlimesQuantity){
             this.setState(
                 oldState => ({
-                    poolAmount: oldState.poolAmount - this.createSlimeValue,
+                    ResourceAmount: oldState.ResourceAmount - this.createSlimeValue,
                     slimes: oldState.slimes.concat(
                         [this.slimeConstructor(this.makeID())]
                     )
@@ -88,7 +88,7 @@ class App extends React.Component {
                         newHP = oldSlime.maxHP
                     }
                     if (newHP > oldSlime.hp) {
-                        oldState.poolAmount -= this.healPrice;
+                        oldState.ResourceAmount -= this.healPrice;
                         console.log(
                             'Слайм №'+id+' с '+oldSlime.hp+' хп был вылечен на '+this.healAmount+', и теперь имеет '+newHP+' из '+oldSlime.maxHP+'.'
                         );
@@ -205,7 +205,7 @@ class App extends React.Component {
                     }
 
                     <CreateSlimeButton
-                        active = {this.state.slimes.length < this.maxSlimesQuantity && this.state.poolAmount > this.healPrice}
+                        active = {this.state.slimes.length < this.maxSlimesQuantity && this.state.ResourceAmount > this.healPrice}
                         createSlimeValue = {this.createSlimeValue}
                         onClick = {() => this.createSlime()}
                     />
@@ -219,8 +219,8 @@ class App extends React.Component {
 
                     <div className="resources_bar level_bar_wrapper" title="resource">
                         <LevelBar
-                            current = {this.state.poolAmount}
-                            max = {this.maxPoolAmount}
+                            current = {this.state.ResourceAmount}
+                            max = {this.maxResourceAmount}
                         />
                     </div>
 
