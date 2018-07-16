@@ -84,8 +84,8 @@ button {
     height: 165px;
     width: 149px;
     position: absolute;
-    top: 543px;
-    left: 559px;
+    top: 541px;
+    left: 564px;
     cursor: pointer;
     background: transparent url(../img/empty_machine.png) no-repeat;
     -webkit-transition: background-image 0.4s ease-in-out;
