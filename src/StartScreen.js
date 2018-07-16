@@ -1,5 +1,5 @@
 import React from 'react';
-import './StartScreen.css';
+import './css/StartScreen.css';
 import PropTypes from 'prop-types';
 
 const StartScreen = props => (

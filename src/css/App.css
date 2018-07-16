@@ -4,7 +4,7 @@ body {
 }
 
 .App {
-    background: #768588 url(./img/playground.png) no-repeat;
+    background: #768588 url(../img/playground.png) no-repeat;
     height: 720px;
     width: 1280px;
     font-size: 19px;
@@ -14,7 +14,7 @@ body {
 }
 
 .border {
-    background: transparent url(./img/border.png) no-repeat;
+    background: transparent url(../img/border.png) no-repeat;
     height: inherit;
     width: inherit;
     position: relative;
@@ -34,14 +34,14 @@ button {
 .slime_img {
     height: 120px;
     width: 118px;
-    background: transparent url(./img/pink_poring.png) no-repeat;
+    background: transparent url(../img/pink_poring.png) no-repeat;
 }
 
 .slime_img.injured {
-    background: transparent url(./img/inured_pink_poring.png) no-repeat;
+    background: transparent url(../img/inured_pink_poring.png) no-repeat;
     -webkit-transition: background-image 0.2s ease-in-out;
     transition: background-image 0.2s ease-in-out;
-    cursor: url("./img/heal.png"), cell;
+    cursor: url("../img/heal.png"), cell;
 }
 
 .slime .level_bar_wrapper {
@@ -76,8 +76,8 @@ button {
 .boss_img {
     height: 332px;
     width: 386px;
-    background: transparent url(./img/Boss1.png) no-repeat;
-    cursor: url("./img/attack.png"), pointer;
+    background: transparent url(../img/Boss1.png) no-repeat;
+    cursor: url("../img/attack.png"), pointer;
 }
 
 .create_slime_button {
@@ -87,19 +87,19 @@ button {
     top: 543px;
     left: 559px;
     cursor: pointer;
-    background: transparent url(./img/empty_machine.png) no-repeat;
+    background: transparent url(../img/empty_machine.png) no-repeat;
     -webkit-transition: background-image 0.4s ease-in-out;
     transition: background-image 0.4s ease-in-out;
 }
 
 .create_slime_button.active {
-    background: transparent url(./img/add_machine.png) no-repeat;
+    background: transparent url(../img/add_machine.png) no-repeat;
     -webkit-transition: background-image 0.4s ease-in-out;
     transition: background-image 0.4s ease-in-out;
 }
 
 .create_slime_button.active:hover {
-    background: transparent url(./img/active_machine.png) no-repeat;
+    background: transparent url(../img/active_machine.png) no-repeat;
     -webkit-transition: background-image 0.3s ease-in-out;
     transition: background-image 0.3s ease-in-out;
 
