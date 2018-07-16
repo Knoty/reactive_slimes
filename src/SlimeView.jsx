@@ -9,7 +9,7 @@ const SlimeView = props => (
             title={`Slime ${props.name} ${props.id}${(props.hp < props.maxHP) ? `, click to heal for ${props.healPrice}` : ", healthy"}`}
             onClick = {(props.hp < props.maxHP) ? () => props.onClick(props.id) : false}
         />
-        <div className="level_bar_wrapper" title={`${props.id} slime hp`}>
+        <div className="level_bar_wrapper slime_hp_bar" title={`${props.id} slime hp`}>
             <LevelBar
                 current = {props.hp}
                 max = {props.maxHP}
