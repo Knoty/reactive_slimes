@@ -129,21 +129,21 @@ button {
     width: inherit;
 }
 
-.slimes_power {
+.slimes_quantity_bar {
     left: 220px;
 }
 
-.slimes_power .level_bar_value {
+.slimes_quantity_bar .level_bar_value {
     background-image:
             linear-gradient(to top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
             linear-gradient(to left, #44aa6a, #a3fc54);
 }
 
-.pool {
+.resources_bar {
     right: 225px;
 }
 
-.pool .level_bar_value {
+.resources_bar .level_bar_value {
     background-image:
             linear-gradient(to top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
             linear-gradient(to left, #3c28b7, #54d2fc);
