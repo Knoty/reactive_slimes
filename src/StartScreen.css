@@ -1,7 +1,7 @@
 .start_screen {
     height: 720px;
     width: 1280px;
-    background: #1f5c37 url(start_screen.png) no-repeat;
+    background: #1f5c37 url(./img/start_screen.png) no-repeat;
     margin: 0 auto;
     position: relative;
 }
@@ -13,11 +13,11 @@
     top: 36%;
     left: 39%;
     cursor: pointer;
-    background: transparent url(start_button.png) no-repeat;
+    background: transparent url(./img/start_button.png) no-repeat;
 }
 
 .start_button:hover {
     top: 27%;
     left: 33%;
-    background: transparent url(start_button_hover.png) no-repeat;
+    background: transparent url(./img/start_button_hover.png) no-repeat;
 }

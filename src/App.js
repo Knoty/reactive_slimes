@@ -3,8 +3,8 @@ import './App.css';
 import SlimeGroup from './SlimesGroup.jsx';
 import CreateSlimeButton from './CreateSlimeButton.jsx';
 import DefaultBoss from './DefaultBoss.jsx';
-import WinScreen from './win.png';
-import LoseScreen from './lose.png';
+import WinScreen from './img/win.png';
+import LoseScreen from './img/lose.png';
 import LevelBar from './LevelBar';
 
 class App extends React.Component {
