@@ -114,8 +114,8 @@ button {
     width: 339px;
     height: 47px;
     position: absolute;
-    bottom: 50px;
-    left: 220px;
+    bottom: 60px;
+    left: 170px;
     background: url(../img/slime_quantity_bar.png) no-repeat;
 }
 
@@ -137,8 +137,8 @@ button {
     height: 47px;
     width: 337px;
     position: absolute;
-    bottom: 50px;
-    right: 225px;
+    bottom: 60px;
+    right: 175px;
     background: url(../img/resource_bar.png) no-repeat;
 }
 
@@ -163,7 +163,7 @@ button {
     background: url(../img/boss_hp_bar.png) no-repeat;
     position: relative;
     left: 56px;
-    bottom: 25px;
+    bottom: 7px;
 }
 
 .boss_hp_bar .level_bar_value {
@@ -180,6 +180,22 @@ button {
     position: relative;
     right: 20px;
     bottom: 37px;
+}
+
+.label {
+    position: relative;
+    bottom: 19px;
+    z-index: 1;
+}
+
+.resource_label {
+    float: left;
+    right: 35px;
+}
+
+.slimes_quantity_label {
+    float: right;
+    left: 35px;
 }
 
 .win_screen {

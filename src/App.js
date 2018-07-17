@@ -6,6 +6,8 @@ import DefaultBoss from './DefaultBoss.jsx';
 import WinScreen from './img/win.png';
 import LoseScreen from './img/lose.png';
 import LevelBar from './LevelBar';
+import SlimesQuantityLabel from "./img/slimes_quantity_label.png";
+import ResourceFullLabel from "./img/resource_full_label.png";
 
 class App extends React.Component {
     maxID = 0;
@@ -211,6 +213,11 @@ class App extends React.Component {
                     />
 
                     <div className="level_bar_wrapper slimes_quantity_bar" title="slimes quantity & power">
+                        <img
+                            className="label slimes_quantity_label"
+                            alt="Индикатор колдичества и силы вашего отряда"
+                            src={SlimesQuantityLabel}
+                        />
                         <LevelBar
                             current = {this.state.slimes.length}
                             max = {this.maxSlimesQuantity}
@@ -218,6 +225,11 @@ class App extends React.Component {
                     </div>
 
                     <div className="level_bar_wrapper resources_bar" title="resource">
+                        <img
+                            className="label resource_label"
+                            alt="Индикатор колдичества ресурсов"
+                            src={ResourceFullLabel}
+                        />
                         <LevelBar
                             current = {this.state.ResourceAmount}
                             max = {this.maxResourceAmount}
