@@ -7,7 +7,6 @@ import WinScreen from './img/win.png';
 import LoseScreen from './img/lose.png';
 import LevelBar from './LevelBar';
 import SlimesQuantityLabel from "./img/slimes_quantity_label.png";
-import ResourceFullLabel from "./img/resource_full_label.png";
 
 class App extends React.Component {
     maxID = 0;
@@ -225,10 +224,8 @@ class App extends React.Component {
                     </div>
 
                     <div className="level_bar_wrapper resources_bar" title="resource">
-                        <img
-                            className="label resource_label"
-                            alt="Индикатор колдичества ресурсов"
-                            src={ResourceFullLabel}
+                        <div
+                            className={`label resource_label ${(this.state.ResourceAmount > 0) ? 'full_resource_label' : 'resource_depleted_label'}`}
                         />
                         <LevelBar
                             current = {this.state.ResourceAmount}

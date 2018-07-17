@@ -184,13 +184,25 @@ button {
 
 .label {
     position: relative;
-    bottom: 19px;
+    bottom: 20px;
     z-index: 1;
 }
 
 .resource_label {
+    height: 84px;
+    width: 84px;
     float: left;
     right: 35px;
+}
+
+.full_resource_label {
+    background: url(../img/resource_full_label.png) no-repeat;
+}
+
+.resource_depleted_label {
+    background: url(../img/resource_depleted_label.png) no-repeat;
+    -webkit-transition: background-image 0.7s ease-in-out;
+    transition: background-image 0.7s ease-in-out;
 }
 
 .slimes_quantity_label {
