@@ -63,6 +63,7 @@ button {
     position: relative;
     top: 6px;
     left: 12px;
+    background-size: 83% 100%;
 }
 
 .slime_hp_bar p {
@@ -125,6 +126,7 @@ button {
     position: relative;
     top: 6px;
     left: 12px;
+    background-size: 95% 100%;
 }
 
 .slimes_quantity_bar p {
@@ -148,6 +150,7 @@ button {
     position: relative;
     top: 7px;
     left: 6px;
+    background-size: 95% 100%;
 }
 
 .resources_bar p {
@@ -172,6 +175,7 @@ button {
     position: relative;
     top: 6px;
     left: 13px;
+    background-size: 91% 100%;
 }
 
 .boss_hp_bar p {
