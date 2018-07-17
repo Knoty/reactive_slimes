@@ -57,6 +57,11 @@ button {
     width: inherit;
 }
 
+.level_bar_value {
+    -webkit-transition: width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
+}
+
 .slime_hp_bar .level_bar_value {
     height: 25px;
     background: url(../img/slime_hp_value.png) no-repeat;
