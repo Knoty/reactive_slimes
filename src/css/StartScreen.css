@@ -7,8 +7,8 @@
 }
 
 .start_button {
-    width: 420px;
-    height: 247px;
+    height: 123px;
+    width: 264px;
     position: absolute;
     top: 36%;
     left: 39%;
@@ -17,6 +17,8 @@
 }
 
 .start_button:hover {
+    height: 247px;
+    width: 420px;
     top: 27%;
     left: 33%;
     background: transparent url(../img/start_button_hover.png) no-repeat;
