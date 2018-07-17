@@ -3,10 +3,7 @@ import './css/App.css';
 import SlimeGroup from './SlimesGroup.jsx';
 import CreateSlimeButton from './CreateSlimeButton.jsx';
 import DefaultBoss from './DefaultBoss.jsx';
-import WinScreen from './img/win.png';
-import LoseScreen from './img/lose.png';
 import LevelBar from './LevelBar';
-import SlimesQuantityLabel from "./img/slimes_quantity_label.png";
 
 class App extends React.Component {
     maxID = 0;
@@ -170,10 +167,9 @@ class App extends React.Component {
                     {
                         this.state.bossHP <= 0
                         &&
-                        <img
+                        <div
                             className="win_screen"
-                            alt="Поздравляем! Вы одержали победу! Нажмите, чтобы попробовать еще раз."
-                            src={WinScreen}
+                            title="Поздравляем! Вы одержали победу! Нажмите, чтобы попробовать еще раз."
                             onClick = {() => window.location.reload()}
                         />
                     }
@@ -181,10 +177,9 @@ class App extends React.Component {
                     {
                         this.state.slimes.length <= 0
                         &&
-                        <img
+                        <div
                             className="lose_screen"
-                            alt="Поражение! Вы проиграли. Т_Т Нажмите, чтобы попробовать еще раз."
-                            src={LoseScreen}
+                            title="Поражение! Вы проиграли. Нажмите, чтобы попробовать еще раз."
                             onClick = {() => window.location.reload()}
                         />
                     }
@@ -212,10 +207,8 @@ class App extends React.Component {
                     />
 
                     <div className="level_bar_wrapper slimes_quantity_bar" title="slimes quantity & power">
-                        <img
+                        <div
                             className="label slimes_quantity_label"
-                            alt="Индикатор колдичества и силы вашего отряда"
-                            src={SlimesQuantityLabel}
                         />
                         <LevelBar
                             current = {this.state.slimes.length}

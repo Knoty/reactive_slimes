@@ -206,18 +206,27 @@ button {
 }
 
 .slimes_quantity_label {
+    height: 84px;
+    width: 84px;
     float: right;
     left: 35px;
+    background: url(../img/slimes_quantity_label.png) no-repeat;
 }
 
 .win_screen {
+    height: 720px;
+    width: 1280px;
     position: relative;
     z-index: 1;
+    background: url(../img/win.png) no-repeat;
 }
 
 .lose_screen {
+    height: 720px;
+    width: 1280px;
     position: relative;
     z-index: 1;
+    background: url(../img/lose.png) no-repeat;
 }
 
 .place_0 {
