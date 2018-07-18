@@ -38,7 +38,7 @@ button {
 
 .slime_img.injured {
     height: 105px;
-    width: 108px;
+    width: 103px;
     background: url(../img/inured_pink_slime.png) no-repeat;
     -webkit-transition: background-image 0.5s ease-in-out;
     transition: background-image 0.5s ease-in-out;
