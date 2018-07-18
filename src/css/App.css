@@ -159,6 +159,13 @@ button {
     background-size: 95% 100%;
 }
 
+.resources_bar .level_value_dividing {
+    margin-left: 62px;
+    height: 34px;
+    width: 227px;
+    background: url(../img/resource_dividing.png);
+}
+
 .resources_bar p {
     text-align: right;
     position: relative;
