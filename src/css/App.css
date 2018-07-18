@@ -25,33 +25,23 @@ button {
     position: relative;
 }
 
-.slime {
-    position: absolute;
-    margin-left: 52px;
-}
-
-.slime_img {
-    height: 105px;
-    width: 103px;
-    background: url(../img/pink_slime.png) no-repeat;
-}
-
-.slime_img.injured {
-    height: 105px;
-    width: 103px;
-    background: url(../img/inured_pink_slime.png) no-repeat;
-    -webkit-transition: background-image 0.5s ease-in-out;
-    transition: background-image 0.5s ease-in-out;
-    cursor: url("../img/heal.png"), cell;
-}
-
-.slime_hp_bar {
-    height: 25px;
-    width: 105px;
+.win_screen {
+    height: 720px;
+    width: 1280px;
     position: relative;
-    bottom: 10px;
-    background: url(../img/slime_hp_bar.png) no-repeat;
+    z-index: 2;
+    background: url(../img/win.png) no-repeat;
 }
+
+.lose_screen {
+    height: 720px;
+    width: 1280px;
+    position: relative;
+    z-index: 2;
+    background: url(../img/lose.png) no-repeat;
+}
+
+/* Status bars */
 
 .level_bar {
     height: inherit;
@@ -63,58 +53,10 @@ button {
     transition: width 0.2s ease-in-out;
 }
 
-.slime_hp_bar .level_bar_value {
-    height: 18px;
-    background: url(../img/slime_hp_value.png) no-repeat;
+.label {
     position: relative;
-    top: 4px;
-    left: 10px;
-    background-size: 83% 100%;
-}
-
-.slime_hp_bar p {
-    font-size: 14px;
-    text-align: center;
-    position: relative;
-    bottom: 28px;
-}
-
-.boss {
-    position: absolute;
-    top: 155px;
-    right: 140px;
-}
-
-.boss_img {
-    height: 332px;
-    width: 386px;
-    background: url(../img/Boss1.png) no-repeat;
-    cursor: url("../img/attack.png"), pointer;
-}
-
-.create_slime_button {
-    height: 165px;
-    width: 149px;
-    position: absolute;
-    top: 541px;
-    left: 564px;
-    cursor: pointer;
-    background: url(../img/empty_machine.png) no-repeat;
-    -webkit-transition: background-image 0.4s ease-in-out;
-    transition: background-image 0.4s ease-in-out;
-}
-
-.create_slime_button.active {
-    background: url(../img/add_machine.png) no-repeat;
-    -webkit-transition: background-image 0.4s ease-in-out;
-    transition: background-image 0.4s ease-in-out;
-}
-
-.create_slime_button.active:hover {
-    background: url(../img/active_machine.png) no-repeat;
-    -webkit-transition: background-image 0.3s ease-in-out;
-    transition: background-image 0.3s ease-in-out;
-
+    bottom: 20px;
+    z-index: 1;
 }
 
 .slimes_quantity_bar {
@@ -139,6 +81,14 @@ button {
     position: relative;
     bottom: 40px;
     left: 20px;
+}
+
+.slimes_quantity_label {
+    height: 84px;
+    width: 84px;
+    float: right;
+    left: 31px;
+    background: url(../img/slimes_quantity_label.png) no-repeat;
 }
 
 .resources_bar {
@@ -173,38 +123,6 @@ button {
     right: 20px;
 }
 
-.boss_hp_bar {
-    height: 40px;
-    width: 270px;
-    background: url(../img/boss_hp_bar.png) no-repeat;
-    position: relative;
-    left: 56px;
-    bottom: 7px;
-}
-
-.boss_hp_bar .level_bar_value {
-    height: 28px;
-    background: url(../img/boss_hp_value.png) no-repeat;
-    position: relative;
-    top: 6px;
-    left: 13px;
-    background-size: 91% 100%;
-}
-
-.boss_hp_bar p {
-    font-size: 18px;
-    text-align: right;
-    position: relative;
-    right: 20px;
-    bottom: 37px;
-}
-
-.label {
-    position: relative;
-    bottom: 20px;
-    z-index: 1;
-}
-
 .resource_label {
     height: 84px;
     width: 84px;
@@ -222,28 +140,77 @@ button {
     transition: background-image 0.7s ease-in-out;
 }
 
-.slimes_quantity_label {
-    height: 84px;
-    width: 84px;
-    float: right;
-    left: 35px;
-    background: url(../img/slimes_quantity_label.png) no-repeat;
+/* Slime machine */
+
+.create_slime_button {
+    height: 165px;
+    width: 149px;
+    position: absolute;
+    top: 541px;
+    left: 564px;
+    cursor: pointer;
+    background: url(../img/empty_machine.png) no-repeat;
+    -webkit-transition: background-image 0.4s ease-in-out;
+    transition: background-image 0.4s ease-in-out;
 }
 
-.win_screen {
-    height: 720px;
-    width: 1280px;
-    position: relative;
-    z-index: 2;
-    background: url(../img/win.png) no-repeat;
+.create_slime_button.active {
+    background: url(../img/add_machine.png) no-repeat;
+    -webkit-transition: background-image 0.4s ease-in-out;
+    transition: background-image 0.4s ease-in-out;
 }
 
-.lose_screen {
-    height: 720px;
-    width: 1280px;
+.create_slime_button.active:hover {
+    background: url(../img/active_machine.png) no-repeat;
+    -webkit-transition: background-image 0.3s ease-in-out;
+    transition: background-image 0.3s ease-in-out;
+
+}
+
+/* Slime */
+
+.slime {
+    position: absolute;
+    margin-left: 52px;
+}
+
+.slime_img {
+    height: 105px;
+    width: 103px;
+    background: url(../img/pink_slime.png) no-repeat;
+}
+
+.slime_img.injured {
+    height: 105px;
+    width: 103px;
+    background: url(../img/inured_pink_slime.png) no-repeat;
+    -webkit-transition: background-image 0.5s ease-in-out;
+    transition: background-image 0.5s ease-in-out;
+    cursor: url("../img/heal.png"), cell;
+}
+
+.slime_hp_bar {
+    height: 25px;
+    width: 105px;
     position: relative;
-    z-index: 2;
-    background: url(../img/lose.png) no-repeat;
+    bottom: 10px;
+    background: url(../img/slime_hp_bar.png) no-repeat;
+}
+
+.slime_hp_bar .level_bar_value {
+    height: 18px;
+    background: url(../img/slime_hp_value.png) no-repeat;
+    position: relative;
+    top: 4px;
+    left: 10px;
+    background-size: 83% 100%;
+}
+
+.slime_hp_bar p {
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    bottom: 28px;
 }
 
 .place_0 {
@@ -283,3 +250,45 @@ button {
     top: 360px;
     left: 430px;
 }
+
+/* Boss */
+
+.boss {
+    position: absolute;
+    top: 155px;
+    right: 140px;
+}
+
+.boss_img {
+    height: 332px;
+    width: 386px;
+    background: url(../img/Boss1.png) no-repeat;
+    cursor: url("../img/attack.png"), pointer;
+}
+
+.boss_hp_bar {
+    height: 40px;
+    width: 270px;
+    background: url(../img/boss_hp_bar.png) no-repeat;
+    position: relative;
+    left: 56px;
+    bottom: 7px;
+}
+
+.boss_hp_bar .level_bar_value {
+    height: 28px;
+    background: url(../img/boss_hp_value.png) no-repeat;
+    position: relative;
+    top: 6px;
+    left: 13px;
+    background-size: 91% 100%;
+}
+
+.boss_hp_bar p {
+    font-size: 18px;
+    text-align: right;
+    position: relative;
+    right: 20px;
+    bottom: 37px;
+}
+
