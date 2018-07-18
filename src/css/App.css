@@ -50,7 +50,6 @@ button {
     width: 105px;
     position: relative;
     bottom: 10px;
-    right: 5px;
     background: url(../img/slime_hp_bar.png) no-repeat;
 }
 
