@@ -77,6 +77,13 @@ button {
     background-size: 95% 100%;
 }
 
+.slimes_quantity_bar .level_value_dividing {
+    margin-left: 39px;
+    height: 34px;
+    width: 245px;
+    background: url(../img/slime_quantity_dividing.png);
+}
+
 .slimes_quantity_bar p {
     position: relative;
     bottom: 40px;
