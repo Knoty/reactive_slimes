@@ -208,7 +208,7 @@ class App extends React.Component {
 
                     <div className="level_bar_wrapper slimes_quantity_bar" title="slimes quantity & power">
                         <div
-                            className="label slimes_quantity_label"
+                            className="level_bar_label slimes_quantity_label"
                         />
                         <LevelBar
                             current = {this.state.slimes.length}
@@ -218,7 +218,7 @@ class App extends React.Component {
 
                     <div className="level_bar_wrapper resources_bar" title="resource">
                         <div
-                            className={`label resource_label ${(this.state.ResourceAmount > 0) ? 'full_resource_label' : 'resource_depleted_label'}`}
+                            className={`level_bar_label resource_label ${(this.state.ResourceAmount > 0) ? 'full_resource_label' : 'resource_depleted_label'}`}
                         />
                         <LevelBar
                             current = {this.state.ResourceAmount}
