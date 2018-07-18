@@ -46,8 +46,8 @@ button {
 }
 
 .slime_hp_bar {
-    height: 37px;
-    width: 129px;
+    height: 25px;
+    width: 105px;
     position: relative;
     bottom: 10px;
     right: 5px;
@@ -65,19 +65,19 @@ button {
 }
 
 .slime_hp_bar .level_bar_value {
-    height: 25px;
+    height: 18px;
     background: url(../img/slime_hp_value.png) no-repeat;
     position: relative;
-    top: 6px;
-    left: 12px;
+    top: 4px;
+    left: 10px;
     background-size: 83% 100%;
 }
 
 .slime_hp_bar p {
-    font-size: 15px;
+    font-size: 14px;
+    text-align: center;
     position: relative;
-    left: 20px;
-    bottom: 31px;
+    bottom: 28px;
 }
 
 .boss {
