@@ -94,7 +94,7 @@ button {
     height: 84px;
     width: 84px;
     float: right;
-    left: 32px;
+    left: 27px;
     background: url(../img/slimes_quantity_label.png) no-repeat;
 }
 
@@ -134,7 +134,7 @@ button {
     height: 84px;
     width: 84px;
     float: left;
-    right: 43px;
+    right: 40px;
 }
 
 .full_resource_label {
