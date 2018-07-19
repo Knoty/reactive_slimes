@@ -43,14 +43,9 @@ button {
 
 /* Status bars */
 
-.level_bar {
-    height: inherit;
-    width: inherit;
-}
-
 .level_bar_value {
-    -webkit-transition: width 0.2s ease-in-out;
-    transition: width 0.2s ease-in-out;
+    -webkit-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
 }
 
 .level_bar_label {
@@ -68,17 +63,24 @@ button {
     background: url(../img/slime_quantity_bar.png) no-repeat;
 }
 
+.slimes_quantity_bar .level_bar {
+    width: 320px;
+    position: absolute;
+    top: 6px;
+    left: 14px;
+}
+
 .slimes_quantity_bar .level_bar_value {
     height: 33px;
     background: url(../img/slime_quantity_value.png) no-repeat;
-    position: relative;
-    top: 6px;
-    left: 12px;
-    background-size: 95% 100%;
+    position: absolute;
+    right: 0;
+    background-size: 100% 100%;
 }
 
 .slimes_quantity_bar .level_value_dividing {
-    margin-left: 39px;
+    position: relative;
+    left: 33px;
     height: 34px;
     width: 245px;
     background: url(../img/slime_quantity_dividing.png);
@@ -117,7 +119,9 @@ button {
 }
 
 .resources_bar .level_value_dividing {
-    margin-left: 62px;
+    position: relative;
+    bottom: 27px;
+    left: 68px;
     height: 34px;
     width: 227px;
     background: url(../img/resource_dividing.png);

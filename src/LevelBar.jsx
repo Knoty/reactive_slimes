@@ -14,9 +14,8 @@ const LevelBar = props => (
                     width: getLevelBarLength(props.current, props.max) + '%'
                 }
             }
-        >
-            <div className="level_value_dividing" />
-        </div>
+        />
+        <div className="level_value_dividing" />
         <p>{props.current} / {props.max}</p>
     </div>
 );
