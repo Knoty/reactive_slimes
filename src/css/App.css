@@ -222,10 +222,12 @@ button {
 
 .place_0 {
     top: 260px;
+    left: 5px;
 }
 
 .place_1 {
-    top: 425px;
+    top: 415px;
+    left: 5px;
 }
 
 .place_2 {
@@ -234,28 +236,28 @@ button {
 }
 
 .place_3 {
-    top: 360px;
+    top: 350px;
     left: 145px;
 }
 
 .place_4 {
     top: 260px;
-    left: 295px;
+    left: 290px;
 }
 
 .place_5 {
-    top: 425px;
-    left: 295px;
+    top: 415px;
+    left: 290px;
 }
 
 .place_6 {
-    left: 430px;
     top: 195px;
+    left: 425px;
 }
 
 .place_7 {
-    top: 360px;
-    left: 430px;
+    top: 350px;
+    left: 425px;
 }
 
 /* Boss */
