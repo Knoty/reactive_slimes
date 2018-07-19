@@ -4,9 +4,13 @@ body {
 }
 
 button {
-    background: transparent;
     border: none;
     outline: none;
+}
+
+p {
+    font-family: monospace;
+    margin: 0;
 }
 
 .App {
@@ -49,8 +53,8 @@ button {
 }
 
 .level_bar_label {
-    position: relative;
-    bottom: 20px;
+    position: absolute;
+    top: -19px;
     z-index: 1;
 }
 
@@ -80,7 +84,7 @@ button {
 
 .slimes_quantity_bar .level_value_dividing {
     position: relative;
-    left: 33px;
+    left: 38px;
     height: 34px;
     width: 245px;
     background: url(../img/slime_quantity_dividing.png);
@@ -88,15 +92,14 @@ button {
 
 .slimes_quantity_bar p {
     position: relative;
-    bottom: 40px;
-    left: 20px;
+    left: 5px;
+    bottom: 29px;
 }
 
 .slimes_quantity_label {
     height: 84px;
     width: 84px;
-    float: right;
-    left: 27px;
+    left: 290px;
     background: url(../img/slimes_quantity_label.png) no-repeat;
 }
 
@@ -105,7 +108,7 @@ button {
     width: 337px;
     position: absolute;
     bottom: 60px;
-    right: 168px;
+    right: 170px;
     background: url(../img/resource_bar.png) no-repeat;
 }
 
@@ -130,15 +133,14 @@ button {
 .resources_bar p {
     text-align: right;
     position: relative;
-    bottom: 39px;
     right: 20px;
+    bottom: 55px;
 }
 
 .resource_label {
     height: 84px;
     width: 84px;
-    float: left;
-    right: 40px;
+    right: 290px;
 }
 
 .full_resource_label {
@@ -182,7 +184,6 @@ button {
 
 .slime {
     position: absolute;
-    margin-left: 52px;
 }
 
 .slime_img {
@@ -221,47 +222,47 @@ button {
     font-size: 14px;
     text-align: center;
     position: relative;
-    bottom: 28px;
+    bottom: 14px;
 }
 
 .place_0 {
     top: 260px;
-    left: 5px;
+    left: 55px;
 }
 
 .place_1 {
     top: 415px;
-    left: 5px;
+    left: 55px;
 }
 
 .place_2 {
     top: 195px;
-    left: 145px;
+    left: 195px;
 }
 
 .place_3 {
     top: 350px;
-    left: 145px;
+    left: 195px;
 }
 
 .place_4 {
     top: 260px;
-    left: 290px;
+    left: 340px;
 }
 
 .place_5 {
     top: 415px;
-    left: 290px;
+    left: 340px;
 }
 
 .place_6 {
     top: 195px;
-    left: 425px;
+    left: 475px;
 }
 
 .place_7 {
     top: 350px;
-    left: 425px;
+    left: 475px;
 }
 
 /* Boss */
@@ -284,8 +285,8 @@ button {
     width: 270px;
     background: url(../img/boss_hp_bar.png) no-repeat;
     position: relative;
-    left: 56px;
-    bottom: 7px;
+    left: 55px;
+    bottom: 5px;
 }
 
 .boss_hp_bar .level_bar_value {
@@ -299,9 +300,8 @@ button {
 
 .boss_hp_bar p {
     font-size: 18px;
-    text-align: right;
+    text-align: center;
     position: relative;
-    right: 20px;
-    bottom: 37px;
+    bottom: 20px;
 }
 
