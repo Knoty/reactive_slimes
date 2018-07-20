@@ -100,7 +100,24 @@ p {
     height: 84px;
     width: 84px;
     left: 290px;
-    background: url(../img/slimes_quantity_label.png) no-repeat;
+    -webkit-transition: background 0.5s ease-in-out;
+    transition: background 0.5s ease-in-out;
+}
+
+.no_slimes {
+    background: url(../img/no_slimes_label.png) no-repeat;
+}
+
+.few_slimes {
+    background: url(../img/few_slimes_label.png) no-repeat;
+}
+
+.many_slimes {
+    background: url(../img/many_slimes_label.png) no-repeat;
+}
+
+.maximum_slimes {
+    background: url(../img/maximum_slimes_label.png) no-repeat;
 }
 
 .resources_bar {

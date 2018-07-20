@@ -159,6 +159,24 @@ class App extends React.Component {
         );
     }
 
+    getSlimesQuantity() {
+
+        const slimes_alive_ratio = this.state.slimes.length / this.maxSlimesQuantity * 100;
+
+        switch (true) {
+            case (slimes_alive_ratio <= 0):
+                return 'no_slimes';
+            case (slimes_alive_ratio > 1 && slimes_alive_ratio < 49):
+                return 'few_slimes';
+            case (slimes_alive_ratio > 49 && slimes_alive_ratio < 100):
+                return 'many_slimes';
+            case (slimes_alive_ratio === 100):
+                return 'maximum_slimes';
+            default:
+                return 'maximum_slimes';
+        }
+    }
+
     render() {
         return (
             <div className="App">
@@ -208,7 +226,7 @@ class App extends React.Component {
 
                     <div className="level_bar_wrapper slimes_quantity_bar" title="slimes quantity & power">
                         <div
-                            className="level_bar_label slimes_quantity_label"
+                            className={`level_bar_label slimes_quantity_label ${this.getSlimesQuantity()}`}
                         />
                         <LevelBar
                             current = {this.state.slimes.length}
