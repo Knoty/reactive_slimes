@@ -12,7 +12,7 @@ class App extends React.Component {
     maxSlimesQuantity = 8;
     smallestMaxHP = 80;
     highestMaxHP = 121; //N.B. highestMaxHP = highestMaxHP - 1
-    healAmount = 30;
+    healAmount = 80;
     healPrice = 5;
     smallestBossPower = 35;
     highestBossPower = 71; //N.B. highestBossPower = highestBossPower - 1
