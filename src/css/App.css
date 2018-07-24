@@ -297,6 +297,12 @@ p {
     cursor: url("../img/attack.png"), pointer;
 }
 
+.boss_hit_img {
+    width: 300px;
+    height: 200px;
+    background: url(../img/Boss_hit.gif) no-repeat;
+}
+
 .boss_hp_bar {
     height: 40px;
     width: 270px;
