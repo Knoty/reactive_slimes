@@ -10,17 +10,18 @@ class DefaultBoss extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.currentHP > this.props.currentHP) {
-            this.setState(
-                {isBeingHit: true},
-                () => {
-                    setTimeout(
-                        () => this.setState({isBeingHit: false}),
-                        500
-                    )
-                }
-            )
+        if (prevProps.currentHP <= this.props.currentHP) {
+            return;
         }
+        this.setState(
+            {isBeingHit: true},
+            () => {
+                setTimeout(
+                    () => this.setState({isBeingHit: false}),
+                    500
+                )
+            }
+        )
     }
 
     render() {
