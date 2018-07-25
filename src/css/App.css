@@ -209,6 +209,18 @@ p {
     background: url(../img/pink_slime.png) no-repeat;
 }
 
+.slime .slime_img.was_hit {
+    width: 261px;
+    height: 199px;
+    background: url(../img/slime_hit.gif);
+ }
+
+.was_healed {
+    width: 200px;
+    height: 113px;
+    background: url(../img/slime_healed.gif);
+}
+
 .slime_img.injured {
     height: 105px;
     width: 103px;
