@@ -219,7 +219,7 @@ class App extends React.Component {
                     }
 
                     <CreateSlimeButton
-                        active = {this.state.slimes.length < this.maxSlimesQuantity && this.state.ResourceAmount > this.healPrice}
+                        active = {this.state.slimes.length < this.maxSlimesQuantity && this.state.ResourceAmount > this.createSlimeValue}
                         createSlimeValue = {this.createSlimeValue}
                         onClick = {() => this.createSlime()}
                     />
