@@ -306,7 +306,7 @@ p {
 .boss_hp_bar {
     height: 40px;
     width: 270px;
-    background: url(../img/boss_hp_bar.png) no-repeat;
+    background: url(../img/Boss_hp_bar.png) no-repeat;
     position: relative;
     left: 55px;
     bottom: 5px;
@@ -314,7 +314,7 @@ p {
 
 .boss_hp_bar .level_bar_value {
     height: 28px;
-    background: url(../img/boss_hp_value.png) no-repeat;
+    background: url(../img/Boss_hp_value.png) no-repeat;
     position: relative;
     top: 6px;
     left: 13px;
