@@ -3,21 +3,21 @@ import DefaultSlime from './DefaultSlime.jsx';
 import PropTypes from 'prop-types';
 
 const SlimesGroup = ({ slimes, healPrice, healSlime }) => (
-  <div className="slimes_group">
-    {
-      slimes.map(
-        (slime, index) => (
-            <DefaultSlime
-                className={"slime place_" + index}
-                key = {slime.id}
-                {...slime}
-                healPrice = {healPrice}
-                onClick = {(id) => healSlime(id)}
-            />
-        )
-      )
-    }
-  </div>
+    <div className="slimes_group">
+        {
+            slimes.map(
+                (slime, index) => (
+                    <DefaultSlime
+                        className={"slime place_" + index}
+                        key = {slime.id}
+                        {...slime}
+                        healPrice = {healPrice}
+                        onClick = {(id) => healSlime(id)}
+                    />
+                )
+            )
+        }
+    </div>
 );
 
 SlimesGroup.propTypes = {
