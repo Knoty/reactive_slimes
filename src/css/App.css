@@ -305,20 +305,20 @@ p {
 .boss_img {
     height: 332px;
     width: 386px;
-    background: url(../img/Boss1.png) no-repeat;
+    background: url(../img/boss1.png) no-repeat;
     cursor: url("../img/attack.png"), pointer;
 }
 
 .boss_hit_img {
     width: 386px;
     height: 331px;
-    background: url(../img/Boss_hit.gif) no-repeat;
+    background: url(../img/boss_hit.gif) no-repeat;
 }
 
 .boss_hp_bar {
     height: 40px;
     width: 270px;
-    background: url(../img/Boss_hp_bar.png) no-repeat;
+    background: url(../img/boss_hp_bar.png) no-repeat;
     position: relative;
     left: 55px;
     bottom: 5px;
@@ -326,7 +326,7 @@ p {
 
 .boss_hp_bar .level_bar_value {
     height: 28px;
-    background: url(../img/Boss_hp_value.png) no-repeat;
+    background: url(../img/boss_hp_value.png) no-repeat;
     position: relative;
     top: 6px;
     left: 13px;
