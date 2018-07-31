@@ -4,6 +4,7 @@ import SlimeGroup from './SlimesGroup.jsx';
 import CreateSlimeButton from './CreateSlimeButton.jsx';
 import DefaultBoss from './DefaultBoss.jsx';
 import LevelBar from './LevelBar';
+import BossMissile from './BossMissile';
 
 class App extends React.Component {
     maxID = 0;
@@ -110,7 +111,16 @@ class App extends React.Component {
         return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
     }
 
+    animateBossAttack(slimeID) {
+        this.setState(
+            {
+                isBossAttacking: slimeID
+            }
+        )
+    }
+
     hitSlime(id, bossDamage) {
+        this.animateBossAttack(id);
         this.setState(
             oldState => {
 
@@ -181,6 +191,16 @@ class App extends React.Component {
         return (
             <div className="App">
                 <div className="border">
+                    {
+                        this.state.isBossAttacking
+                        &&
+                        <BossMissile
+                            startPoint = {{x: 900, y: 300}}
+                            endPoint = {{x: 100, y: 300}}
+                            targetSlime = {this.state.isBossAttacking}
+                            onDestroyed = {() => this.setState({isBossAttacking: undefined})}
+                        />
+                    }
 
                     {
                         this.state.bossHP <= 0
