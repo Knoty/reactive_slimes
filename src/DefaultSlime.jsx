@@ -11,17 +11,11 @@ class DefaultSlime extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.hp > this.props.hp) {
-            this.setState(
-                {animationStatus: "was_hit"},
-                () => {
-                    setTimeout(
-                        () => this.setState({animationStatus: ""}),
-                        5000
-                    )
-                }
+            setTimeout(
+                () => this.hitAnimation(),
+                3900
             )
-        }
-        if (prevProps.hp < this.props.hp) {
+        } else if (prevProps.hp < this.props.hp) {
             this.setState(
                 {animationStatus: "was_healed"},
                 () => {
@@ -31,19 +25,12 @@ class DefaultSlime extends Component {
                     )
                 }
             )
-        }
-        if (prevProps.hp === undefined && this.props.hp === this.props.maxHP) {
-            this.setState(
-                {animationStatus: "was_created"},
-                () => {
-                    setTimeout(
-                        () => this.setState({animationStatus: ""}),
-                        5000
-                    )
-                }
+        } else if (prevProps.hp === undefined && this.props.hp === this.props.maxHP) {
+            setTimeout(
+                () => this.creationAnimation(),
+                0
             )
-        }
-        if (this.props.hp <= 0) {
+        } else if (this.props.hp <= 0) {
             this.setState(
                 {animationStatus: "dying"},
                 () => {
@@ -54,6 +41,30 @@ class DefaultSlime extends Component {
                 }
             )
         }
+    }
+
+    hitAnimation() {
+        this.setState(
+            {animationStatus: "was_hit"},
+            () => {
+                setTimeout(
+                    () => this.setState({animationStatus: ""}),
+                    5000
+                )
+            }
+        )
+    }
+
+    creationAnimation() {
+        this.setState(
+            {animationStatus: "was_created"},
+            () => {
+                setTimeout(
+                    () => this.setState({animationStatus: ""}),
+                    5000
+                )
+            }
+        )
     }
 
     render() {
