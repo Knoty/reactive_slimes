@@ -33,7 +33,7 @@ SlimesGroup.propTypes = {
     healSlime: PropTypes.func.isRequired,
     places: PropTypes.arrayOf(
         PropTypes.shape()
-    )
+    ).isRequired
 };
 
 export default SlimesGroup;

@@ -26,7 +26,8 @@ SlimeView.propTypes = {
     name: PropTypes.string,
     id: PropTypes.number.isRequired,
     healPrice: PropTypes.number.isRequired,
-    additionalClass: PropTypes.string
+    additionalClass: PropTypes.string,
+    place: PropTypes.shape.isRequired
 };
 
 SlimeView.defaultProps = {
