@@ -3,7 +3,7 @@ import LevelBar from './LevelBar';
 import PropTypes from 'prop-types';
 
 const SlimeView = props => (
-    <div className={props.className}>
+    <div className={props.className} style={{left: props.place.left+'px', top: props.place.top+'px'}} >
         <button
             className={`slime_img ${props.additionalClass} ${(props.hp < props.maxHP) ? "injured" : ""}`}
             title={`Slime ${props.name} ${props.id}${(props.hp < props.maxHP) ? `, click to heal for ${props.healPrice}` : ", healthy"}`}

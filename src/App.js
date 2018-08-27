@@ -6,11 +6,21 @@ import DefaultBoss from './DefaultBoss.jsx';
 import LevelBar from './LevelBar';
 import BossMissile from './BossMissile';
 
+function getEmptyPlaceNumber(places) {
+    for (let placeNumber = 0; placeNumber < places.length; placeNumber++) {
+        if (places[placeNumber].isFree === true) {
+            return placeNumber;
+        }
+    }
+    return -1
+}
+
 class App extends React.Component {
     maxID = 0;
+    beginningSlimesAmount = 2;
+    maxSlimesQuantity = 8;
     maxResourceAmount = 1000;
     createSlimeValue = 100;
-    maxSlimesQuantity = 8;
     smallestMaxHP = 80;
     highestMaxHP = 121; //N.B. highestMaxHP = highestMaxHP - 1
     healAmount = 80;
@@ -19,25 +29,41 @@ class App extends React.Component {
     highestBossPower = 71; //N.B. highestBossPower = highestBossPower - 1
     maxBossHP = 1000;
 
-    slimeConstructor(id) {
+    slimeConstructor(id, placeNumber) {
         const maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
         return {
             id: id,
             hp: maxHP,
-            maxHP: maxHP
+            maxHP: maxHP,
+            place: placeNumber
         }
+    }
+
+    slimesConstructor(slimes) {
+        let slimesArr = [];
+        for (let count = 0; count < slimes; count++) {
+            slimesArr.push(this.slimeConstructor(this.makeID(), count))
+        }
+        return slimesArr
     }
 
     constructor(props) {
         super(props);
 
         this.state = {
-            slimes: [
-                this.slimeConstructor(this.makeID()),
-                this.slimeConstructor(this.makeID())
-            ],
-            ResourceAmount: this.maxResourceAmount,
-            bossHP: this.maxBossHP
+            slimes: this.slimesConstructor(this.beginningSlimesAmount),
+            resourceAmount: this.maxResourceAmount,
+            bossHP: this.maxBossHP,
+            places: [
+                {left: 55, top: 260, isFree: false},
+                {left: 55, top: 415, isFree: false},
+                {left: 195, top: 195, isFree: true},
+                {left: 195, top: 350, isFree: true},
+                {left: 340, top: 260, isFree: true},
+                {left: 340, top: 415, isFree: true},
+                {left: 475, top: 195, isFree: true},
+                {left: 475, top: 350, isFree: true}
+            ]
         };
     }
 
@@ -55,14 +81,25 @@ class App extends React.Component {
     }
 
     createSlime() {
-        if (this.state.ResourceAmount >= this.createSlimeValue && this.state.slimes.length < this.maxSlimesQuantity){
+        if (this.state.resourceAmount >= this.createSlimeValue && this.state.slimes.length < this.maxSlimesQuantity){
             this.setState(
-                oldState => ({
-                    ResourceAmount: oldState.ResourceAmount - this.createSlimeValue,
-                    slimes: oldState.slimes.concat(
-                        [this.slimeConstructor(this.makeID())]
-                    )
-                }),
+                oldState => {
+                    let placeNumber = getEmptyPlaceNumber(oldState.places);
+                    if (placeNumber === -1) {
+                        throw new Error('Свободных мест нет')
+                    }
+                    return {
+                        resourceAmount: oldState.resourceAmount - this.createSlimeValue,
+                        slimes: oldState.slimes.concat(
+                            [this.slimeConstructor(this.makeID(), placeNumber)]
+                        ),
+                        places: oldState.places.map(
+                            (place, index) => index === placeNumber
+                                ? Object.assign({}, place, {isFree: false})
+                                : place
+                        )
+                    }
+                },
                 () => {
                     console.log('Вы создали слайма! Маны потрачено: '+this.createSlimeValue+'.');
                     this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
@@ -87,7 +124,7 @@ class App extends React.Component {
                         newHP = oldSlime.maxHP
                     }
                     if (newHP > oldSlime.hp) {
-                        oldState.ResourceAmount -= this.healPrice;
+                        oldState.resourceAmount -= this.healPrice;
                         console.log(
                             'Слайм №'+id+' с '+oldSlime.hp+' хп был вылечен на '+this.healAmount+', и теперь имеет '+newHP+' из '+oldSlime.maxHP+'.'
                         );
@@ -133,17 +170,34 @@ class App extends React.Component {
                     );
                     if (newHP <= 0) {
                         console.log('Слайм №'+oldSlime.id+' погиб. T_T');
-                        return undefined;
                     }
                     return Object.assign({}, oldSlime, {hp: newHP});
                 };
 
+                let updatedSlimes = oldState.slimes.map(hitSlimeByID);
+
+                let deadSlimePlaces = updatedSlimes.reduce(
+                    (places, slime) => {
+                        if (slime.hp <= 0) {
+                            places.push(slime.place);
+                        }
+                        return places
+                    },
+                    []
+                );
+
                 return {
-                    slimes: oldState.slimes.map(
-                        hitSlimeByID
-                    ).filter((slime) => {
-                        return slime !== undefined
-                    })
+                    slimes: updatedSlimes.filter((slime) => {
+                        return slime.hp > 0
+                    }),
+                    places: oldState.places.map(
+                        function (place, index) {
+                            if (deadSlimePlaces.includes(index)) {
+                                return Object.assign({}, place, {isFree: true})
+                            }
+                            return place
+                        }
+                    )
                 };
             }
         );
@@ -226,6 +280,7 @@ class App extends React.Component {
                         slimes = {this.state.slimes}
                         healPrice = {this.healPrice}
                         healSlime = {(id) => this.healSlime(id)}
+                        places = {this.state.places}
                     />
 
                     {
@@ -239,7 +294,7 @@ class App extends React.Component {
                     }
 
                     <CreateSlimeButton
-                        active = {this.state.slimes.length < this.maxSlimesQuantity && this.state.ResourceAmount > this.createSlimeValue}
+                        active = {this.state.slimes.length < this.maxSlimesQuantity && this.state.resourceAmount > this.createSlimeValue}
                         createSlimeValue = {this.createSlimeValue}
                         onClick = {() => this.createSlime()}
                     />
@@ -256,10 +311,10 @@ class App extends React.Component {
 
                     <div className="level_bar_wrapper resources_bar" title="resource">
                         <div
-                            className={`level_bar_label resource_label ${(this.state.ResourceAmount > 0) ? 'full_resource_label' : 'resource_depleted_label'}`}
+                            className={`level_bar_label resource_label ${(this.state.resourceAmount > 0) ? 'full_resource_label' : 'resource_depleted_label'}`}
                         />
                         <LevelBar
-                            current = {this.state.ResourceAmount}
+                            current = {this.state.resourceAmount}
                             max = {this.maxResourceAmount}
                         />
                     </div>
