@@ -112,30 +112,43 @@ class App extends React.Component {
         this.setState(
             oldState => {
 
+                const updatedResourceAmount = oldState.resourceAmount - this.healPrice;
+                if (updatedResourceAmount <= 0) {
+                    console.log('Недостаточно маны для лечения');
+                    return oldState;
+                }
+
                 const healSlimeByID = (oldSlime) => {
-                    if (id !== oldSlime.id)
-                        return oldSlime;
-                    if (oldSlime.hp === oldSlime.maxHP) {
-                        console.log('Слайм №'+id+' полностью здоров!');
-                        return oldSlime;
-                    }
                     let newHP = Number(oldSlime.hp) + Number(this.healAmount);
                     if (newHP > oldSlime.maxHP) {
                         newHP = oldSlime.maxHP
                     }
-                    if (newHP > oldSlime.hp) {
-                        oldState.resourceAmount -= this.healPrice;
-                        console.log(
-                            'Слайм №'+id+' с '+oldSlime.hp+' хп был вылечен на '+this.healAmount+', и теперь имеет '+newHP+' из '+oldSlime.maxHP+'.'
-                        );
-                    }
+                    console.log(
+                        'Слайм №' + id + ' с ' + oldSlime.hp + ' хп был вылечен на ' + this.healAmount
+                        + ', и теперь имеет ' + newHP + ' из ' + oldSlime.maxHP + '.'
+                    );
                     return Object.assign({}, oldSlime, {hp: newHP});
                 };
 
+                const targetSlimes = oldState.slimes.filter(
+                    slime => slime.id === id
+                );
+                if (!targetSlimes.length) {
+                    throw new Error('Вы лечите несуществующего слайма ' + id)
+                }
+                const targetSlime = targetSlimes[0];
+                if (targetSlime.hp === targetSlime.maxHP) {
+                    console.log('Слайм №'+id+' полностью здоров!');
+                    return oldState;
+                }
+                const updatedSlime = healSlimeByID(targetSlime);
+                const updatedSlimes = oldState.slimes.map(
+                    slime => slime.id === targetSlime.id ? updatedSlime : slime
+                );
+
                 return {
-                    slimes: oldState.slimes.map(
-                        healSlimeByID
-                    )
+                    slimes: updatedSlimes,
+                    resourceAmount: updatedResourceAmount
                 };
             },
             () => {
