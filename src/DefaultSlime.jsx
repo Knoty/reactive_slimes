@@ -11,26 +11,30 @@ class DefaultSlime extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.hp > this.props.hp) {
+            console.log('hit animation');
             setTimeout(
                 () => this.hitAnimation(),
-                3900
+                200
             )
         } else if (prevProps.hp < this.props.hp) {
+            console.log('heal animation');
             this.setState(
                 {animationStatus: "was_healed"},
                 () => {
                     setTimeout(
                         () => this.setState({animationStatus: ""}),
-                        5000
+                        1000
                     )
                 }
             )
         } else if (prevProps.hp === undefined && this.props.hp === this.props.maxHP) {
+            console.log('create animation');
             setTimeout(
                 () => this.creationAnimation(),
                 0
             )
         } else if (this.props.hp <= 0) {
+            console.log('die animation');
             this.setState(
                 {animationStatus: "dying"},
                 () => {
@@ -49,7 +53,7 @@ class DefaultSlime extends Component {
             () => {
                 setTimeout(
                     () => this.setState({animationStatus: ""}),
-                    5000
+                    500
                 )
             }
         )
@@ -71,7 +75,7 @@ class DefaultSlime extends Component {
         return (
             <SlimeView
                 {...this.props}
-                additionalClass = {this.state.animationStatus}
+                animationClass = {this.state.animationStatus}
             />
         )
     }

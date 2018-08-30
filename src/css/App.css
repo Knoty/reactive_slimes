@@ -13,6 +13,11 @@ p {
     margin: 0;
 }
 
+@keyframes sprite {
+    from {background-position: 0 0;}
+    to {background-position: 0 100%;}
+}
+
 .App {
     background: url(../img/playground.png) no-repeat #768588;
     height: 720px;
@@ -210,15 +215,17 @@ p {
 }
 
 .slime .slime_img.was_hit {
-    width: 261px;
-    height: 199px;
-    background: url(../img/slime_hit.gif);
- }
+    width: 151px;
+    height: 176px;
+    background: url(../img/slime_hit.png);
+    animation: sprite 0.5s steps(4);
+}
 
-.was_healed {
-    width: 200px;
-    height: 113px;
-    background: url(../img/slime_healed.gif);
+.slime_img.was_healed {
+    width: 209px;
+    height: 209px;
+    background: url(../img/slime_healed.png);
+    animation: sprite 1s steps(7);
 }
 
 .slime_img.injured {
