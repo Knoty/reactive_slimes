@@ -101,7 +101,7 @@ class App extends React.Component {
                     }
                 },
                 () => {
-                    console.log('Вы создали слайма! Маны потрачено: '+this.createSlimeValue+'.');
+                    console.log('Вы создали слайма! Маны потрачено: ' + this.createSlimeValue + '.');
                     this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
                 }
             );
@@ -138,7 +138,7 @@ class App extends React.Component {
                 }
                 const targetSlime = targetSlimes[0];
                 if (targetSlime.hp === targetSlime.maxHP) {
-                    console.log('Слайм №'+id+' полностью здоров!');
+                    console.log('Слайм №' + id + ' полностью здоров!');
                     return oldState;
                 }
                 const updatedSlime = healSlimeByID(targetSlime);
@@ -179,10 +179,11 @@ class App extends React.Component {
                         return oldSlime;
                     let newHP = Number(oldSlime.hp) - bossDamage;
                     console.log(
-                        'В ответ босс нанес ' + bossDamage + ' повреждений слайму №' + id + ' c ' + oldSlime.hp + ' хп, и теперь у него ' + newHP + ' хп.'
+                        'В ответ босс нанес ' + bossDamage + ' повреждений слайму №' + id + ' c ' + oldSlime.hp
+                        + ' хп, и теперь у него ' + newHP + ' хп.'
                     );
                     if (newHP <= 0) {
-                        console.log('Слайм №'+oldSlime.id+' погиб. T_T');
+                        console.log('Слайм №' + oldSlime.id + ' погиб. T_T');
                     }
                     return Object.assign({}, oldSlime, {hp: newHP});
                 };
@@ -224,7 +225,8 @@ class App extends React.Component {
                 const newHP = Number(oldState.bossHP) - Number(playerPower);
 
                 if (newHP > 0) {
-                    console.log('Босс с '+oldState.bossHP+' хп был поражён на '+playerPower+', и теперь имеет '+newHP+'.');
+                    console.log('Босс с ' + oldState.bossHP + ' хп был поражён на ' + playerPower
+                        + ', и теперь имеет ' + newHP + '.');
                     return {bossHP: newHP};
                 } else {
                     return {bossHP: 0};
@@ -307,7 +309,10 @@ class App extends React.Component {
                     }
 
                     <CreateSlimeButton
-                        active = {this.state.slimes.length < this.maxSlimesQuantity && this.state.resourceAmount > this.createSlimeValue}
+                        active = {
+                            this.state.slimes.length < this.maxSlimesQuantity &&
+                            this.state.resourceAmount > this.createSlimeValue
+                        }
                         createSlimeValue = {this.createSlimeValue}
                         onClick = {() => this.createSlime()}
                     />
@@ -324,7 +329,9 @@ class App extends React.Component {
 
                     <div className="level_bar_wrapper resources_bar" title="resource">
                         <div
-                            className={`level_bar_label resource_label ${(this.state.resourceAmount > 0) ? 'full_resource_label' : 'resource_depleted_label'}`}
+                            className={`level_bar_label resource_label ${(this.state.resourceAmount > 0)
+                                ? 'full_resource_label'
+                                : 'resource_depleted_label'}`}
                         />
                         <LevelBar
                             current = {this.state.resourceAmount}
