@@ -64,7 +64,7 @@ class App extends React.Component {
                 {left: 475, top: 195, isFree: true},
                 {left: 475, top: 350, isFree: true}
             ],
-            isBossAttacking: false
+            isBossAttacking: false // TODO: this must belong to DefaultBoss component.
         };
     }
 
