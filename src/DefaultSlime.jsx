@@ -11,13 +11,13 @@ class DefaultSlime extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.hp > this.props.hp) {
-            console.log('hit animation');
+            console.log('slime hit animation');
             setTimeout(
                 () => this.hitAnimation(),
                 200
             )
         } else if (prevProps.hp < this.props.hp) {
-            console.log('heal animation');
+            console.log('slime heal animation');
             this.setState(
                 {animationStatus: "was_healed"},
                 () => {
@@ -28,19 +28,19 @@ class DefaultSlime extends Component {
                 }
             )
         } else if (prevProps.hp === undefined && this.props.hp === this.props.maxHP) {
-            console.log('create animation');
+            console.log('slime create animation');
             setTimeout(
                 () => this.creationAnimation(),
                 0
             )
         } else if (this.props.hp <= 0) {
-            console.log('die animation');
+            console.log('slime die animation');
             this.setState(
                 {animationStatus: "dying"},
                 () => {
                     setTimeout(
                         () => this.setState({animationStatus: ""}),
-                        5000
+                        500
                     )
                 }
             )
