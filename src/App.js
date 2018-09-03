@@ -63,7 +63,8 @@ class App extends React.Component {
                 {left: 340, top: 415, isFree: true},
                 {left: 475, top: 195, isFree: true},
                 {left: 475, top: 350, isFree: true}
-            ]
+            ],
+            isBossAttacking: false
         };
     }
 
@@ -161,16 +162,7 @@ class App extends React.Component {
         return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
     }
 
-    animateBossAttack(slimeID) {
-        this.setState(
-            {
-                isBossAttacking: slimeID
-            }
-        )
-    }
-
     hitSlime(id, bossDamage) {
-        this.animateBossAttack(id);
         this.setState(
             oldState => {
 
@@ -201,6 +193,8 @@ class App extends React.Component {
                 );
 
                 return {
+                    missileTargetID: id,
+                    isBossAttacking: true,
                     slimes: updatedSlimes.filter((slime) => {
                         return slime.hp > 0
                     }),
@@ -261,13 +255,13 @@ class App extends React.Component {
             <div className="App">
                 <div className="border">
                     {
-                        this.state.isBossAttacking
+                        this.state.missileTargetID
                         &&
                         <BossMissile
                             startPoint = {{x: 900, y: 300}}
                             endPoint = {{x: 100, y: 300}}
-                            targetSlime = {this.state.isBossAttacking}
-                            onDestroyed = {() => this.setState({isBossAttacking: undefined})}
+                            targetSlime = {this.state.missileTargetID}
+                            onDestroyed = {() => this.setState({missileTargetID: undefined})}
                         />
                     }
 
@@ -305,6 +299,8 @@ class App extends React.Component {
                             currentHP = {this.state.bossHP}
                             maxHP = {this.maxBossHP}
                             onClick = {() => this.hitBoss()}
+                            isBossAttacking = {this.state.isBossAttacking}
+                            stopAnimation = {() => this.setState({isBossAttacking: false})}
                         />
                     }
 

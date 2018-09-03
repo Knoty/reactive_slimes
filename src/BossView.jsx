@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const BossView = props => (
     <div className="boss">
-        <button className={props.isBeingHit ? "boss_hit_img" : "boss_img"} title="click to attack" onClick = {props.onClick} />
+        <button className={"boss_img " + props.animationClass} title="click to attack" onClick = {props.onClick} />
         <div className="level_bar_wrapper boss_hp_bar" title="Boss hp">
             <LevelBar
                 current = {props.currentHP}
