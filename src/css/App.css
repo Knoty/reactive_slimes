@@ -277,20 +277,23 @@ p {
 }
 
 .boss_img {
-    width: 603px;
-    height: 572px;
+    position: relative;
+    width: 743px;
+    height: 720px;
     background: url(../img/boss1.png) no-repeat;
     cursor: url("../img/attack.png"), pointer;
 }
 
 .boss .was_hit {
-    width: 603px;
-    height: 572px;
+    width: 743px;
+    height: 720px;
     background: url(../img/boss_hit.png) no-repeat;
     animation: sprite 0.8s steps(19);
 }
 
 .boss .attack {
+    bottom: 159px;
+    right: 215px;
     width: 743px;
     height: 720px;
     background: url(../img/boss_attack.png) no-repeat;
@@ -303,7 +306,7 @@ p {
     background: url(../img/boss_hp_bar.png) no-repeat;
     position: absolute;
     left: 55px;
-    bottom: 205px;
+    top: 335px;
 }
 
 .boss_hp_bar .level_bar_value {
