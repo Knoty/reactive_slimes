@@ -25,6 +25,7 @@ p {
     font-size: 19px;
     font-weight: bold;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .border {
