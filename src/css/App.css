@@ -216,6 +216,8 @@ p {
 }
 
 .slime_img.was_hit {
+    bottom: 65px;
+    right: 10px;
     width: 151px;
     height: 176px;
     background: url(../img/slime_hit.png);
@@ -235,8 +237,6 @@ p {
     height: 105px;
     width: 103px;
     background: url(../img/inured_pink_slime.png) no-repeat;
-    -webkit-transition: background-image 0.5s ease-in-out;
-    transition: background-image 0.5s ease-in-out;
     cursor: url("../img/heal.png"), cell;
 }
 
