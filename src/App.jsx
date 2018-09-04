@@ -252,8 +252,8 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="App">
-                <div className="border">
+            <div className = "App">
+                <div className = "border">
                     {
                         this.state.missileTargetID
                         &&
@@ -269,8 +269,8 @@ class App extends React.Component {
                         this.state.bossHP <= 0
                         &&
                         <div
-                            className="win_screen"
-                            title="Поздравляем! Вы одержали победу! Нажмите, чтобы попробовать еще раз."
+                            className = "win_screen"
+                            title = "Поздравляем! Вы одержали победу! Нажмите, чтобы попробовать еще раз."
                             onClick = {() => window.location.reload()}
                         />
                     }
@@ -279,8 +279,8 @@ class App extends React.Component {
                         this.state.slimes.length <= 0
                         &&
                         <div
-                            className="lose_screen"
-                            title="Поражение! Вы проиграли. Нажмите, чтобы попробовать еще раз."
+                            className = "lose_screen"
+                            title = "Поражение! Вы проиграли. Нажмите, чтобы попробовать еще раз."
                             onClick = {() => window.location.reload()}
                         />
                     }
@@ -313,9 +313,9 @@ class App extends React.Component {
                         onClick = {() => this.createSlime()}
                     />
 
-                    <div className="level_bar_wrapper slimes_quantity_bar" title="slimes quantity & power">
+                    <div className = "level_bar_wrapper slimes_quantity_bar" title = "slimes quantity & power">
                         <div
-                            className={`level_bar_label slimes_quantity_label ${this.getSlimesQuantity()}`}
+                            className = {`level_bar_label slimes_quantity_label ${this.getSlimesQuantity()}`}
                         />
                         <LevelBar
                             current = {this.state.slimes.length}
@@ -323,9 +323,9 @@ class App extends React.Component {
                         />
                     </div>
 
-                    <div className="level_bar_wrapper resources_bar" title="resource">
+                    <div className = "level_bar_wrapper resources_bar" title = "resource">
                         <div
-                            className={`level_bar_label resource_label ${(this.state.resourceAmount > 0)
+                            className = {`level_bar_label resource_label ${(this.state.resourceAmount > 0)
                                 ? 'full_resource_label'
                                 : 'resource_depleted_label'}`}
                         />
