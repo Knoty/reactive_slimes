@@ -209,12 +209,13 @@ p {
 }
 
 .slime_img {
+    position: relative;
     height: 105px;
     width: 103px;
     background: url(../img/pink_slime.png) no-repeat;
 }
 
-.slime .slime_img.was_hit {
+.slime_img.was_hit {
     width: 151px;
     height: 176px;
     background: url(../img/slime_hit.png);
@@ -222,6 +223,8 @@ p {
 }
 
 .slime_img.was_healed {
+    bottom: 54px;
+    right: 63px;
     width: 209px;
     height: 209px;
     background: url(../img/slime_healed.png);
@@ -247,8 +250,8 @@ p {
 .slime_hp_bar {
     height: 25px;
     width: 105px;
-    position: relative;
-    bottom: 10px;
+    position: absolute;
+    top: 100px;
     background: url(../img/slime_hp_bar.png) no-repeat;
 }
 
