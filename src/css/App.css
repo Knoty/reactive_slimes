@@ -278,15 +278,17 @@ p {
 
 .boss_img {
     position: relative;
-    width: 743px;
-    height: 720px;
+    width: 386px;
+    height: 332px;
     background: url(../img/boss1.png) no-repeat;
     cursor: url("../img/attack.png"), pointer;
 }
 
 .boss .was_hit {
-    width: 743px;
-    height: 720px;
+    bottom: 35px;
+    right: 58px;
+    width: 603px;
+    height: 572px;
     background: url(../img/boss_hit.png) no-repeat;
     animation: sprite 0.8s steps(19);
 }
