@@ -18,7 +18,7 @@ class DefaultBoss extends Component {
                     this.props.stopAnimation();
                     setTimeout(
                         () => {this.setState({animationStatus: ""})},
-                        500
+                        1200
                     );
                 }
             );
