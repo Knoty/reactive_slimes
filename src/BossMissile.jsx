@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import BossMissileView from "./BossMissileView";
 
 class BossMissile extends Component {
     constructor(props) {
@@ -7,8 +8,8 @@ class BossMissile extends Component {
 
         this.state = {
             isVisible: false,
-            x: props.startPoint.x,
-            y: props.startPoint.y
+            xPosition: props.startPoint.x,
+            yPosition: props.startPoint.y
         };
 
         setTimeout(
@@ -18,34 +19,35 @@ class BossMissile extends Component {
 
         setTimeout(
             props.onDestroyed,
-            4000
+            1000
         )
     }
 
     move() {
         this.setState({
             isVisible: true,
-            x: this.props.endPoint.x,
-            y: this.props.endPoint.y
+            xPosition: this.props.endPoint.x,
+            yPosition: this.props.endPoint.y
         })
     }
 
     render() {
         return(
             <div
-                style={
+                className = "missile_wrapper"
+                style = {
                     {
-                        position: "absolute",
-                        left: this.state.x + "px",
-                        top: this.state.y + "px",
-                        width: "150px",
-                        height: "30px",
-                        backgroundColor: "darkviolet",
-                        opacity: this.state.isVisible ? 1 : 0,
-                        transition: "left linear 4s, top linear 4s"
+                        left: this.state.xPosition + "px",
+                        top: this.state.yPosition + "px"
                     }
                 }
-            />
+            >
+                {
+                    this.state.isVisible
+                    &&
+                    <BossMissileView />
+                }
+            </div>
         )
     }
 }

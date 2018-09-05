@@ -330,3 +330,14 @@ p {
     position: relative;
     bottom: 20px;
 }
+
+.missile_wrapper {
+    position: absolute;
+    transition: left linear 1s, top linear 1s
+}
+
+.missile_img {
+    width: 116px;
+    height: 40px;
+    background: url(../img/missile.png);
+}
