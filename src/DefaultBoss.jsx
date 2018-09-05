@@ -3,6 +3,9 @@ import BossView from './BossView.jsx';
 import PropTypes from 'prop-types';
 
 class DefaultBoss extends Component {
+    bossWasHitAnimationDelay = 800;
+    bossAttackAnimationDelay = 1200;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -11,27 +14,27 @@ class DefaultBoss extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.isBossAttacking && this.state.animationStatus === "") {
-            this.setState(
-                {animationStatus: "attack"},
-                () => {
-                    this.props.stopAnimation();
-                    setTimeout(
-                        () => {this.setState({animationStatus: ""})},
-                        1200
-                    );
-                }
-            );
-        } else if (prevProps.currentHP > this.props.currentHP) {
+         if (prevProps.currentHP > this.props.currentHP) {
             this.setState(
                 {animationStatus: "was_hit"},
                 () => {
                     setTimeout(
                         () => this.setState({animationStatus: ""}),
-                        800
+                        this.bossWasHitAnimationDelay
                     )
                 }
             )
+        } else if (this.props.isBossAttacking && this.state.animationStatus === "") {
+             this.setState(
+                {animationStatus: "attack"},
+                () => {
+                    this.props.stopAnimation();
+                    setTimeout(
+                        () => {this.setState({animationStatus: ""})},
+                        this.bossAttackAnimationDelay
+                    );
+                }
+            );
         }
     }
 
