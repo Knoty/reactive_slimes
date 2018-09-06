@@ -3,8 +3,12 @@ import './css/StartScreen.css';
 import PropTypes from 'prop-types';
 
 const StartScreen = props => (
-    <div className="start_screen">
-        <button className="start_button" autoFocus onClick={props.onClick} />
+    <div className = 'start_screen'>
+        <button
+            autoFocus
+            className = 'start_button'
+            onClick = {props.onClick}
+        />
     </div>
 );
 

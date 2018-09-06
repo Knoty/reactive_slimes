@@ -347,9 +347,7 @@ class App extends React.Component {
                     />
 
                     <div className = 'level_bar_wrapper slimes_quantity_bar' title = 'slimes quantity & power'>
-                        <div
-                            className = {`level_bar_label slimes_quantity_label ${this.getSlimesQuantity()}`}
-                        />
+                        <div className = {`level_bar_label slimes_quantity_label ${this.getSlimesQuantity()}`} />
                         <LevelBar
                             current = {this.state.slimes.length}
                             max = {this.maxSlimesQuantity}

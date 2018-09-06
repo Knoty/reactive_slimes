@@ -3,12 +3,12 @@ import DefaultSlime from './DefaultSlime.jsx';
 import PropTypes from 'prop-types';
 
 const SlimesGroup = ({ slimes, healPrice, healSlime, places }) => (
-    <div className="slimes_group">
+    <div className = 'slimes_group'>
         {
             slimes.map(
                 (slime) => (
                     <DefaultSlime
-                        className={"slime place_" + slime.place}
+                        className = {'slime place_' + slime.place}
                         key = {slime.id}
                         {...slime}
                         healPrice = {healPrice}

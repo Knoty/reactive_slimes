@@ -34,11 +34,11 @@ class BossMissile extends Component {
     render() {
         return(
             <div
-                className = "missile_wrapper"
+                className = 'missile_wrapper'
                 style = {
                     {
-                        left: this.state.xPosition + "px",
-                        top: this.state.yPosition + "px"
+                        left: this.state.xPosition + 'px',
+                        top: this.state.yPosition + 'px'
                     }
                 }
             >

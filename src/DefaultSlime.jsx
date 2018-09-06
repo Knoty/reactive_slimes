@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import SlimeView from './SlimeView.jsx';
+import PropTypes from 'prop-types';
 
 class DefaultSlime extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            animationStatus: ""
+            animationStatus: ''
         }
     }
 
@@ -19,10 +20,10 @@ class DefaultSlime extends Component {
         } else if (prevProps.hp < this.props.hp) {
             console.log('slime heal animation');
             this.setState(
-                {animationStatus: "was_healed"},
+                {animationStatus: 'was_healed'},
                 () => {
                     setTimeout(
-                        () => this.setState({animationStatus: ""}),
+                        () => this.setState({animationStatus: ''}),
                         1000
                     )
                 }
@@ -36,7 +37,7 @@ class DefaultSlime extends Component {
         } else if (this.props.hp <= 0) {
             console.log('slime die animation');
             this.setState(
-                {animationStatus: "dying"},
+                {animationStatus: 'dying'},
                 () => {
                     setTimeout(
                         () => this.setState({animationStatus: ""}),
@@ -49,10 +50,10 @@ class DefaultSlime extends Component {
 
     hitAnimation() {
         this.setState(
-            {animationStatus: "was_hit"},
+            {animationStatus: 'was_hit'},
             () => {
                 setTimeout(
-                    () => this.setState({animationStatus: ""}),
+                    () => this.setState({animationStatus: ''}),
                     500
                 )
             }
@@ -61,10 +62,10 @@ class DefaultSlime extends Component {
 
     creationAnimation() {
         this.setState(
-            {animationStatus: "was_created"},
+            {animationStatus: 'was_created'},
             () => {
                 setTimeout(
-                    () => this.setState({animationStatus: ""}),
+                    () => this.setState({animationStatus: ''}),
                     5000
                 )
             }
@@ -80,5 +81,10 @@ class DefaultSlime extends Component {
         )
     }
 }
+
+DefaultSlime.propTypes = {
+    hp: PropTypes.number.isRequired,
+    maxHP: PropTypes.number.isRequired
+};
 
 export default DefaultSlime;

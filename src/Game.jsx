@@ -22,7 +22,9 @@ class Game extends Component {
 
     render() {
         return (
-            this.state.buttonWasClicked ?  <App /> : <StartScreen onClick = {() => {this.clickStartButton()}} />
+            this.state.buttonWasClicked
+                ? <App />
+                : <StartScreen onClick = {() => {this.clickStartButton()}} />
         )
     }
 }

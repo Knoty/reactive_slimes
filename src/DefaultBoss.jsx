@@ -14,7 +14,7 @@ class DefaultBoss extends Component {
     }
 
     componentDidUpdate(prevProps) {
-         if (prevProps.currentHP > this.props.currentHP) {
+        if (prevProps.currentHP > this.props.currentHP) {
             this.setState(
                 {animationStatus: 'was_hit'},
                 () => {
@@ -25,7 +25,7 @@ class DefaultBoss extends Component {
                 }
             )
         } else if (this.props.isBossAttacking && this.state.animationStatus === '') {
-             this.setState(
+            this.setState(
                 {animationStatus: 'attack'},
                 () => {
                     this.props.stopAnimation();
