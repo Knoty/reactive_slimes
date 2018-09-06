@@ -303,7 +303,7 @@ class App extends React.Component {
                         &&
                         <div
                             className = 'win_screen'
-                            title = 'Поздравляем! Вы одержали победу! Нажмите, чтобы попробовать еще раз.'
+                            title = 'Congratulations! You won! Click to try again.'
                             onClick = {() => window.location.reload()}
                         />
                     }
@@ -313,7 +313,7 @@ class App extends React.Component {
                         &&
                         <div
                             className = 'lose_screen'
-                            title = 'Поражение! Вы проиграли. Нажмите, чтобы попробовать еще раз.'
+                            title = 'Defeat! You lost. Click to try again.'
                             onClick = {() => window.location.reload()}
                         />
                     }
@@ -369,7 +369,7 @@ class App extends React.Component {
                     {
                         !this.state.isUserHasControl
                         &&
-                        <div className = 'disable_actions' title = 'wait for results'/>
+                        <div className = 'disable_actions' title = 'wait for results' />
                     }
 
                 </div>
