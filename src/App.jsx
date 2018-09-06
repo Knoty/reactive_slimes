@@ -369,7 +369,7 @@ class App extends React.Component {
                     {
                         !this.state.isUserHasControl
                         &&
-                        <div className = 'disable_actions' />
+                        <div className = 'disable_actions' title = 'wait for results'/>
                     }
 
                 </div>
