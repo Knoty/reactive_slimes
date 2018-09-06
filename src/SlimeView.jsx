@@ -22,7 +22,7 @@ const SlimeView = props => (
                 }`
             }
             title = {
-                `Slime ${props.name} ${props.id}${(props.hp < props.maxHP) ? `, click to heal for ${props.healPrice}` : ', healthy'}`
+                `Slime ${props.name} #${props.id}${(props.hp < props.maxHP) ? `, click to heal for ${props.healPrice} resources` : ', healthy'}`
             }
             onClick = {
                 (props.hp < props.maxHP)
