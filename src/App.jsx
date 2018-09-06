@@ -28,6 +28,7 @@ class App extends React.Component {
     smallestBossPower = 35;
     highestBossPower = 71; //N.B. highestBossPower = highestBossPower - 1
     maxBossHP = 1000;
+    commonUserControlTakeAwayDelay = 1000;
 
     slimeConstructor(id, placeNumber) {
         const maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
@@ -64,6 +65,7 @@ class App extends React.Component {
                 {left: 475, top: 195, isFree: true},
                 {left: 475, top: 350, isFree: true}
             ],
+            isUserHasControl: true,
             isBossAttacking: false // TODO: this must belong to DefaultBoss component.
         };
     }
@@ -102,8 +104,15 @@ class App extends React.Component {
                     }
                 },
                 () => {
-                    console.log('Вы создали слайма! Маны потрачено: ' + this.createSlimeValue + '.');
-                    this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                    this.setState(
+                        {
+                            isUserHasControl: false
+                        },
+                        () => {
+                            console.log('Вы создали слайма! Маны потрачено: ' + this.createSlimeValue + '.');
+                            this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                        }
+                    )
                 }
             );
         }
@@ -153,7 +162,14 @@ class App extends React.Component {
                 };
             },
             () => {
-                this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                this.setState(
+                    {
+                        isUserHasControl: false
+                    },
+                    () => {
+                        this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                    }
+                )
             }
         );
     }
@@ -207,6 +223,16 @@ class App extends React.Component {
                         }
                     )
                 };
+            },
+            () => {
+                setTimeout(
+                    () => {
+                        this.setState(
+                            {isUserHasControl: true}
+                        )
+                    },
+                    this.commonUserControlTakeAwayDelay
+                )
             }
         );
     }
@@ -227,7 +253,14 @@ class App extends React.Component {
                 }
             },
             () => {
-                this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                this.setState(
+                    {
+                        isUserHasControl: false
+                    },
+                    () => {
+                        this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                    }
+                )
             }
         );
     }
@@ -288,7 +321,7 @@ class App extends React.Component {
                     <SlimeGroup
                         slimes = {this.state.slimes}
                         healPrice = {this.healPrice}
-                        healSlime = {(id) => this.healSlime(id)}
+                        healSlime = {this.state.isUserHasControl ? (id) => this.healSlime(id) : () => {}}
                         places = {this.state.places}
                     />
 
@@ -298,7 +331,7 @@ class App extends React.Component {
                         <DefaultBoss
                             currentHP = {this.state.bossHP}
                             maxHP = {this.maxBossHP}
-                            onClick = {() => this.hitBoss()}
+                            onClick = {this.state.isUserHasControl ? () => this.hitBoss() : () => {}}
                             isBossAttacking = {this.state.isBossAttacking}
                             stopAnimation = {() => this.setState({isBossAttacking: false})}
                         />
@@ -310,7 +343,7 @@ class App extends React.Component {
                             this.state.resourceAmount > this.createSlimeValue
                         }
                         createSlimeValue = {this.createSlimeValue}
-                        onClick = {() => this.createSlime()}
+                        onClick = {this.state.isUserHasControl ? () => this.createSlime() : () => {}}
                     />
 
                     <div className = "level_bar_wrapper slimes_quantity_bar" title = "slimes quantity & power">
