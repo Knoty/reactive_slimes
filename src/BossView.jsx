@@ -17,12 +17,7 @@ const BossView = props => (
 BossView.propTypes = {
     onClick: PropTypes.func.isRequired,
     currentHP: PropTypes.number.isRequired,
-    maxHP: PropTypes.number.isRequired,
-    isBeingHit: PropTypes.bool
-};
-
-BossView.defaultProps = {
-    isBeingHit: false
+    maxHP: PropTypes.number.isRequired
 };
 
 export default BossView;
