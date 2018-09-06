@@ -49,7 +49,7 @@ class DefaultBoss extends Component {
 }
 
 DefaultBoss.propTypes = {
-    isBossAttacking: PropTypes.bool,
+    isBossAttacking: PropTypes.bool.isRequired,
     currentHP: PropTypes.number.isRequired,
     stopAnimation: PropTypes.func.isRequired
 };
