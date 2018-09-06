@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const CreateSlimeButton = props => (
     <button
         className = {`create_slime_button ${(props.active) ? 'active' : ''}`}
-        title = {`click to create new blob for ${props.createSlimeValue}`}
+        title = {`${(props.active) ? `click to create new blob for ${props.createSlimeValue}` : 'slimes creating temporary unavailable'}`}
         onClick = {props.onClick}
     />
 );
