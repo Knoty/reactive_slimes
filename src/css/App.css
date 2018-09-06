@@ -35,6 +35,13 @@ p {
     position: relative;
 }
 
+.disable_actions {
+    height: 720px;
+    width: 1280px;
+    position: relative;
+    cursor: not-allowed;
+}
+
 .win_screen {
     height: 720px;
     width: 1280px;
