@@ -9,28 +9,28 @@ class DefaultBoss extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            animationStatus: ""
+            animationStatus: ''
         }
     }
 
     componentDidUpdate(prevProps) {
          if (prevProps.currentHP > this.props.currentHP) {
             this.setState(
-                {animationStatus: "was_hit"},
+                {animationStatus: 'was_hit'},
                 () => {
                     setTimeout(
-                        () => this.setState({animationStatus: ""}),
+                        () => this.setState({animationStatus: ''}),
                         this.bossWasHitAnimationDelay
                     )
                 }
             )
-        } else if (this.props.isBossAttacking && this.state.animationStatus === "") {
+        } else if (this.props.isBossAttacking && this.state.animationStatus === '') {
              this.setState(
-                {animationStatus: "attack"},
+                {animationStatus: 'attack'},
                 () => {
                     this.props.stopAnimation();
                     setTimeout(
-                        () => {this.setState({animationStatus: ""})},
+                        () => {this.setState({animationStatus: ''})},
                         this.bossAttackAnimationDelay
                     );
                 }
