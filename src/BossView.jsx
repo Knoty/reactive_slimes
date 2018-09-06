@@ -3,9 +3,16 @@ import LevelBar from './LevelBar';
 import PropTypes from 'prop-types';
 
 const BossView = props => (
-    <div className="boss">
-        <button className={"boss_img " + props.animationClass} title="click to attack" onClick = {props.onClick} />
-        <div className="level_bar_wrapper boss_hp_bar" title="Boss hp">
+    <div className = 'boss'>
+        <button
+            className = {'boss_img ' + props.animationClass}
+            title = 'click to attack'
+            onClick = {props.onClick}
+        />
+        <div
+            className = 'level_bar_wrapper boss_hp_bar'
+            title = 'Boss hp'
+        >
             <LevelBar
                 current = {props.currentHP}
                 max = {props.maxHP}
