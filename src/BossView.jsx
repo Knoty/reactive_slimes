@@ -15,6 +15,7 @@ const BossView = props => (
 );
 
 BossView.propTypes = {
+    animationClass: PropTypes.string,
     onClick: PropTypes.func.isRequired,
     currentHP: PropTypes.number.isRequired,
     maxHP: PropTypes.number.isRequired
