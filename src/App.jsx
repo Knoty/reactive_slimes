@@ -29,7 +29,7 @@ class App extends React.Component {
     smallestBossPower = 35;
     highestBossPower = 71; //N.B. highestBossPower = highestBossPower - 1
     playerPowerMultiplier = 1.3;
-    commonUserControlTakeAwayDelay = 1000;
+    commonUserControlTakeAwayDelay = 2800;
 
     slimeConstructor(id, placeNumber) {
         const maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
