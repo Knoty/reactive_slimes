@@ -23,11 +23,12 @@ class App extends React.Component {
     createSlimeValue = 100;
     smallestMaxHP = 80;
     highestMaxHP = 121; //N.B. highestMaxHP = highestMaxHP - 1
-    healAmount = 80;
     healPrice = 5;
+    healAmount = 80;
+    maxBossHP = 1000;
     smallestBossPower = 35;
     highestBossPower = 71; //N.B. highestBossPower = highestBossPower - 1
-    maxBossHP = 1000;
+    playerPowerMultiplier = 1.4;
     commonUserControlTakeAwayDelay = 1000;
 
     slimeConstructor(id, placeNumber) {
@@ -69,6 +70,7 @@ class App extends React.Component {
             isBossAttacking: false // TODO: this must belong to DefaultBoss component.
         };
     }
+
     makeID() {
         return ++this.maxID;
     }
@@ -86,6 +88,10 @@ class App extends React.Component {
 
     getPlayerPower() {
         return 10 * this.state.slimes.length;
+    }
+
+    getPlayerPowerMultiplier() {
+        return this.state.slimes.length === this.maxSlimesQuantity ? this.playerPowerMultiplier : 1;
     }
 
     getBossDamage() {
@@ -246,7 +252,7 @@ class App extends React.Component {
         this.setState(
             oldState => {
 
-                const playerPower = this.getPlayerPower();
+                const playerPower = this.getPlayerPower() * this.getPlayerPowerMultiplier();
                 const newHP = Number(oldState.bossHP) - Number(playerPower);
 
                 if (newHP > 0) {
