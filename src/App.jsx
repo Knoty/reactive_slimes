@@ -392,6 +392,8 @@ class App extends React.Component {
                             maxHP = {this.maxBossHP}
                             onClick = {this.state.isUserHasControl ? () => this.hitBoss() : () => {}}
                             isBossAttacking = {this.state.isBossAttacking}
+                            bossAttackAnimationLength = {this.bossAttackAnimationLength}
+                            bossWasHitAnimationLength = {this.bossWasHitAnimationLength}
                             stopAnimation = {() => this.setState({isBossAttacking: false})}
                         />
                     }

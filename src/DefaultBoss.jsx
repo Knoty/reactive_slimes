@@ -3,8 +3,6 @@ import BossView from './BossView.jsx';
 import PropTypes from 'prop-types';
 
 class DefaultBoss extends Component {
-    bossWasHitAnimationDelay = 800;
-    bossAttackAnimationDelay = 2000;
 
     constructor(props) {
         super(props);
@@ -20,7 +18,7 @@ class DefaultBoss extends Component {
                 () => {
                     setTimeout(
                         () => this.setState({animationStatus: ''}),
-                        this.bossWasHitAnimationDelay
+                        this.props.bossWasHitAnimationLength
                     )
                 }
             )
@@ -33,7 +31,7 @@ class DefaultBoss extends Component {
                             this.props.stopAnimation();
                             setTimeout(
                                 () => this.setState({animationStatus: ''}),
-                                this.bossAttackAnimationDelay
+                                this.props.bossAttackAnimationLength
                             );
                         }
                     );
@@ -56,7 +54,9 @@ class DefaultBoss extends Component {
 DefaultBoss.propTypes = {
     isBossAttacking: PropTypes.bool.isRequired,
     currentHP: PropTypes.number.isRequired,
-    stopAnimation: PropTypes.func.isRequired
+    stopAnimation: PropTypes.func.isRequired,
+    bossAttackAnimationLength: PropTypes.number.isRequired,
+    bossWasHitAnimationLength: PropTypes.number.isRequired
 };
 
 export default DefaultBoss;
