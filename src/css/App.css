@@ -133,6 +133,17 @@ p {
     background: url(../img/maximum_slimes_label.png) no-repeat;
 }
 
+.slimes_quantity_bar > .player_power_multiplier {
+    position: relative;
+    top: 30px;
+    left: 335px;
+    font-family: fantasy;
+    font-style: italic;
+    font-size: 150%;
+    color: yellow;
+    z-index: 1;
+}
+
 .resources_bar {
     height: 47px;
     width: 337px;

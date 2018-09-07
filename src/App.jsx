@@ -28,7 +28,7 @@ class App extends React.Component {
     maxBossHP = 1000;
     smallestBossPower = 35;
     highestBossPower = 71; //N.B. highestBossPower = highestBossPower - 1
-    playerPowerMultiplier = 1.4;
+    playerPowerMultiplier = 1.3;
     commonUserControlTakeAwayDelay = 1000;
 
     slimeConstructor(id, placeNumber) {
@@ -91,11 +91,15 @@ class App extends React.Component {
     }
 
     getPlayerPowerMultiplier() {
-        return this.state.slimes.length === this.maxSlimesQuantity ? this.playerPowerMultiplier : 1;
+        return this.isSlimesQuantityMaximum() ? this.playerPowerMultiplier : 1;
     }
 
     getBossDamage() {
         return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
+    }
+
+    isSlimesQuantityMaximum() {
+        return this.state.slimes.length === this.maxSlimesQuantity
     }
 
     createSlime() {
@@ -373,6 +377,13 @@ class App extends React.Component {
                             current = {this.state.slimes.length}
                             max = {this.maxSlimesQuantity}
                         />
+                        {
+                            this.isSlimesQuantityMaximum()
+                            &&
+                            <p className = 'player_power_multiplier'>
+                                X {this.playerPowerMultiplier}
+                            </p>
+                        }
                     </div>
 
                     <div className = 'level_bar_wrapper resources_bar' title = 'resource'>
