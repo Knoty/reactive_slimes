@@ -354,7 +354,7 @@ class App extends React.Component {
                     <CreateSlimeButton
                         active = {
                             this.state.slimes.length < this.maxSlimesQuantity &&
-                            this.state.resourceAmount > this.createSlimeValue
+                            this.state.resourceAmount >= this.createSlimeValue
                         }
                         createSlimeValue = {this.createSlimeValue}
                         onClick = {this.state.isUserHasControl ? () => this.createSlime() : () => {}}
