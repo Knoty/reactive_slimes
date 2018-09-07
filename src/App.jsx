@@ -29,7 +29,8 @@ class App extends React.Component {
     smallestBossPower = 35;
     highestBossPower = 71; //N.B. highestBossPower = highestBossPower - 1
     playerPowerMultiplier = 1.3;
-    commonUserControlTakeAwayDelay = 2800;
+    bossWasHitAnimationLength = 800;
+    bossAttackAnimationLength = 2000;
 
     slimeConstructor(id, placeNumber) {
         const maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
@@ -67,7 +68,9 @@ class App extends React.Component {
                 {left: 475, top: 350, isFree: true}
             ],
             isUserHasControl: true,
-            isBossAttacking: false // TODO: this must belong to DefaultBoss component.
+            isBossAttacking: false, // TODO: this must belong to DefaultBoss component.
+            isMissileExist: false,
+            isBossWasHit: false
         };
     }
 
@@ -96,6 +99,12 @@ class App extends React.Component {
 
     getBossDamage() {
         return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
+    }
+
+    getGeneralAnimationLength() {
+        return this.state.isBossWasHit
+            ? (this.bossAttackAnimationLength + this.bossWasHitAnimationLength)
+            : this.bossAttackAnimationLength;
     }
 
     isSlimesQuantityMaximum() {
@@ -194,6 +203,7 @@ class App extends React.Component {
     }
 
     hitSlime(id, bossDamage) {
+        this.createMissile();
         this.setState(
             oldState => {
 
@@ -243,10 +253,12 @@ class App extends React.Component {
                 setTimeout(
                     () => {
                         this.setState(
-                            {isUserHasControl: true}
+                            {
+                                isUserHasControl: true
+                            }
                         )
                     },
-                    this.commonUserControlTakeAwayDelay
+                    this.getGeneralAnimationLength()
                 )
             }
         );
@@ -276,12 +288,35 @@ class App extends React.Component {
                         this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
                     }
                 )
-            }
+            },
+            setTimeout(
+                () => {
+                    this.setState(
+                        {
+                            isBossWasHit: true
+                        }
+                    )
+                },
+                this.bossWasHitAnimationLength
+            )
         );
     }
 
+    createMissile() {
+        setTimeout(
+            () => this.setState(
+                {
+                    isMissileExist: true
+                }
+            ),
+            this.getGeneralAnimationLength() - 300
+        )
+    }
+
     getMissileEndPoint() {
+
         const targetSlime = this.getSlimeByID(this.state.missileTargetID);
+
         if (!targetSlime) {
             console.error('No valid target for missile');
             return {left: 100, top: 300};
@@ -312,13 +347,13 @@ class App extends React.Component {
             <div className = 'App'>
                 <div className = 'border'>
                     {
-                        this.state.missileTargetID
+                        this.state.isMissileExist
                         &&
                         <BossMissile
                             startPoint = {{x: 900, y: 300}}
                             endPoint = {this.getMissileEndPoint()}
                             targetSlime = {this.state.missileTargetID}
-                            onDestroyed = {() => this.setState({missileTargetID: undefined})}
+                            onDestroyed = {() => this.setState({isMissileExist: false})}
                         />
                     }
 
