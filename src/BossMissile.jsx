@@ -26,8 +26,8 @@ class BossMissile extends Component {
     move() {
         this.setState({
             isVisible: true,
-            xPosition: this.props.endPoint.x,
-            yPosition: this.props.endPoint.y
+            xPosition: this.props.endPoint.left,
+            yPosition: this.props.endPoint.top
         })
     }
 
@@ -54,7 +54,7 @@ class BossMissile extends Component {
 
 BossMissile.propTypes = {
     startPoint: PropTypes.shape({x: PropTypes.number, y: PropTypes.number}).isRequired,
-    endPoint: PropTypes.shape({x: PropTypes.number, y: PropTypes.number}).isRequired,
+    endPoint: PropTypes.shape({left: PropTypes.number, top: PropTypes.number}).isRequired,
     onDestroyed: PropTypes.func.isRequired
 };
 

@@ -78,6 +78,12 @@ class App extends React.Component {
         return ++this.maxID;
     }
 
+    getSlimeByID(id) {
+        return this.state.slimes.find(
+            slime => slime.id === id
+        )
+    }
+
     getRandomSlimeID() {
         const slimeNumber = Math.floor(Math.random() * this.state.slimes.length);
         return this.state.slimes[slimeNumber].id
@@ -265,6 +271,15 @@ class App extends React.Component {
         );
     }
 
+    getMissileEndPoint() {
+        const targetSlime = this.getSlimeByID(this.state.missileTargetID);
+        if (!targetSlime) {
+            console.error('No valid target for missile');
+            return {left: 100, top: 300};
+        }
+        return this.state.places[targetSlime.place];
+    }
+
     getSlimesQuantity() {
 
         const slimes_alive_ratio = this.state.slimes.length / this.maxSlimesQuantity * 100;
@@ -292,7 +307,7 @@ class App extends React.Component {
                         &&
                         <BossMissile
                             startPoint = {{x: 900, y: 300}}
-                            endPoint = {{x: 100, y: 300}}
+                            endPoint = {this.getMissileEndPoint()}
                             targetSlime = {this.state.missileTargetID}
                             onDestroyed = {() => this.setState({missileTargetID: undefined})}
                         />
