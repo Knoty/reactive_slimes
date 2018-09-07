@@ -310,7 +310,7 @@ p {
     width: 743px;
     height: 720px;
     background: url(../img/boss_attack.png) no-repeat;
-    animation: sprite 1.2s steps(11);
+    animation: sprite 2s steps(11);
 }
 
 .boss_hp_bar {

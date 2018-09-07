@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class DefaultBoss extends Component {
     bossWasHitAnimationDelay = 800;
-    bossAttackAnimationDelay = 1200;
+    bossAttackAnimationDelay = 2000;
 
     constructor(props) {
         super(props);
