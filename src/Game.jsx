@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import App from './App';
-import StartScreen from './StartScreen';
+import StartScreen from './StartScreen.jsx';
 
 class Game extends Component {
 
