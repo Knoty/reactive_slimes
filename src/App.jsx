@@ -69,11 +69,6 @@ class App extends React.Component {
             isBossAttacking: false // TODO: this must belong to DefaultBoss component.
         };
     }
-
-    getPlayerPower() {
-        return 10 * this.state.slimes.length;
-    }
-
     makeID() {
         return ++this.maxID;
     }
@@ -87,6 +82,14 @@ class App extends React.Component {
     getRandomSlimeID() {
         const slimeNumber = Math.floor(Math.random() * this.state.slimes.length);
         return this.state.slimes[slimeNumber].id
+    }
+
+    getPlayerPower() {
+        return 10 * this.state.slimes.length;
+    }
+
+    getBossDamage() {
+        return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
     }
 
     createSlime() {
@@ -178,10 +181,6 @@ class App extends React.Component {
                 )
             }
         );
-    }
-
-    getBossDamage() {
-        return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
     }
 
     hitSlime(id, bossDamage) {
