@@ -25,15 +25,20 @@ class DefaultBoss extends Component {
                 }
             )
         } else if (this.props.isBossAttacking && this.state.animationStatus === '') {
-            this.setState(
-                {animationStatus: 'attack'},
+            setTimeout(
                 () => {
-                    this.props.stopAnimation();
-                    setTimeout(
-                        () => {this.setState({animationStatus: ''})},
-                        this.bossAttackAnimationDelay
+                    this.setState(
+                        {animationStatus: 'attack'},
+                        () => {
+                            this.props.stopAnimation();
+                            setTimeout(
+                                () => this.setState({animationStatus: ''}),
+                                this.bossAttackAnimationDelay
+                            );
+                        }
                     );
-                }
+                },
+                20 //Necessary delay for browser animation memory cleanup.
             );
         }
     }
