@@ -15,6 +15,51 @@ function getEmptyPlaceNumber(places) {
     return -1
 }
 
+function createStateUpdaterHealingSlime(id) {
+    return (
+        function (oldState) {
+            const updatedResourceAmount = oldState.resourceAmount - this.healPrice;
+            if (updatedResourceAmount <= 0) {
+                console.log('Недостаточно маны для лечения');
+                return oldState;
+            }
+
+            const healSlimeByID = (oldSlime) => {
+                let newHP = Number(oldSlime.hp) + Number(this.healAmount);
+                if (newHP > oldSlime.maxHP) {
+                    newHP = oldSlime.maxHP
+                }
+                console.log(
+                    'Слайм №' + id + ' с ' + oldSlime.hp + ' хп был вылечен на ' + this.healAmount
+                    + ', и теперь имеет ' + newHP + ' из ' + oldSlime.maxHP + '.'
+                );
+                return Object.assign({}, oldSlime, {hp: newHP});
+            };
+
+            const targetSlimes = oldState.slimes.filter(
+                slime => slime.id === id
+            );
+            if (!targetSlimes.length) {
+                throw new Error('Вы лечите несуществующего слайма ' + id)
+            }
+            const targetSlime = targetSlimes[0];
+            if (targetSlime.hp === targetSlime.maxHP) {
+                console.log('Слайм №' + id + ' полностью здоров!');
+                return oldState;
+            }
+            const updatedSlime = healSlimeByID(targetSlime);
+            const updatedSlimes = oldState.slimes.map(
+                slime => slime.id === targetSlime.id ? updatedSlime : slime
+            );
+
+            return {
+                slimes: updatedSlimes,
+                resourceAmount: updatedResourceAmount
+            };
+        }
+    ).bind(this);
+}
+
 class App extends React.Component {
     maxID = 0;
     beginningSlimesAmount = 2;
@@ -32,6 +77,7 @@ class App extends React.Component {
     bossWasHitAnimationLength = 800;
     bossAttackAnimationLength = 2000;
     missileFlyTime = 1000;
+    slimeCreationAnimationLength = 10;
 
     slimeConstructor(id, placeNumber) {
         const maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
@@ -142,8 +188,13 @@ class App extends React.Component {
                             isUserHasControl: false
                         },
                         () => {
-                            console.log('Вы создали слайма! Маны потрачено: ' + this.createSlimeValue + '.');
-                            this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                            setTimeout(
+                                () => {
+                                    console.log('Вы создали слайма! Маны потрачено: ' + this.createSlimeValue + '.');
+                                    this.hitSlime(this.getRandomSlimeID(), this.getBossDamage());
+                                },
+                                this.slimeCreationAnimationLength
+                            )
                         }
                     )
                 }
@@ -153,54 +204,19 @@ class App extends React.Component {
 
     healSlime(id) {
         this.setState(
-            oldState => {
-
-                const updatedResourceAmount = oldState.resourceAmount - this.healPrice;
-                if (updatedResourceAmount <= 0) {
-                    console.log('Недостаточно маны для лечения');
-                    return oldState;
-                }
-
-                const healSlimeByID = (oldSlime) => {
-                    let newHP = Number(oldSlime.hp) + Number(this.healAmount);
-                    if (newHP > oldSlime.maxHP) {
-                        newHP = oldSlime.maxHP
-                    }
-                    console.log(
-                        'Слайм №' + id + ' с ' + oldSlime.hp + ' хп был вылечен на ' + this.healAmount
-                        + ', и теперь имеет ' + newHP + ' из ' + oldSlime.maxHP + '.'
-                    );
-                    return Object.assign({}, oldSlime, {hp: newHP});
-                };
-
-                const targetSlimes = oldState.slimes.filter(
-                    slime => slime.id === id
-                );
-                if (!targetSlimes.length) {
-                    throw new Error('Вы лечите несуществующего слайма ' + id)
-                }
-                const targetSlime = targetSlimes[0];
-                if (targetSlime.hp === targetSlime.maxHP) {
-                    console.log('Слайм №' + id + ' полностью здоров!');
-                    return oldState;
-                }
-                const updatedSlime = healSlimeByID(targetSlime);
-                const updatedSlimes = oldState.slimes.map(
-                    slime => slime.id === targetSlime.id ? updatedSlime : slime
-                );
-
-                return {
-                    slimes: updatedSlimes,
-                    resourceAmount: updatedResourceAmount
-                };
-            },
+            createStateUpdaterHealingSlime.call(this, id),
             () => {
                 this.setState(
                     {
                         isUserHasControl: false
                     },
                     () => {
-                        this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                        setTimeout(
+                            () => {
+                                this.hitSlime(this.getRandomSlimeID(), this.getBossDamage());
+                            },
+                            this.getGeneralAnimationLength()
+                        )
                     }
                 )
             }
@@ -208,65 +224,76 @@ class App extends React.Component {
     }
 
     hitSlime(id, bossDamage) {
-        this.createMissile();
         this.setState(
-            oldState => {
-
-                const hitSlimeByID = (oldSlime) => {
-                    if (id !== oldSlime.id)
-                        return oldSlime;
-                    let newHP = Number(oldSlime.hp) - bossDamage;
-                    console.log(
-                        'В ответ босс нанес ' + bossDamage + ' повреждений слайму №' + id + ' c ' + oldSlime.hp
-                        + ' хп, и теперь у него ' + newHP + ' хп.'
-                    );
-                    if (newHP <= 0) {
-                        console.log('Слайм №' + oldSlime.id + ' погиб. T_T');
-                    }
-                    return Object.assign({}, oldSlime, {hp: newHP});
-                };
-
-                let updatedSlimes = oldState.slimes.map(hitSlimeByID);
-
-                let deadSlimePlaces = updatedSlimes.reduce(
-                    (places, slime) => {
-                        if (slime.hp <= 0) {
-                            places.push(slime.place);
-                        }
-                        return places
-                    },
-                    []
-                );
-
-                return {
-                    missileTargetID: id,
-                    isBossAttacking: true,
-                    slimes: updatedSlimes.filter((slime) => {
-                        return slime.hp > 0
-                    }),
-                    places: oldState.places.map(
-                        function (place, index) {
-                            if (deadSlimePlaces.includes(index)) {
-                                return Object.assign({}, place, {isFree: true})
-                            }
-                            return place
-                        }
-                    )
-                };
+            {
+                isBossAttacking: true,
+                missileTargetID: id
             },
             () => {
                 setTimeout(
                     () => {
                         this.setState(
-                            {
-                                isUserHasControl: true
+                            oldState => {
+
+                                const hitSlimeByID = (oldSlime) => {
+                                    if (id !== oldSlime.id)
+                                        return oldSlime;
+                                    let newHP = Number(oldSlime.hp) - bossDamage;
+                                    console.log(
+                                        'В ответ босс нанес ' + bossDamage + ' повреждений слайму №' + id + ' c ' + oldSlime.hp
+                                        + ' хп, и теперь у него ' + newHP + ' хп.'
+                                    );
+                                    if (newHP <= 0) {
+                                        console.log('Слайм №' + oldSlime.id + ' погиб. T_T');
+                                    }
+                                    return Object.assign({}, oldSlime, {hp: newHP});
+                                };
+
+                                let updatedSlimes = oldState.slimes.map(hitSlimeByID);
+
+                                let deadSlimePlaces = updatedSlimes.reduce(
+                                    (places, slime) => {
+                                        if (slime.hp <= 0) {
+                                            places.push(slime.place);
+                                        }
+                                        return places
+                                    },
+                                    []
+                                );
+
+                                return {
+                                    slimes: updatedSlimes.filter((slime) => {
+                                        return slime.hp > 0
+                                    }),
+                                    places: oldState.places.map(
+                                        function (place, index) {
+                                            if (deadSlimePlaces.includes(index)) {
+                                                return Object.assign({}, place, {isFree: true})
+                                            }
+                                            return place
+                                        }
+                                    )
+                                };
+                            },
+                            () => {
+                                setTimeout(
+                                    () => {
+                                        this.setState(
+                                            {
+                                                isUserHasControl: true
+                                            }
+                                        )
+                                    },
+                                    this.getGeneralControlDisableLength()
+                                )
                             }
                         )
                     },
-                    this.getGeneralControlDisableLength()
-                )
+                    +this.getGeneralAnimationLength() + (this.state.isBossWasHit ? 20 : -300) + 1000
+                );
             }
         );
+        this.createMissile();
     }
 
     hitBoss() {
@@ -290,20 +317,22 @@ class App extends React.Component {
                         isUserHasControl: false
                     },
                     () => {
-                        this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                        setTimeout(
+                            () => {
+                                this.setState(
+                                    {
+                                        isBossWasHit: true
+                                    },
+                                    () => {
+                                        this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
+                                    }
+                                );
+                            },
+                            this.bossWasHitAnimationLength
+                        );
                     }
                 )
-            },
-            setTimeout(
-                () => {
-                    this.setState(
-                        {
-                            isBossWasHit: true
-                        }
-                    )
-                },
-                this.bossWasHitAnimationLength
-            )
+            }
         );
     }
 
