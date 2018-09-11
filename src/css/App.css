@@ -359,3 +359,10 @@ p {
     height: 40px;
     background: url(../img/missile.png);
 }
+
+/* Preload heavy images */
+
+body:after {
+    content: url(../img/boss_attack.png) url(../img/boss_hit.png) url(../img/missile.png);
+    display: none;
+}
