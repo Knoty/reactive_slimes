@@ -308,14 +308,25 @@ class App extends React.Component {
     }
 
     createMissile() {
-        setTimeout(
-            () => this.setState(
-                {
-                    isMissileExist: true
-                }
-            ),
-            this.getGeneralAnimationLength() + 20
-        )
+        if (!this.state.isBossWasHit) {
+            setTimeout(
+                () => this.setState(
+                    {
+                        isMissileExist: true
+                    }
+                ),
+                this.getGeneralAnimationLength() - 300
+            )
+        } else {
+            setTimeout(
+                () => this.setState(
+                    {
+                        isMissileExist: true
+                    }
+                ),
+                this.getGeneralAnimationLength() + 20
+            )
+        }
     }
 
     getMissileEndPoint() {
