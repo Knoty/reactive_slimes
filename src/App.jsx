@@ -75,7 +75,7 @@ class App extends React.Component {
     }
 
     makeID() {
-        return ++this.maxID;
+        return ++this.maxID
     }
 
     getSlimeByID(id) {
@@ -90,21 +90,21 @@ class App extends React.Component {
     }
 
     getPlayerPower() {
-        return 10 * this.state.slimes.length;
+        return 10 * this.state.slimes.length
     }
 
     getPlayerPowerMultiplier() {
-        return this.isSlimesQuantityMaximum() ? this.playerPowerMultiplier : 1;
+        return this.isSlimesQuantityMaximum() ? this.playerPowerMultiplier : 1
     }
 
     getBossDamage() {
-        return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower);
+        return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower)
     }
 
     getGeneralAnimationLength() {
         return this.state.isBossWasHit
             ? (this.bossAttackAnimationLength + this.bossWasHitAnimationLength)
-            : this.bossAttackAnimationLength;
+            : this.bossAttackAnimationLength
     }
 
     isSlimesQuantityMaximum() {
