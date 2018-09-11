@@ -17,7 +17,7 @@ class BossMissile extends Component {
             10
         );
 
-        props.onDestroyed
+        props.destroyAfterDelay()
     }
 
     move() {
@@ -52,7 +52,7 @@ class BossMissile extends Component {
 BossMissile.propTypes = {
     startPoint: PropTypes.shape({x: PropTypes.number, y: PropTypes.number}).isRequired,
     endPoint: PropTypes.shape({left: PropTypes.number, top: PropTypes.number}).isRequired,
-    onDestroyed: PropTypes.func.isRequired
+    destroyAfterDelay: PropTypes.func.isRequired
 };
 
 export default BossMissile;
