@@ -31,6 +31,7 @@ class App extends React.Component {
     playerPowerMultiplier = 1.3;
     bossWasHitAnimationLength = 800;
     bossAttackAnimationLength = 2000;
+    missileFlyTime = 1000;
 
     slimeConstructor(id, placeNumber) {
         const maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
@@ -105,6 +106,10 @@ class App extends React.Component {
         return this.state.isBossWasHit
             ? (this.bossAttackAnimationLength + this.bossWasHitAnimationLength)
             : this.bossAttackAnimationLength
+    }
+
+    getGeneralControlDisableLength() {
+        return this.getGeneralAnimationLength() + this.missileFlyTime
     }
 
     isSlimesQuantityMaximum() {
@@ -258,7 +263,7 @@ class App extends React.Component {
                             }
                         )
                     },
-                    this.getGeneralAnimationLength()
+                    this.getGeneralControlDisableLength()
                 )
             }
         );
@@ -309,7 +314,7 @@ class App extends React.Component {
                     isMissileExist: true
                 }
             ),
-            this.getGeneralAnimationLength() - 300
+            this.getGeneralAnimationLength()
         )
     }
 
@@ -353,7 +358,12 @@ class App extends React.Component {
                             startPoint = {{x: 900, y: 300}}
                             endPoint = {this.getMissileEndPoint()}
                             targetSlime = {this.state.missileTargetID}
-                            onDestroyed = {() => this.setState({isMissileExist: false})}
+                            onDestroyed = {
+                                setTimeout(
+                                    () => this.setState({isMissileExist: false}),
+                                    this.missileFlyTime
+                                )
+                            }
                         />
                     }
 

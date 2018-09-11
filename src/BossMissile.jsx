@@ -17,10 +17,7 @@ class BossMissile extends Component {
             10
         );
 
-        setTimeout(
-            props.onDestroyed,
-            1000
-        )
+        props.onDestroyed
     }
 
     move() {
