@@ -314,7 +314,7 @@ class App extends React.Component {
                     isMissileExist: true
                 }
             ),
-            this.getGeneralAnimationLength()
+            this.getGeneralAnimationLength() + 20
         )
     }
 
