@@ -13,7 +13,7 @@ class BossMissile extends Component {
         };
 
         setTimeout(
-            this.move.bind(this),
+            () => this.move(),
             10
         );
 
