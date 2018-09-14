@@ -36,7 +36,7 @@ class DefaultBoss extends Component {
                         }
                     );
                 },
-                20 //Necessary delay for browser animation memory cleanup.
+                60 //Necessary delay for browser animation memory cleanup.
             );
         }
     }
