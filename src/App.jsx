@@ -74,10 +74,10 @@ class App extends React.Component {
     smallestBossPower = 35;
     highestBossPower = 71; //N.B. highestBossPower = highestBossPower - 1
     playerPowerMultiplier = 1.3;
+    slimeCreationAnimationLength = 10;
     bossWasHitAnimationLength = 800;
     bossAttackAnimationLength = 2000;
     missileFlyTime = 1000;
-    slimeCreationAnimationLength = 10;
 
     slimeConstructor(id, placeNumber) {
         const maxHP = Number(Math.round(Math.random() * (this.highestMaxHP - this.smallestMaxHP) + this.smallestMaxHP));
@@ -148,14 +148,14 @@ class App extends React.Component {
         return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower)
     }
 
-    getGeneralAnimationLength() {
+    getGeneralBossAnimationLength() {
         return this.state.isBossWasHit
             ? (this.bossAttackAnimationLength + this.bossWasHitAnimationLength)
             : this.bossAttackAnimationLength
     }
 
     getGeneralControlDisableLength() {
-        return this.getGeneralAnimationLength() + this.missileFlyTime
+        return this.getGeneralBossAnimationLength() + this.missileFlyTime
     }
 
     isSlimesQuantityMaximum() {
@@ -222,7 +222,7 @@ class App extends React.Component {
                             () => {
                                 this.hitSlime(this.getRandomSlimeID(), this.getBossDamage());
                             },
-                            this.getGeneralAnimationLength()
+                            this.getGeneralBossAnimationLength()
                         )
                     }
                 )
@@ -289,20 +289,15 @@ class App extends React.Component {
                                 };
                             },
                             () => {
-                                setTimeout(
-                                    () => {
-                                        this.setState(
-                                            {
-                                                isUserHasControl: true
-                                            }
-                                        )
-                                    },
-                                    this.getGeneralControlDisableLength()
+                                this.setState(
+                                    {
+                                        isUserHasControl: true
+                                    }
                                 )
                             }
                         )
                     },
-                    +this.getGeneralAnimationLength() + (this.state.isBossWasHit ? 20 : -300) + 1000
+                    this.getGeneralControlDisableLength()
                 );
             }
         );
@@ -350,25 +345,14 @@ class App extends React.Component {
     }
 
     createMissile() {
-        if (!this.state.isBossWasHit) {
-            setTimeout(
-                () => this.setState(
-                    {
-                        isMissileExist: true
-                    }
-                ),
-                this.getGeneralAnimationLength() - 300
-            )
-        } else {
-            setTimeout(
-                () => this.setState(
-                    {
-                        isMissileExist: true
-                    }
-                ),
-                this.getGeneralAnimationLength() + 20
-            )
-        }
+        setTimeout(
+            () => this.setState(
+                {
+                    isMissileExist: true
+                }
+            ),
+            this.bossAttackAnimationLength
+        )
     }
 
     getMissileEndPoint() {
