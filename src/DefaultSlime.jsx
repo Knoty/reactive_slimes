@@ -13,10 +13,7 @@ class DefaultSlime extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps.hp > this.props.hp) {
             console.log('slime hit animation');
-            setTimeout(
-                () => this.hitAnimation(),
-                1000
-            )
+            this.hitAnimation()
         } else if (prevProps.hp < this.props.hp) {
             console.log('slime heal animation');
             this.setState(
