@@ -363,6 +363,6 @@ p {
 /* Preload heavy images */
 
 body:after {
-    content: url(../img/boss_attack.png) url(../img/boss_hit.png) url(../img/missile.png);
+    content: url(../img/boss_attack.png) url(../img/boss_hit.png) url(../img/missile.png) url(../img/slime_was_hit.png) url(../img/slime_injured.png) url(../img/slime_death.png);
     display: none;
 }
