@@ -165,6 +165,13 @@ class App extends React.Component {
     createSlime() {
         if (this.state.resourceAmount >= this.createSlimeValue && this.state.slimes.length < this.maxSlimesQuantity){
             this.setState(
+                /**
+                 *
+                 * @param {Array} oldState.slimes
+                 * @param {Array} oldState.places
+                 * @param {...number} oldState.resourceAmount
+                 * @returns {{resourceAmount: number, slimes: [], places: any[]}}
+                 */
                 oldState => {
                     let placeNumber = getEmptyPlaceNumber(oldState.places);
                     if (placeNumber === -1) {
@@ -233,6 +240,12 @@ class App extends React.Component {
                 setTimeout(
                     () => {
                         this.setState(
+                            /**
+                             *
+                             * @param {Array} oldState.slimes
+                             * @param {Array} oldState.places
+                             * @returns {{slimes: any[], places: any[]}}
+                             */
                             oldState => {
 
                                 const hitSlimeByID = (oldSlime) => {
