@@ -118,19 +118,19 @@ p {
 }
 
 .no_slimes {
-    background: url(../img/no_slimes_label.png) no-repeat;
+    background: url(../img/slimes_label_empty.png) no-repeat;
 }
 
 .few_slimes {
-    background: url(../img/few_slimes_label.png) no-repeat;
+    background: url(../img/slimes_label_almost_empty.png) no-repeat;
 }
 
 .many_slimes {
-    background: url(../img/many_slimes_label.png) no-repeat;
+    background: url(../img/slimes_label_almost_full.png) no-repeat;
 }
 
 .maximum_slimes {
-    background: url(../img/maximum_slimes_label.png) no-repeat;
+    background: url(../img/slimes_label_at_maximum.png) no-repeat;
 }
 
 .slimes_quantity_bar > .player_power_multiplier {
@@ -203,19 +203,19 @@ p {
     left: 564px;
     bottom: 14px;
     cursor: pointer;
-    background: url(../img/empty_machine.png) no-repeat;
+    background: url(../img/slime_machine_inactive.png) no-repeat;
     -webkit-transition: background-image 0.4s ease-in-out;
     transition: background-image 0.4s ease-in-out;
 }
 
 .create_slime_button.active {
-    background: url(../img/add_machine.png) no-repeat;
+    background: url(../img/slime_machine.png) no-repeat;
     -webkit-transition: background-image 0.4s ease-in-out;
     transition: background-image 0.4s ease-in-out;
 }
 
 .create_slime_button.active:hover {
-    background: url(../img/active_machine.png) no-repeat;
+    background: url(../img/slime_machine_active.png) no-repeat;
     -webkit-transition: background-image 0.3s ease-in-out;
     transition: background-image 0.3s ease-in-out;
 
@@ -231,7 +231,7 @@ p {
     position: relative;
     height: 105px;
     width: 103px;
-    background: url(../img/pink_slime.png) no-repeat;
+    background: url(../img/slime.png) no-repeat;
 }
 
 .slime_img.was_hit {
@@ -239,7 +239,7 @@ p {
     right: 10px;
     width: 151px;
     height: 176px;
-    background: url(../img/slime_hit.png);
+    background: url(../img/slime_was_hit.png);
     animation: sprite 0.5s steps(4);
 }
 
@@ -255,7 +255,7 @@ p {
 .slime_img.injured {
     height: 105px;
     width: 103px;
-    background: url(../img/inured_pink_slime.png) no-repeat;
+    background: url(../img/slime_injured.png) no-repeat;
     cursor: url("../img/heal.png"), cell;
 }
 
@@ -303,7 +303,7 @@ p {
     width: 386px;
     height: 332px;
     background: url(../img/boss1.png) no-repeat;
-    cursor: url("../img/attack.png"), pointer;
+    cursor: url("../img/attack_cursor.png"), pointer;
 }
 
 .boss .was_hit {
