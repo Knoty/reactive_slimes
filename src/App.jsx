@@ -351,7 +351,7 @@ class App extends React.Component {
                     isMissileExist: true
                 }
             ),
-            this.bossAttackAnimationLength
+            this.bossAttackAnimationLength + 60 //Necessary delay for browser animation memory cleanup.
         )
     }
 
