@@ -217,14 +217,7 @@ class App extends React.Component {
                     {
                         isUserHasControl: false
                     },
-                    () => {
-                        setTimeout(
-                            () => {
-                                this.hitSlime(this.getRandomSlimeID(), this.getBossDamage());
-                            },
-                            this.getGeneralBossAnimationLength()
-                        )
-                    }
+                    () => this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
                 )
             }
         );
