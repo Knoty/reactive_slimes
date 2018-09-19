@@ -301,7 +301,10 @@ class App extends React.Component {
                 );
             }
         );
-        this.createMissile();
+        setTimeout(
+            () => this.createMissile(),
+            this.bossAttackAnimationLength
+        )
     }
 
     hitBoss() {
@@ -345,13 +348,10 @@ class App extends React.Component {
     }
 
     createMissile() {
-        setTimeout(
-            () => this.setState(
-                {
-                    isMissileExist: true
-                }
-            ),
-            this.bossAttackAnimationLength + 60 //Necessary delay for browser animation memory cleanup.
+        this.setState(
+            {
+                isMissileExist: true
+            }
         )
     }
 
