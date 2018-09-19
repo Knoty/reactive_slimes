@@ -9,23 +9,31 @@ class BossMissile extends Component {
         this.state = {
             isVisible: false,
             xPosition: props.startPoint.x,
-            yPosition: props.startPoint.y
+            yPosition: props.startPoint.y,
+            animationStep: 1
         };
 
-        setTimeout(
+        const interval = setInterval(
             () => this.move(),
-            10
+            42
+        );
+        setTimeout(
+            () => clearInterval(interval),
+            1000
         );
 
         props.destroyAfterDelay()
     }
 
     move() {
-        this.setState({
-            isVisible: true,
-            xPosition: this.props.endPoint.left,
-            yPosition: this.props.endPoint.top
-        })
+        this.setState(
+            oldState => ({
+                isVisible: true,
+                xPosition: (this.props.startPoint.x + this.props.endPoint.left) * ((24 - oldState.animationStep) / 24),
+                yPosition: (this.props.startPoint.y + this.props.endPoint.top) * ((24 - oldState.animationStep) / 24),
+                animationStep: oldState.animationStep + 1
+            })
+        )
     }
 
     render() {

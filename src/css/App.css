@@ -351,7 +351,6 @@ p {
 
 .missile_wrapper {
     position: absolute;
-    transition: left linear 1s, top linear 1s
 }
 
 .missile_img {
