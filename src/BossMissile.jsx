@@ -8,8 +8,8 @@ class BossMissile extends Component {
 
         this.state = {
             isVisible: false,
-            xPosition: props.startPoint.x,
-            yPosition: props.startPoint.y,
+            positionLeft: props.startPoint.left,
+            positionTop: props.startPoint.top,
             animationStep: 1
         };
 
@@ -29,8 +29,8 @@ class BossMissile extends Component {
         this.setState(
             oldState => ({
                 isVisible: true,
-                xPosition: (this.props.startPoint.x + this.props.endPoint.left) * ((24 - oldState.animationStep) / 24),
-                yPosition: (this.props.startPoint.y + this.props.endPoint.top) * ((24 - oldState.animationStep) / 24),
+                positionLeft: (this.props.startPoint.left + this.props.endPoint.left) * ((24 - oldState.animationStep) / 24),
+                positionTop: (this.props.startPoint.top - this.props.endPoint.top) * ((24 - oldState.animationStep) / 24),
                 animationStep: oldState.animationStep + 1
             })
         )
@@ -42,8 +42,8 @@ class BossMissile extends Component {
                 className = 'missile_wrapper'
                 style = {
                     {
-                        left: this.state.xPosition + 'px',
-                        top: this.state.yPosition + 'px'
+                        left: this.state.positionLeft + 'px',
+                        top: this.state.positionTop + 'px'
                     }
                 }
             >
@@ -58,7 +58,7 @@ class BossMissile extends Component {
 }
 
 BossMissile.propTypes = {
-    startPoint: PropTypes.shape({x: PropTypes.number, y: PropTypes.number}).isRequired,
+    startPoint: PropTypes.shape({left: PropTypes.number, top: PropTypes.number}).isRequired,
     endPoint: PropTypes.shape({left: PropTypes.number, top: PropTypes.number}).isRequired,
     destroyAfterDelay: PropTypes.func.isRequired
 };

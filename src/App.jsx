@@ -385,7 +385,7 @@ class App extends React.Component {
                         this.state.isMissileExist
                         &&
                         <BossMissile
-                            startPoint = {{x: 900, y: 300}}
+                            startPoint = {{left: 900, top: 300}}
                             endPoint = {this.getMissileEndPoint()}
                             targetSlime = {this.state.missileTargetID}
                             destroyAfterDelay = {
