@@ -388,6 +388,7 @@ class App extends React.Component {
                             startPoint = {{left: 900, top: 300}}
                             endPoint = {this.getMissileEndPoint()}
                             targetSlime = {this.state.missileTargetID}
+                            flyTime = {this.missileFlyTime}
                             destroyAfterDelay = {
                                 () => {
                                     setTimeout(

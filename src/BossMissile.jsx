@@ -15,12 +15,12 @@ class BossMissile extends Component {
 
         const interval = setInterval(
             () => this.move(),
-            43.47
+            props.flyTime / 23
         );
 
         setTimeout(
             () => clearInterval(interval),
-            1000
+            props.flyTime
         );
 
         props.destroyAfterDelay()
@@ -67,6 +67,7 @@ class BossMissile extends Component {
 BossMissile.propTypes = {
     startPoint: PropTypes.shape({left: PropTypes.number, top: PropTypes.number}).isRequired,
     endPoint: PropTypes.shape({left: PropTypes.number, top: PropTypes.number}).isRequired,
+    flyTime: PropTypes.number.isRequired,
     destroyAfterDelay: PropTypes.func.isRequired
 };
 
