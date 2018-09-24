@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import BossMissileView from "./BossMissileView";
 
 class BossMissile extends Component {
+    frameRate = 60;
+
     constructor(props) {
         super(props);
 
@@ -15,7 +17,7 @@ class BossMissile extends Component {
 
         const interval = setInterval(
             () => this.move(),
-            props.flyTime / 23
+            props.flyTime / (this.frameRate - 1)
         );
 
         setTimeout(
@@ -27,12 +29,12 @@ class BossMissile extends Component {
     }
 
     move() {
-        if (this.state.animationStep > 24)
+        if (this.state.animationStep > this.frameRate)
             return;
 
         this.setState(
             oldState => {
-                let proportion = (24 - oldState.animationStep) / oldState.animationStep;
+                let proportion = (this.frameRate - oldState.animationStep) / oldState.animationStep;
                 return {
                     isVisible: true,
                     positionLeft: (this.props.endPoint.left + proportion * this.props.startPoint.left) / (1 + proportion),
