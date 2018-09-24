@@ -205,7 +205,7 @@ class App extends React.Component {
                         }
                     )
                 }
-            );
+            )
         }
     }
 
@@ -220,7 +220,7 @@ class App extends React.Component {
                     () => this.hitSlime(this.getRandomSlimeID(), this.getBossDamage())
                 )
             }
-        );
+        )
     }
 
     hitSlime(id, bossDamage) {
@@ -268,9 +268,11 @@ class App extends React.Component {
                                 );
 
                                 return {
-                                    slimes: updatedSlimes.filter((slime) => {
-                                        return slime.hp > 0
-                                    }),
+                                    slimes: updatedSlimes.filter(
+                                        (slime) => {
+                                            return slime.hp > 0
+                                        }
+                                    ),
                                     places: oldState.places.map(
                                         function (place, index) {
                                             if (deadSlimePlaces.includes(index)) {
@@ -279,7 +281,7 @@ class App extends React.Component {
                                             return place
                                         }
                                     )
-                                };
+                                }
                             },
                             () => {
                                 this.setState(
@@ -291,7 +293,7 @@ class App extends React.Component {
                         )
                     },
                     this.getGeneralControlDisableLength()
-                );
+                )
             }
         );
         setTimeout(
@@ -333,11 +335,11 @@ class App extends React.Component {
                                 );
                             },
                             this.bossWasHitAnimationLength
-                        );
+                        )
                     }
                 )
             }
-        );
+        )
     }
 
     createMissile() {

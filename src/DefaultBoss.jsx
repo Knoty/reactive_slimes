@@ -32,12 +32,12 @@ class DefaultBoss extends Component {
                             setTimeout(
                                 () => this.setState({animationStatus: ''}),
                                 this.props.bossAttackAnimationLength
-                            );
+                            )
                         }
-                    );
+                    )
                 },
                 20 //Necessary delay for browser animation memory cleanup.
-            );
+            )
         }
     }
 
