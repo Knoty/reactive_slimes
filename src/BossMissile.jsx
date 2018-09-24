@@ -15,8 +15,9 @@ class BossMissile extends Component {
 
         const interval = setInterval(
             () => this.move(),
-            42
+            43.47
         );
+
         setTimeout(
             () => clearInterval(interval),
             1000
@@ -26,13 +27,19 @@ class BossMissile extends Component {
     }
 
     move() {
+        if (this.state.animationStep > 24)
+            return;
+
         this.setState(
-            oldState => ({
-                isVisible: true,
-                positionLeft: (this.props.startPoint.left + this.props.endPoint.left) * ((24 - oldState.animationStep) / 24),
-                positionTop: (this.props.startPoint.top - this.props.endPoint.top) * ((24 - oldState.animationStep) / 24),
-                animationStep: oldState.animationStep + 1
-            })
+            oldState => {
+                let proportion = (24 - oldState.animationStep) / oldState.animationStep;
+                return {
+                    isVisible: true,
+                    positionLeft: (this.props.endPoint.left + proportion * this.props.startPoint.left) / (1 + proportion),
+                    positionTop: (this.props.endPoint.top + proportion * this.props.startPoint.top) / (1 + proportion),
+                    animationStep: oldState.animationStep + 1
+                }
+            }
         )
     }
 
