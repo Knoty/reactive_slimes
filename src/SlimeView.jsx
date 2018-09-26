@@ -30,15 +30,19 @@ const SlimeView = props => (
                     : false
             }
         />
-        <div
-            className = 'level_bar_wrapper slime_hp_bar'
-            title = {`${props.id} slime hp`}
-        >
-            <LevelBar
-                current = {props.hp}
-                max = {props.maxHP}
-            />
-        </div>
+        {
+            props.hp > 0
+            &&
+            <div
+                className = 'level_bar_wrapper slime_hp_bar'
+                title = {`${props.id} slime hp`}
+            >
+                <LevelBar
+                    current = {props.hp}
+                    max = {props.maxHP}
+                />
+            </div>
+        }
     </div>
 );
 
