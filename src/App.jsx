@@ -260,10 +260,12 @@ class App extends React.Component {
                                         'В ответ босс нанес ' + bossDamage + ' повреждений слайму №' + id + ' c ' + oldSlime.hp
                                         + ' хп, и теперь у него ' + newHP + ' хп.'
                                     );
+                                    let newStatus = oldSlime.status;
                                     if (newHP <= 0) {
+                                        newStatus = 'dead';
                                         console.log('Слайм №' + oldSlime.id + ' погиб. T_T');
                                     }
-                                    return Object.assign({}, oldSlime, {hp: newHP});
+                                    return Object.assign({}, oldSlime, {hp: newHP}, {status: newStatus});
                                 };
 
                                 let updatedSlimes = oldState.slimes.map(hitSlimeByID);
