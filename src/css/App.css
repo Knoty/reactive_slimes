@@ -268,6 +268,14 @@ p {
     animation: sprite 0.5s steps(3);
 }
 
+.slime_img.dead {
+    bottom: 64px;
+    right: 10px;
+    height: 169px;
+    width: 149px;
+    background: url(../img/slime_dead.png) no-repeat;
+}
+
 .slime_hp_bar {
     height: 25px;
     width: 105px;
