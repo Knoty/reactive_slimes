@@ -268,11 +268,7 @@ class App extends React.Component {
                                 );
 
                                 return {
-                                    slimes: updatedSlimes.filter(
-                                        (slime) => {
-                                            return slime.hp > 0
-                                        }
-                                    ),
+                                    slimes: updatedSlimes,
                                     places: oldState.places.map(
                                         function (place, index) {
                                             if (deadSlimePlaces.includes(index)) {
