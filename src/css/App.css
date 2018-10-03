@@ -260,6 +260,8 @@ p {
 }
 
 .slime_img.dying {
+    bottom: 64px;
+    right: 10px;
     width: 149px;
     height: 169px;
     background: url(../img/slime_death.png);
