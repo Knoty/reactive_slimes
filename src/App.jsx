@@ -133,8 +133,19 @@ class App extends React.Component {
     }
 
     getRandomSlimeID() {
-        const slimeNumber = Math.floor(Math.random() * this.state.slimes.length);
-        return this.state.slimes[slimeNumber].id
+        let arrAliveSlimes = this.getAliveSlimesArray();
+        const chosenSlime = Math.floor(Math.random() * arrAliveSlimes.length);
+        return arrAliveSlimes[chosenSlime].id
+    }
+
+    getAliveSlimesArray() {
+        let aliveSlimesArray = [];
+        for (let slimeNumber = 0; slimeNumber < this.state.slimes.length; slimeNumber++) {
+            if (this.state.slimes[slimeNumber].status === 'alive') {
+                aliveSlimesArray.push(this.state.slimes[slimeNumber])
+            }
+        }
+        return aliveSlimesArray;
     }
 
     getPlayerPower() {
