@@ -85,7 +85,8 @@ class App extends React.Component {
             id: id,
             hp: maxHP,
             maxHP: maxHP,
-            place: placeNumber
+            place: placeNumber,
+            status: 'alive'
         }
     }
 
@@ -159,7 +160,17 @@ class App extends React.Component {
     }
 
     isSlimesQuantityMaximum() {
-        return this.state.slimes.length === this.maxSlimesQuantity
+        return this.getAliveSlimesQuantity() === this.maxSlimesQuantity
+    }
+
+    getAliveSlimesQuantity() {
+        let aliveSlimesQuantity = 0;
+        for (let slimeNumber = 0; slimeNumber < this.state.slimes.length; slimeNumber++) {
+            if (this.state.slimes[slimeNumber].status === 'alive') {
+                ++aliveSlimesQuantity
+            }
+        }
+        return aliveSlimesQuantity
     }
 
     createSlime() {
@@ -409,7 +420,7 @@ class App extends React.Component {
                     }
 
                     {
-                        this.state.slimes.length <= 0
+                        this.getAliveSlimesQuantity() <= 0
                         &&
                         <div
                             className = 'lose_screen'
@@ -441,7 +452,7 @@ class App extends React.Component {
 
                     <CreateSlimeButton
                         active = {
-                            this.state.slimes.length < this.maxSlimesQuantity &&
+                            this.getAliveSlimesQuantity() < this.maxSlimesQuantity &&
                             this.state.resourceAmount >= this.createSlimeValue &&
                             this.state.isUserHasControl
                         }
@@ -452,7 +463,7 @@ class App extends React.Component {
                     <div className = 'level_bar_wrapper slimes_quantity_bar' title = 'slimes quantity & power'>
                         <div className = {`level_bar_label slimes_quantity_label ${this.getSlimesQuantity()}`} />
                         <LevelBar
-                            current = {this.state.slimes.length}
+                            current = {this.getAliveSlimesQuantity()}
                             max = {this.maxSlimesQuantity}
                         />
                         {
