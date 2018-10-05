@@ -92,8 +92,8 @@ class App extends React.Component {
 
     slimesConstructor(slimes) {
         let slimesArr = [];
-        for (let count = 0; count < slimes; count++) {
-            slimesArr.push(this.slimeConstructor(this.makeID(), count))
+        for (let slimesCounter = 0; slimesCounter < slimes; slimesCounter++) {
+            slimesArr.push(this.slimeConstructor(this.makeID(), slimesCounter))
         }
         return slimesArr
     }
