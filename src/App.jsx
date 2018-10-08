@@ -186,73 +186,78 @@ class App extends React.Component {
     }
 
     createSlime() {
-        if (this.state.resourceAmount >= this.createSlimeValue && this.getAliveSlimesQuantity() < this.maxSlimesQuantity){
-            this.setState(
-                /**
-                 *
-                 * @param {Array} oldState.slimes
-                 * @param {Array} oldState.places
-                 * @param {...number} oldState.resourceAmount
-                 * @returns {{resourceAmount: number, slimes: [], places: any[]}}
-                 */
-                oldState => {
-                    let placeNumber = getEmptyPlaceNumber(oldState.places);
-                    if (placeNumber === -1) {
-                        let slimeIDToResurrect;
-                        let slimePlaceToResurrect;
-                        for (let i = 0; i < oldState.slimes.length; ++i) {
-                            if (oldState.slimes[i].status === 'dead') {
-                                slimeIDToResurrect = oldState.slimes[i].id;
-                                slimePlaceToResurrect = oldState.slimes[i].place;
-                                break;
-                            }
+        if (this.state.resourceAmount < this.createSlimeValue) {
+            return
+        }
+        if (this.getAliveSlimesQuantity() >= this.maxSlimesQuantity) {
+            return
+        }
+        this.setState(
+            /**
+             *
+             * @param {Array} oldState.slimes
+             * @param {Array} oldState.places
+             * @param {...number} oldState.resourceAmount
+             * @returns {{resourceAmount: number, slimes: [], places: any[]}}
+             */
+            oldState => {
+                let placeNumber = getEmptyPlaceNumber(oldState.places);
+                let isNoFreePlaces = placeNumber === -1;
+                if (isNoFreePlaces) {
+                    let slimeIDToResurrect;
+                    let slimePlaceToResurrect;
+                    for (let i = 0; i < oldState.slimes.length; ++i) {
+                        if (oldState.slimes[i].status === 'dead') {
+                            slimeIDToResurrect = oldState.slimes[i].id;
+                            slimePlaceToResurrect = oldState.slimes[i].place;
+                            break;
                         }
-                        if (slimeIDToResurrect === undefined) {
-                            throw new Error('Мертвых нет')
-                        }
-                        return {
-                            resourceAmount: oldState.resourceAmount - this.createSlimeValue,
-                            slimes: oldState.slimes.map(
-                                slime => {
-                                    if (slime.id === slimeIDToResurrect) {
-                                        return this.slimeConstructor(slimeIDToResurrect, slimePlaceToResurrect)
-                                    }
-                                    return slime
-                                }
-                            ),
-                            places: oldState.places
-                        }
+                    }
+                    if (slimeIDToResurrect === undefined) {
+                        throw new Error('Мертвых нет')
                     }
                     return {
                         resourceAmount: oldState.resourceAmount - this.createSlimeValue,
-                        slimes: oldState.slimes.concat(
-                            [this.slimeConstructor(this.makeID(), placeNumber)]
+                        slimes: oldState.slimes.map(
+                            slime => {
+                                if (slime.id === slimeIDToResurrect) {
+                                    return this.slimeConstructor(slimeIDToResurrect, slimePlaceToResurrect)
+                                }
+                                return slime
+                            }
                         ),
-                        places: oldState.places.map(
-                            (place, index) => index === placeNumber
-                                ? Object.assign({}, place, {isFree: false})
-                                : place
-                        )
+                        places: oldState.places
                     }
-                },
-                () => {
-                    this.setState(
-                        {
-                            isUserHasControl: false
-                        },
-                        () => {
-                            setTimeout(
-                                () => {
-                                    console.log('Вы создали слайма! Маны потрачено: ' + this.createSlimeValue + '.');
-                                    this.hitSlime(this.getRandomSlimeID(), this.getBossDamage());
-                                },
-                                this.slimeCreationAnimationLength
-                            )
-                        }
+                }
+                return {
+                    resourceAmount: oldState.resourceAmount - this.createSlimeValue,
+                    slimes: oldState.slimes.concat(
+                        [this.slimeConstructor(this.makeID(), placeNumber)]
+                    ),
+                    places: oldState.places.map(
+                        (place, index) => index === placeNumber
+                            ? Object.assign({}, place, {isFree: false})
+                            : place
                     )
                 }
-            )
-        }
+            },
+            () => {
+                this.setState(
+                    {
+                        isUserHasControl: false
+                    },
+                    () => {
+                        setTimeout(
+                            () => {
+                                console.log('Вы создали слайма! Маны потрачено: ' + this.createSlimeValue + '.');
+                                this.hitSlime(this.getRandomSlimeID(), this.getBossDamage());
+                            },
+                            this.slimeCreationAnimationLength
+                        )
+                    }
+                )
+            }
+        )
     }
 
     healSlime(id) {
