@@ -26,7 +26,7 @@ class DefaultSlime extends Component {
                     }
                 )
             }
-        } else if (prevProps.hp < this.props.hp) {
+        } else if (prevProps.hp < this.props.hp && prevProps.hp > 0) {
             console.log('slime heal animation');
             this.setState(
                 {animationStatus: 'was_healed'},
@@ -37,7 +37,7 @@ class DefaultSlime extends Component {
                     )
                 }
             )
-        } else if (prevProps.hp === undefined && this.props.hp === this.props.maxHP) {
+        } else if ((prevProps.hp === undefined || prevProps.hp <= 0) && this.props.hp === this.props.maxHP) {
             console.log('slime create animation');
             setTimeout(
                 () => this.creationAnimation(),

@@ -55,7 +55,7 @@ function createStateUpdaterHealingSlime(id) {
             return {
                 slimes: updatedSlimes,
                 resourceAmount: updatedResourceAmount
-            };
+            }
         }
     ).bind(this);
 }
@@ -181,11 +181,12 @@ class App extends React.Component {
                 ++aliveSlimesQuantity
             }
         }
+        console.log('Живых слаймов ' + aliveSlimesQuantity);
         return aliveSlimesQuantity
     }
 
     createSlime() {
-        if (this.state.resourceAmount >= this.createSlimeValue && this.state.slimes.length < this.maxSlimesQuantity){
+        if (this.state.resourceAmount >= this.createSlimeValue && this.getAliveSlimesQuantity() < this.maxSlimesQuantity){
             this.setState(
                 /**
                  *
@@ -197,7 +198,30 @@ class App extends React.Component {
                 oldState => {
                     let placeNumber = getEmptyPlaceNumber(oldState.places);
                     if (placeNumber === -1) {
-                        throw new Error('Свободных мест нет')
+                        let slimeIDToResurrect;
+                        let slimePlaceToResurrect;
+                        for (let i = 0; i < oldState.slimes.length; ++i) {
+                            if (oldState.slimes[i].status === 'dead') {
+                                slimeIDToResurrect = oldState.slimes[i].id;
+                                slimePlaceToResurrect = oldState.slimes[i].place;
+                                break;
+                            }
+                        }
+                        if (slimeIDToResurrect === undefined) {
+                            throw new Error('Мертвых нет')
+                        }
+                        return {
+                            resourceAmount: oldState.resourceAmount - this.createSlimeValue,
+                            slimes: oldState.slimes.map(
+                                slime => {
+                                    if (slime.id === slimeIDToResurrect) {
+                                        return this.slimeConstructor(slimeIDToResurrect, slimePlaceToResurrect)
+                                    }
+                                    return slime
+                                }
+                            ),
+                            places: oldState.places
+                        }
                     }
                     return {
                         resourceAmount: oldState.resourceAmount - this.createSlimeValue,
@@ -258,8 +282,7 @@ class App extends React.Component {
                             /**
                              *
                              * @param {Array} oldState.slimes
-                             * @param {Array} oldState.places
-                             * @returns {{slimes: any[], places: any[]}}
+                             * @returns {{slimes: any[]}}
                              */
                             oldState => {
 
@@ -281,26 +304,8 @@ class App extends React.Component {
 
                                 let updatedSlimes = oldState.slimes.map(hitSlimeByID);
 
-                                let deadSlimePlaces = updatedSlimes.reduce(
-                                    (places, slime) => {
-                                        if (slime.hp <= 0) {
-                                            places.push(slime.place);
-                                        }
-                                        return places
-                                    },
-                                    []
-                                );
-
                                 return {
-                                    slimes: updatedSlimes,
-                                    places: oldState.places.map(
-                                        function (place, index) {
-                                            if (deadSlimePlaces.includes(index)) {
-                                                return Object.assign({}, place, {isFree: true})
-                                            }
-                                            return place
-                                        }
-                                    )
+                                    slimes: updatedSlimes
                                 }
                             },
                             () => {
