@@ -12,7 +12,7 @@ function getEmptyPlaceNumber(places) {
             return placeNumber;
         }
     }
-    return -1
+    return 'is no free places'
 }
 
 function createStateUpdaterHealingSlime(id) {
@@ -181,7 +181,6 @@ class App extends React.Component {
                 ++aliveSlimesQuantity
             }
         }
-        console.log('Живых слаймов ' + aliveSlimesQuantity);
         return aliveSlimesQuantity
     }
 
@@ -201,27 +200,26 @@ class App extends React.Component {
              * @returns {{resourceAmount: number, slimes: [], places: any[]}}
              */
             oldState => {
-                let placeNumber = getEmptyPlaceNumber(oldState.places);
-                let isNoFreePlaces = placeNumber === -1;
-                if (isNoFreePlaces) {
-                    let slimeIDToResurrect;
-                    let slimePlaceToResurrect;
+                let freePlaceNumber = getEmptyPlaceNumber(oldState.places);
+                if (freePlaceNumber === 'is no free places') {
+                    let slimeIDToReplace;
+                    let slimePlaceToReplace;
                     for (let i = 0; i < oldState.slimes.length; ++i) {
                         if (oldState.slimes[i].status === 'dead') {
-                            slimeIDToResurrect = oldState.slimes[i].id;
-                            slimePlaceToResurrect = oldState.slimes[i].place;
+                            slimeIDToReplace = oldState.slimes[i].id;
+                            slimePlaceToReplace = oldState.slimes[i].place;
                             break;
                         }
                     }
-                    if (slimeIDToResurrect === undefined) {
+                    if (slimeIDToReplace === undefined) {
                         throw new Error('Мертвых нет')
                     }
                     return {
                         resourceAmount: oldState.resourceAmount - this.createSlimeValue,
                         slimes: oldState.slimes.map(
                             slime => {
-                                if (slime.id === slimeIDToResurrect) {
-                                    return this.slimeConstructor(slimeIDToResurrect, slimePlaceToResurrect)
+                                if (slime.id === slimeIDToReplace) {
+                                    return this.slimeConstructor(slimeIDToReplace, slimePlaceToReplace)
                                 }
                                 return slime
                             }
@@ -232,10 +230,10 @@ class App extends React.Component {
                 return {
                     resourceAmount: oldState.resourceAmount - this.createSlimeValue,
                     slimes: oldState.slimes.concat(
-                        [this.slimeConstructor(this.makeID(), placeNumber)]
+                        [this.slimeConstructor(this.makeID(), freePlaceNumber)]
                     ),
                     places: oldState.places.map(
-                        (place, index) => index === placeNumber
+                        (place, index) => index === freePlaceNumber
                             ? Object.assign({}, place, {isFree: false})
                             : place
                     )
