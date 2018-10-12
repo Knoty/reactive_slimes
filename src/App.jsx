@@ -15,42 +15,26 @@ function getEmptyPlaceNumber(places) {
     return 'is no free places'
 }
 
-function createStateUpdaterHealingSlime(id) {
+function createStateUpdaterHealingSlime(targetSlime) {
     return (
         function (oldState) {
-            const updatedResourceAmount = oldState.resourceAmount - this.healPrice;
-            if (updatedResourceAmount <= 0) {
-                console.log('Недостаточно маны для лечения');
-                return oldState;
-            }
-
             const healSlimeByID = (oldSlime) => {
                 let newHP = Number(oldSlime.hp) + Number(this.healAmount);
                 if (newHP > oldSlime.maxHP) {
                     newHP = oldSlime.maxHP
                 }
                 console.log(
-                    'Слайм №' + id + ' с ' + oldSlime.hp + ' хп был вылечен на ' + this.healAmount
+                    'Слайм №' + targetSlime.id + ' с ' + oldSlime.hp + ' хп был вылечен на ' + this.healAmount
                     + ', и теперь имеет ' + newHP + ' из ' + oldSlime.maxHP + '.'
                 );
                 return Object.assign({}, oldSlime, {hp: newHP});
             };
 
-            const targetSlimes = oldState.slimes.filter(
-                slime => slime.id === id
-            );
-            if (!targetSlimes.length) {
-                throw new Error('Вы лечите несуществующего слайма ' + id)
-            }
-            const targetSlime = targetSlimes[0];
-            if (targetSlime.hp === targetSlime.maxHP) {
-                console.log('Слайм №' + id + ' полностью здоров!');
-                return oldState;
-            }
             const updatedSlime = healSlimeByID(targetSlime);
             const updatedSlimes = oldState.slimes.map(
                 slime => slime.id === targetSlime.id ? updatedSlime : slime
             );
+            const updatedResourceAmount = oldState.resourceAmount - this.healPrice;
 
             return {
                 slimes: updatedSlimes,
@@ -259,8 +243,24 @@ class App extends React.Component {
     }
 
     healSlime(id) {
+        if (this.state.resourceAmount - this.healPrice <= 0) {
+            console.log('Недостаточно маны для лечения');
+            return
+        }
+
+        const targetSlimes = this.state.slimes.filter(
+            slime => slime.id === id
+        );
+        if (!targetSlimes.length) {
+            throw new Error('Вы пытаетесь лечить несуществующего слайма ' + id + '.')
+        }
+        const targetSlime = targetSlimes[0];
+        if (targetSlime.hp === targetSlime.maxHP) {
+            console.log('Состояние слайма №' + id + ' не позволяет его вылечить.');
+            return
+        }
         this.setState(
-            createStateUpdaterHealingSlime.call(this, id),
+            createStateUpdaterHealingSlime.call(this, targetSlime),
             () => {
                 this.setState(
                     {
