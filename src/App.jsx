@@ -255,7 +255,7 @@ class App extends React.Component {
             throw new Error('Вы пытаетесь лечить несуществующего слайма ' + id + '.')
         }
         const targetSlime = targetSlimes[0];
-        if (targetSlime.hp === targetSlime.maxHP) {
+        if (targetSlime.hp === targetSlime.maxHP || targetSlime.hp <= 0) {
             console.log('Состояние слайма №' + id + ' не позволяет его вылечить.');
             return
         }
