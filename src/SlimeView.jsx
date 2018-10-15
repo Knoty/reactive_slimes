@@ -24,11 +24,7 @@ const SlimeView = props => (
             title = {
                 `Slime ${props.name} #${props.id}${(props.hp < props.maxHP) ? `, click to heal for ${props.healPrice} resources` : ', healthy'}`
             }
-            onClick = {
-                (props.hp < props.maxHP)
-                    ? () => props.onClick(props.id)
-                    : false
-            }
+            onClick = {props.onClick}
         />
         {
             props.hp > 0
@@ -50,7 +46,7 @@ SlimeView.propTypes = {
     className: PropTypes.string.isRequired,
     hp: PropTypes.number.isRequired,
     maxHP: PropTypes.number.isRequired,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.any,
     name: PropTypes.string,
     id: PropTypes.number.isRequired,
     healPrice: PropTypes.number.isRequired,
