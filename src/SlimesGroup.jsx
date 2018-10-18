@@ -13,7 +13,7 @@ const SlimesGroup = ({ slimes, healPrice, healSlime, places }) => (
                         {...slime}
                         healPrice = {healPrice}
                         place = {places[slime.place]}
-                        onClick = {healSlime}
+                        healSlime = {healSlime}
                     />
                 )
             )

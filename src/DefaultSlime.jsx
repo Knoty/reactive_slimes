@@ -66,17 +66,17 @@ class DefaultSlime extends Component {
         )
     }
 
-    boundClickHandler = () => this.props.onClick(this.props.id);
+    healSlime = () => this.props.healSlime(this.props.id);
 
     render() {
-        const clickHandler = (this.props.hp < this.props.maxHP && this.props.hp > 0)
-            ? this.boundClickHandler
+        const healAbility = (this.props.hp < this.props.maxHP && this.props.hp > 0)
+            ? this.healSlime
             : false;
 
         return (
             <SlimeView
                 {...this.props}
-                onClick = {clickHandler}
+                onClick = {healAbility}
                 animationClass = {this.state.animationStatus}
             />
         )
@@ -86,7 +86,7 @@ class DefaultSlime extends Component {
 DefaultSlime.propTypes = {
     hp: PropTypes.number.isRequired,
     maxHP: PropTypes.number.isRequired,
-    onClick: PropTypes.func,
+    healSlime: PropTypes.func,
     id: PropTypes.number.isRequired
 };
 
