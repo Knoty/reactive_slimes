@@ -42,7 +42,7 @@ function createStateUpdaterHealingSlime(targetSlime) {
                 resourceAmount: updatedResourceAmount
             }
         }
-    ).bind(this);
+    )
 }
 
 function createStateUpdaterHittingSlime(slimeID, bossDamage) {
@@ -317,7 +317,7 @@ class App extends React.Component {
                 setTimeout(
                     () => {
                         this.setState(
-                            createStateUpdaterHittingSlime.call(this, slimeID, bossDamage),
+                            createStateUpdaterHittingSlime(slimeID, bossDamage),
                             () => {
                                 this.setState(
                                     {
