@@ -243,7 +243,7 @@ class App extends React.Component {
     }
 
     healSlime(id) {
-        if (this.state.resourceAmount - this.healPrice <= 0) {
+        if (this.state.resourceAmount - this.healPrice < 0) {
             console.log('Недостаточно маны для лечения');
             return
         }
