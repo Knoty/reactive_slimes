@@ -18,6 +18,7 @@ function getEmptyPlaceNumber(places) {
 function createStateUpdaterHealingSlime(targetSlime) {
     return (
         function (oldState) {
+
             const healSlimeByID = (oldSlime) => {
                 let newHP = Number(oldSlime.hp) + Number(this.healAmount);
                 if (newHP > oldSlime.maxHP) {
@@ -42,6 +43,40 @@ function createStateUpdaterHealingSlime(targetSlime) {
             }
         }
     ).bind(this);
+}
+
+function createStateUpdaterHittingSlime(slimeID, bossDamage) {
+    return (
+        /**
+         *
+         * @param {Array} oldState.slimes
+         * @returns {{slimes: any[]}}
+         */
+        function (oldState) {
+
+            const hitSlimeByID = (oldSlime) => {
+                if (slimeID !== oldSlime.id)
+                    return oldSlime;
+                let newHP = Number(oldSlime.hp) - bossDamage;
+                console.log(
+                    'В ответ босс нанес ' + bossDamage + ' повреждений слайму №' + slimeID + ' c ' + oldSlime.hp
+                    + ' хп, и теперь у него ' + newHP + ' хп.'
+                );
+                let newStatus = oldSlime.status;
+                if (newHP <= 0) {
+                    newStatus = 'dead';
+                    console.log('Слайм №' + oldSlime.id + ' погиб. T_T');
+                }
+                return Object.assign({}, oldSlime, {hp: newHP}, {status: newStatus});
+            };
+
+            let updatedSlimes = oldState.slimes.map(hitSlimeByID);
+
+            return {
+                slimes: updatedSlimes
+            }
+        }
+    )
 }
 
 class App extends React.Component {
@@ -272,45 +307,17 @@ class App extends React.Component {
         )
     }
 
-    hitSlime(id, bossDamage) {
+    hitSlime(slimeID, bossDamage) {
         this.setState(
             {
                 isBossAttacking: true,
-                missileTargetID: id
+                missileTargetID: slimeID
             },
             () => {
                 setTimeout(
                     () => {
                         this.setState(
-                            /**
-                             *
-                             * @param {Array} oldState.slimes
-                             * @returns {{slimes: any[]}}
-                             */
-                            oldState => {
-
-                                const hitSlimeByID = (oldSlime) => {
-                                    if (id !== oldSlime.id)
-                                        return oldSlime;
-                                    let newHP = Number(oldSlime.hp) - bossDamage;
-                                    console.log(
-                                        'В ответ босс нанес ' + bossDamage + ' повреждений слайму №' + id + ' c ' + oldSlime.hp
-                                        + ' хп, и теперь у него ' + newHP + ' хп.'
-                                    );
-                                    let newStatus = oldSlime.status;
-                                    if (newHP <= 0) {
-                                        newStatus = 'dead';
-                                        console.log('Слайм №' + oldSlime.id + ' погиб. T_T');
-                                    }
-                                    return Object.assign({}, oldSlime, {hp: newHP}, {status: newStatus});
-                                };
-
-                                let updatedSlimes = oldState.slimes.map(hitSlimeByID);
-
-                                return {
-                                    slimes: updatedSlimes
-                                }
-                            },
+                            createStateUpdaterHittingSlime.call(this, slimeID, bossDamage),
                             () => {
                                 this.setState(
                                     {
