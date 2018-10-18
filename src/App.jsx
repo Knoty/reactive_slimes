@@ -320,7 +320,7 @@ class App extends React.Component {
                             }
                         )
                     },
-                    this.getGeneralControlDisableLength()
+                    this.getGeneralControlDisableLength() - 800
                 )
             }
         );
