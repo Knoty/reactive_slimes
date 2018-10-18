@@ -179,14 +179,18 @@ class App extends React.Component {
         return Math.round(Math.random() * (this.highestBossPower - this.smallestBossPower) + this.smallestBossPower)
     }
 
-    getGeneralBossAnimationLength() {
+    getBossItselfAnimationLength() {
         return this.state.isBossWasHit
             ? (this.bossAttackAnimationLength + this.bossWasHitAnimationLength)
             : this.bossAttackAnimationLength
     }
 
-    getGeneralControlDisableLength() {
-        return this.getGeneralBossAnimationLength() + this.missileFlyTime
+    getAllBossActionAnimationLength() {
+        return this.getBossItselfAnimationLength() + this.missileFlyTime
+    }
+
+    getAnimationBegininngOfSlimesReaction() {
+        return this.getAllBossActionAnimationLength() - 800
     }
 
     isSlimesQuantityMaximum() {
@@ -277,21 +281,21 @@ class App extends React.Component {
         )
     }
 
-    healSlime(id) {
+    healSlime(slimeID) {
         if (this.state.resourceAmount - this.healPrice < 0) {
             console.log('Недостаточно маны для лечения');
             return
         }
 
         const targetSlimes = this.state.slimes.filter(
-            slime => slime.id === id
+            slime => slime.id === slimeID
         );
         if (!targetSlimes.length) {
-            throw new Error('Вы пытаетесь лечить несуществующего слайма ' + id + '.')
+            throw new Error('Вы пытаетесь лечить несуществующего слайма ' + slimeID + '.')
         }
         const targetSlime = targetSlimes[0];
         if (targetSlime.hp === targetSlime.maxHP || targetSlime.hp <= 0) {
-            console.log('Состояние слайма №' + id + ' не позволяет его вылечить.');
+            console.log('Состояние слайма №' + slimeID + ' не позволяет его вылечить.');
             return
         }
         this.setState(
@@ -327,7 +331,7 @@ class App extends React.Component {
                             }
                         )
                     },
-                    this.getGeneralControlDisableLength() - 800
+                    this.getAnimationBegininngOfSlimesReaction()
                 )
             }
         );
